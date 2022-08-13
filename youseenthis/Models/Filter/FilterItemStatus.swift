@@ -34,7 +34,7 @@ enum FilterItemStatus: Int, CaseIterable, Identifiable {
         }
     }
     
-    //TODO These strings should be localized
+    // TODO: These strings should be localized
     func stringValue() -> String {
         switch self {
         case .noFilter:

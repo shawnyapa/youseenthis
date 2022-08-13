@@ -27,18 +27,22 @@ struct youseenthisApp: App {
     }
 }
 
-/* ***SY ToDo List
-
+/* ***SY TODO: List
+ 
+ Implement Git/Github (Done)
+ 
+ Fix "You Got Nothing Bug" (Done)
+ Update Filter Overlay Color to match bottomBar
+ Remove Sort Icon
+ 
  Create User Management, just UserName for now
- 
- Fix "You Got Nothing Bug"
- 
  Add versioning tag to JSON Format
  Create mechanism to export/import json to file
  
  Add Rating
  Add Notes
  Add Date Created
+ Add Tags
 
  Update to Purple Logo
  Update missing Logo Asset Sizes
@@ -46,11 +50,12 @@ struct youseenthisApp: App {
  Update Name to Danky
  Copy over to AppBundle Danky
  
- Implement Git/Github
+ Refactor Persistence
+ Integrate Network API
+ 
  Distribution on TestFlight
  
  Add Search to Toolbar
  Add Sort to Toolbar
- Add Tags
  
  */

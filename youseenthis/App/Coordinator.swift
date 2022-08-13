@@ -21,11 +21,14 @@ class Coordinator {
     private init() {
         self.itemsDictionary = StorageManager.allItems()
         let itemsArray = self.itemsDictionary.map { $0.value }
-        // ***SY Implement User.getCurrentUser
+        // TODO: Implement User.getCurrentUser
         // If no user then Reroute to UserProfileView
         self.userData = UserData(user: User.sampleValue(), items: itemsArray)
+        // ***SY Temporary Logging
+        // LogUtility.logItems(items: itemsDictionary)
     }
-        
+    
+    // TODO: Move to Peristence Layer
     func addItem(item: Item) {
         itemsDictionary[item.id] = item
         StorageManager.saveItems(items: itemsDictionary)

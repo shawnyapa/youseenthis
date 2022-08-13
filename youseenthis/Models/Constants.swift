@@ -26,7 +26,7 @@ enum SystemImage: String {
     case sort = "arrow.up.arrow.down.circle"
 }
 
-//TODO These strings should be localized
+// TODO: These strings should be localized
 struct ViewStrings {
     static let title = "Title"
     static let status = "Status"

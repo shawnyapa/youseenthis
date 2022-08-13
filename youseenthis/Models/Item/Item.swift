@@ -20,5 +20,15 @@ struct Item: Identifiable, Hashable, Codable {
         let item = Item(id: uuidString, title: "", itemType: .notSelected, itemStatus: .notSelected)
         return item
     }
+    
+    func rawDictionaryForLogging() -> [String: Any] {
+        var itemDictionary = [String: Any]()
+        itemDictionary["id"] = id
+        itemDictionary["title"] = title
+        itemDictionary["itemType"] = itemType.rawValue
+        itemDictionary["itemStatus"] = itemStatus.rawValue
+        
+        return itemDictionary
+    }
 }
 

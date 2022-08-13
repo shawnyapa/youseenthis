@@ -16,10 +16,6 @@ class StorageManager {
         case userKey = "userkey"
     }
     
-    static func exportUserAndItems(user: User, items:[Item]) {
-        
-    }
-    
     static func saveCurrentUser(user: User) {
         if let userData = StorageManager.encodeUser(userCodable: user) {
             if let defaults = UserDefaults.init(suiteName: Constants.suiteName.rawValue) {

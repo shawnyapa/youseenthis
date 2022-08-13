@@ -17,10 +17,10 @@ struct ItemList: View {
     var body: some View {
         NavigationView {
             Group() {
-                if items.count == 0 {
-                    EmptyList()
-                } else {
-                    ZStack {
+                ZStack {
+                    if items.count == 0 {
+                        EmptyList()
+                    } else {
                         List(items) { item in
                             NavigationLink {
                                 ItemDetail(canEdit: canEdit, mode: .view, item: item)
@@ -28,26 +28,26 @@ struct ItemList: View {
                                 ItemRow(item: item)
                             }
                         }
-                        FilterSheet(sheetMode: $filterSheetMode) {
-                            VStack {
-                                Text("Filter")
-                                Divider()
-                                HStack {
-                                    Text("Type:")
-                                    FilterItemTypePicker(filterItemType: $filterItemType)
-                                }
-                                Divider()
-                                HStack {
-                                    Text("Status:")
-                                    FilterItemStatusPicker(filterItemStatus: $filterItemStatus)
-                                }
-                                Divider()
+                    }
+                    FilterSheet(sheetMode: $filterSheetMode) {
+                        VStack {
+                            Text("Filter")
+                            Divider()
+                            HStack {
+                                Text("Type:")
+                                FilterItemTypePicker(filterItemType: $filterItemType)
                             }
-                            .padding()
-                            .frame(maxWidth:.infinity, maxHeight: .infinity, alignment: .top)
-                            .background(Color(UIColor.lightGray))
-                            .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
+                            Divider()
+                            HStack {
+                                Text("Status:")
+                                FilterItemStatusPicker(filterItemStatus: $filterItemStatus)
+                            }
+                            Divider()
                         }
+                        .padding()
+                        .frame(maxWidth:.infinity, maxHeight: .infinity, alignment: .top)
+                        .background(Color(UIColor.systemGroupedBackground))
+                        .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
                     }
                 }
             }
