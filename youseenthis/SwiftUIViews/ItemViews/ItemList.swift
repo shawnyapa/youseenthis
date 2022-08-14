@@ -19,7 +19,7 @@ struct ItemList: View {
             Group() {
                 ZStack {
                     if items.count == 0 {
-                        EmptyList()
+                        EmptyItemList()
                     } else {
                         List(items) { item in
                             NavigationLink {

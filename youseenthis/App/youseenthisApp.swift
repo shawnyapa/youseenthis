@@ -20,7 +20,7 @@ struct youseenthisApp: App {
                 LabTesting(user: $userData.user)
             } else {
                 let viewModel = UserLandingViewModel(userData: userData)
-                UserLandingView(items: viewModel.$userData.items)
+                UserLandingView(user: $userData.user, items: viewModel.$userData.items)
             }
             
         }
@@ -32,10 +32,12 @@ struct youseenthisApp: App {
  Implement Git/Github (Done)
  
  Fix "You Got Nothing Bug" (Done)
- Update Filter Overlay Color to match bottomBar
+ Update Filter Overlay Color to match bottomBar (Done)
  Remove Sort Icon
  
+ Add Tabbar and TabItems -> Items, People (Done)
  Create User Management, just UserName for now
+ 
  Add versioning tag to JSON Format
  Create mechanism to export/import json to file
  

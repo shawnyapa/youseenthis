@@ -24,8 +24,6 @@ class Coordinator {
         // TODO: Implement User.getCurrentUser
         // If no user then Reroute to UserProfileView
         self.userData = UserData(user: User.sampleValue(), items: itemsArray)
-        // ***SY Temporary Logging
-        // LogUtility.logItems(items: itemsDictionary)
     }
     
     // TODO: Move to Peristence Layer

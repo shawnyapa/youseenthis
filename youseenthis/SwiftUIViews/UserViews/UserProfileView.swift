@@ -28,7 +28,7 @@ struct UserProfileView: View {
             Divider()
             Spacer()
         }
-        .padding(.all)
+        .padding(.bottom)
         .navigationTitle("User Profile")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
