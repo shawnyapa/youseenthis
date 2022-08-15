@@ -61,6 +61,16 @@ struct ItemList: View {
                         Image(systemName: SystemImage.create.rawValue)
                     }
                 }
+                ToolbarItem(placement: .navigation) {
+                    NavigationLink {
+                        // ***SY Test Data - Refactor
+                        let peopleList = [User.sampleValue(),User.sampleValue()]
+                        let user = User.sampleValue()
+                        PeopleTab(owner: user, peopleList: peopleList)
+                    } label: {
+                        Image(systemName: SystemImage.profile.rawValue)
+                    }
+                }
                 ToolbarItem(placement: .bottomBar) {
                     Button(action: {
                         // Show Sort on SheetMode

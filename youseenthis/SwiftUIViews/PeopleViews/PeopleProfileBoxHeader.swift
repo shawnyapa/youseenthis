@@ -22,3 +22,10 @@ struct PeopleProfileBoxHeader_Previews: PreviewProvider {
         PeopleProfileBoxHeader()
     }
 }
+
+// TODO: Planned Navigation for Button
+//            UserProfileView(canEdit: true, mode: .view, user: $user)
+//                .tabItem {
+//                    Image(systemName: SystemImage.people.rawValue)
+//                    Text(ViewStrings.people)
+//                }

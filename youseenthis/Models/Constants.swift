@@ -25,6 +25,7 @@ enum SystemImage: String {
     case filter_on = "line.3.horizontal.decrease.circle.fill"
     case sort = "arrow.up.arrow.down.circle"
     case list = "list.star"
+    case profile = "person"
     case people = "person.3"
 }
 

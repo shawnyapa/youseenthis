@@ -33,10 +33,11 @@ struct youseenthisApp: App {
  
  Fix "You Got Nothing Bug" (Done)
  Update Filter Overlay Color to match bottomBar (Done)
- Remove Sort Icon
- 
  Add Tabbar and TabItems -> Items, People (Done)
+ Refactor Navigation for Profile and People Management
  Create User Management, just UserName for now
+ 
+ Remove Sort Icon
  
  Add versioning tag to JSON Format
  Create mechanism to export/import json to file
