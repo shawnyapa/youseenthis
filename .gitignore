@@ -1,2 +1,3 @@
 # Ignore Sample Data JSON
+xcuserdata/*
 ExampleDataJSON.swift
