@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ItemList: View {
-    var primaryUser: User
+    @Binding var primaryUser: User
     var items: [Item]
     @State private var filterSheetMode: SheetMode = .none
     @Binding var filterItemType: FilterItemType
@@ -66,7 +66,7 @@ struct ItemList: View {
                     NavigationLink {
                         // ***SY Test Data - Refactor
                         let peopleList = [User.sampleValue(),User.sampleValue()]
-                        PeopleTab(owner: primaryUser, peopleList: peopleList)
+                        PeopleTab(primaryUser: $primaryUser, peopleList: peopleList)
                     } label: {
                         Image(systemName: SystemImage.profile.rawValue)
                     }
@@ -101,6 +101,7 @@ struct ItemList: View {
 struct ItemList_Previews: PreviewProvider {
     static var previews: some View {
         let userData = ExampleData.createUserDataWithItems()
-        ItemList(primaryUser: userData.user, items: userData.items, filterItemType: .constant(.noFilter), filterItemStatus: .constant(.noFilter))
+        let user = userData.user
+        ItemList(primaryUser: .constant(user), items: userData.items, filterItemType: .constant(.noFilter), filterItemStatus: .constant(.noFilter))
     }
 }

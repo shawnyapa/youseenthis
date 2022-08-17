@@ -8,7 +8,7 @@
 import Foundation
 
 class UserData: ObservableObject {
-    var user: User
+    @Published var user: User
     @Published var items:[Item]
     var people: [User]
     // TODO: Implement PeopleInvitations

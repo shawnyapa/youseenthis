@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct PeopleTab: View {
-    var owner: User
+    @Binding var primaryUser: User
     var peopleList: [User]
     var body: some View {
         VStack(alignment: .leading) {
-            PeopleProfileBox(owner: owner)
+            PeopleProfileBox(primaryUser: $primaryUser)
                 .frame(height: 180.0)
             PeopleList(peopleList: peopleList)
         }
@@ -21,8 +21,8 @@ struct PeopleTab: View {
 
 struct PeopleTab_Previews: PreviewProvider {
     static var previews: some View {
-        let owner = User.sampleValue()
+        let user = User.sampleValue()
         let peopleList = [User.sampleValue(),User.sampleValue()]
-        PeopleTab(owner: owner, peopleList: peopleList)
+        PeopleTab(primaryUser: .constant(user), peopleList: peopleList)
     }
 }

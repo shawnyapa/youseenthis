@@ -20,7 +20,7 @@ struct youseenthisApp: App {
                 LabTesting(user: $userData.user)
             } else {
                 let viewModel = UserLandingViewModel(userData: userData)
-                UserLandingView(user: $userData.user, items: viewModel.$userData.items)
+                UserLandingView(primaryUser: $userData.user, items: viewModel.$userData.items)
             }
             
         }

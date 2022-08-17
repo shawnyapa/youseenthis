@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct PeopleProfileBox: View {
-    var owner: User
+    @Binding var primaryUser: User
     var body: some View {
-        let ownerName = owner.firstName + " " + owner.lastName
+        let ownerName = primaryUser.firstName + " " + primaryUser.lastName
         List {
-            Section(header: PeopleProfileBoxHeader(primaryUser: owner)) {
+            Section(header: PeopleProfileBoxHeader(primaryUser: primaryUser)) {
                 Text(ownerName)
                     .listRowSeparator(.hidden)
-                Text(owner.username)
+                Text(primaryUser.username)
                     .listRowSeparator(.hidden)
-                Text(owner.email)
+                Text(primaryUser.email)
                     .listRowSeparator(.hidden)
             }
         }.listStyle(GroupedListStyle())
@@ -26,7 +26,7 @@ struct PeopleProfileBox: View {
 
 struct PeopleOwnerBox_Previews: PreviewProvider {
     static var previews: some View {
-        let owner = User.sampleValue()
-        PeopleProfileBox(owner: owner)
+        let user = User.sampleValue()
+        PeopleProfileBox(primaryUser: .constant(user))
     }
 }

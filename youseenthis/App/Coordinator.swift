@@ -51,10 +51,12 @@ class Coordinator {
     
     func addUser(user: User) -> Bool {
         let success = user.saveCurrentUser(user: user)
+        userData.user = user
         return success
     }
     func editUser(user: User) -> Bool {
         let success = user.saveCurrentUser(user: user)
+        userData.user = user
         return success
     }
 }
