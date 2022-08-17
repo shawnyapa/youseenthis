@@ -12,7 +12,7 @@ struct PeopleProfileBox: View {
     var body: some View {
         let ownerName = owner.firstName + " " + owner.lastName
         List {
-            Section(header: PeopleProfileBoxHeader()) {
+            Section(header: PeopleProfileBoxHeader(primaryUser: owner)) {
                 Text(ownerName)
                     .listRowSeparator(.hidden)
                 Text(owner.username)

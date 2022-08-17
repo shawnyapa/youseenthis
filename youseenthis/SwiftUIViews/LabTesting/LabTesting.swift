@@ -11,7 +11,7 @@ struct LabTesting: View {
     @Binding var user: User
     var body: some View {
         let canEdit = true
-        UserProfileView(canEdit: canEdit, mode: .view, user: $user)
+        //UserProfileView(canEdit: canEdit, mode: .view, user: $user)
     }
 }
 

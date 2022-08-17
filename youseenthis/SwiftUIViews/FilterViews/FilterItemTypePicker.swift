@@ -14,7 +14,7 @@ struct FilterItemTypePicker: View {
             ForEach (FilterItemType.allCases) { type in
                 HStack {
                     FilterItemTypeImage(filterItemType: type)
-                    Text(type.stringValue())
+                    Text(type.filterStringValue())
                 }.tag(type)
             }
         }

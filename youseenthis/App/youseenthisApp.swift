@@ -34,7 +34,7 @@ struct youseenthisApp: App {
  Fix "You Got Nothing Bug" (Done)
  Update Filter Overlay Color to match bottomBar (Done)
  Add Tabbar and TabItems -> Items, People (Done)
- Refactor Navigation for Profile and People Management
+ Refactor Navigation for Profile and People Management (Done)
  Create User Management, just UserName for now
  
  Remove Sort Icon

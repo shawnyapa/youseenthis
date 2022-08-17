@@ -32,7 +32,7 @@ enum FilterItemType: Int, CaseIterable, Identifiable {
     }
     
     // TODO: These strings should be localized
-    func stringValue() -> String {
+    func filterStringValue() -> String {
         switch self {
         case .noFilter:
             return "Show Everything"
@@ -44,6 +44,22 @@ enum FilterItemType: Int, CaseIterable, Identifiable {
             return "Only TV Shows"
         case .videoGame:
             return "Only Video Games"
+        }
+    }
+    
+    // TODO: These strings should be localized
+    func headerStringValue() -> String {
+        switch self {
+        case .noFilter:
+            return "Stuff"
+        case .notSelected:
+            return "Unknown"
+        case .movie:
+            return "Movies"
+        case .tvShow:
+            return "TV Shows"
+        case .videoGame:
+            return "Video Games"
         }
     }
 }

@@ -21,9 +21,10 @@ class Coordinator {
     private init() {
         self.itemsDictionary = StorageManager.allItems()
         let itemsArray = self.itemsDictionary.map { $0.value }
-        // TODO: Implement User.getCurrentUser
-        // If no user then Reroute to UserProfileView
-        self.userData = UserData(user: User.sampleValue(), items: itemsArray)
+        // TODO: StorageManager.allPeople()
+        let user = User.currentUser() ?? User.sampleValue()
+        let people = [User]()   // TODO: Remove
+        self.userData = UserData(user: user, items: itemsArray, people: people)
     }
     
     // TODO: Move to Peristence Layer
@@ -49,11 +50,11 @@ class Coordinator {
     }
     
     func addUser(user: User) -> Bool {
-        let success = user.saveCurrentUser()
+        let success = user.saveCurrentUser(user: user)
         return success
     }
     func editUser(user: User) -> Bool {
-        let success = user.saveCurrentUser()
+        let success = user.saveCurrentUser(user: user)
         return success
     }
 }

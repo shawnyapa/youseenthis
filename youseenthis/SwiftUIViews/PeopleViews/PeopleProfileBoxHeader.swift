@@ -8,24 +8,23 @@
 import SwiftUI
 
 struct PeopleProfileBoxHeader: View {
+    var primaryUser: User
     var body: some View {
         HStack {
             Text(ViewStrings.profile)
             Spacer()
-            Button(action: {}, label: {Image(systemName: SystemImage.edit.rawValue)})
+            NavigationLink {
+                UserProfileDetail(canEdit: true, mode: .edit, user: primaryUser)
+            } label: {
+                Image(systemName: SystemImage.edit.rawValue)
+            }
         }
     }
 }
 
 struct PeopleProfileBoxHeader_Previews: PreviewProvider {
     static var previews: some View {
-        PeopleProfileBoxHeader()
+        let user = User.sampleValue()
+        PeopleProfileBoxHeader(primaryUser: user)
     }
 }
-
-// TODO: Planned Navigation for Button
-//            UserProfileView(canEdit: true, mode: .view, user: $user)
-//                .tabItem {
-//                    Image(systemName: SystemImage.people.rawValue)
-//                    Text(ViewStrings.people)
-//                }

@@ -27,7 +27,9 @@ class StorageManager {
     static func getCurrentUser() -> User? {
         var user: User?
         let defaults = UserDefaults.init(suiteName: Constants.suiteName.rawValue)
-        user = defaults?.object(forKey: Constants.userKey.rawValue) as? User
+        if let userData = defaults?.object(forKey: Constants.userKey.rawValue) as? Data {
+            user = decodeUser(data: userData)
+        }
         return user
     }
     

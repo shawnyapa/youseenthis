@@ -14,8 +14,8 @@ struct User: Identifiable, Codable {
     var lastName: String
     var email: String
     
-    func saveCurrentUser() -> Bool {
-        StorageManager.saveCurrentUser(user: self)
+    func saveCurrentUser(user: User) -> Bool {
+        StorageManager.saveCurrentUser(user: user)
         return true
     }
     
