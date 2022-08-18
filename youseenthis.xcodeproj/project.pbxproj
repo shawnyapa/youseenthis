@@ -38,6 +38,7 @@
 		616EFAFB28A70796007CA794 /* LogUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616EFAFA28A70796007CA794 /* LogUtility.swift */; };
 		616EFAFD28A7086E007CA794 /* ImportUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616EFAFC28A7086E007CA794 /* ImportUtility.swift */; };
 		616EFAFF28A7087D007CA794 /* ExportUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616EFAFE28A7087D007CA794 /* ExportUtility.swift */; };
+		617A2B5728ADC204006FFBAC /* PrimaryUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617A2B5628ADC204006FFBAC /* PrimaryUserData.swift */; };
 		617AC7252814C64C0055858E /* FilterSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617AC7242814C64C0055858E /* FilterSheet.swift */; };
 		617AC7272815D0080055858E /* LabTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617AC7262815D0080055858E /* LabTesting.swift */; };
 		617AC72A281610FC0055858E /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617AC729281610FC0055858E /* DeleteButton.swift */; };
@@ -96,6 +97,7 @@
 		616EFAFA28A70796007CA794 /* LogUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogUtility.swift; sourceTree = "<group>"; };
 		616EFAFC28A7086E007CA794 /* ImportUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportUtility.swift; sourceTree = "<group>"; };
 		616EFAFE28A7087D007CA794 /* ExportUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportUtility.swift; sourceTree = "<group>"; };
+		617A2B5628ADC204006FFBAC /* PrimaryUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryUserData.swift; sourceTree = "<group>"; };
 		617AC7242814C64C0055858E /* FilterSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSheet.swift; sourceTree = "<group>"; };
 		617AC7262815D0080055858E /* LabTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabTesting.swift; sourceTree = "<group>"; };
 		617AC729281610FC0055858E /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 			children = (
 				614833FF27C34CFC00076898 /* User.swift */,
 				6131700A27D420BA00834C08 /* UserData.swift */,
+				617A2B5628ADC204006FFBAC /* PrimaryUserData.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				61B7700728289FF400AF4EAF /* EmailButton.swift in Sources */,
 				614A8E0D27E40BA600D634CA /* FilterItemType.swift in Sources */,
 				619D3ACF28A9A35700F46946 /* PeopleProfileBoxHeader.swift in Sources */,
+				617A2B5728ADC204006FFBAC /* PrimaryUserData.swift in Sources */,
 				619D3ACD28A9951600F46946 /* EmptyPeopleList.swift in Sources */,
 				61CF977E27C449A6008E179A /* StorageManager.swift in Sources */,
 				619D3AD128A9A50B00F46946 /* PeopleListHeader.swift in Sources */,

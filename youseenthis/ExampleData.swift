@@ -17,18 +17,38 @@ struct ExampleData {
         let item4 = Item(id: UUID().uuidString, title: "Star Wars", itemType: .movie, itemStatus: .didWatch)
         let items = [item1, item2, item3, item4]
         let exampleUser1 = User.sampleValue()
-        let exampleUser2 = User.sampleValue()
-        let exampleUser3 = User.sampleValue()
-        let people = [exampleUser2, exampleUser3]
-        let userData = UserData(user: exampleUser1, items: items, people: people)
+        let userData = UserData(user: exampleUser1, items: items)
         return userData
     }
     
-    static func createUserWithEmptyItems() -> UserData {
-        let items = [Item]()
+    static func createUserDataWithEmptyItems() -> UserData {
+        let items = ExampleData.createEmptyItems()
         let exampleUser1 = User.sampleValue()
-        let people = [User]()
-        let userData = UserData(user: exampleUser1, items: items, people: people)
+        let userData = UserData(user: exampleUser1, items: items)
         return userData
+    }
+    
+    static func createPeople() -> [UserData] {
+        let user1 = ExampleData.createUserDataWithItems()
+        
+        return [user1]
+    }
+
+    static func createPrimaryUserDataWithEmptyItemsAndEmptyPeople() -> PrimaryUserData {
+        let user1 = ExampleData.createUserDataWithEmptyItems()
+        let people = ExampleData.createEmptyPeople()
+        let primaryUserData = PrimaryUserData(user: user1.user, items: user1.items, people: people)
+        
+        return primaryUserData
+    }
+    
+    static func createEmptyItems() -> [Item] {
+        
+        return [Item]()
+    }
+
+    static func createEmptyPeople() -> [UserData] {
+        
+        return [UserData]()
     }
 }

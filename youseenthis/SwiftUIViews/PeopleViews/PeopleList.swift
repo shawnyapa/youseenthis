@@ -8,25 +8,30 @@
 import SwiftUI
 
 struct PeopleList: View {
-    var peopleList: [User]
+    var people: [UserData]
+    var userArray: [User] {
+        get {
+            return people.map { $0.user }
+        }
+    }
     var body: some View {
-        if peopleList.count == 0 {
-            EmptyPeopleList()
-        } else {
-            List {
-                Section(header: PeopleListHeader()) {
-                    ForEach(peopleList) { person in
-                        PeopleRow(person: person)
+        List {
+            Section(header: PeopleListHeader()) {
+                if userArray.count == 0 {
+                    EmptyPeopleList()
+                } else {
+                    ForEach(userArray) { user in
+                        PeopleRow(person: user)
                     }
                 }
-            }.listStyle(GroupedListStyle())
-        }
+            }
+        }.listStyle(GroupedListStyle())
     }
 }
 
 struct PeopleList_Previews: PreviewProvider {
     static var previews: some View {
-        let peopleList = [User.sampleValue(),User.sampleValue()]
-        PeopleList(peopleList: peopleList)
+        let people = ExampleData.createEmptyPeople()
+        PeopleList(people: people)
     }
 }

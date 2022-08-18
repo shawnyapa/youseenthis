@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ItemList: View {
     @Binding var primaryUser: User
+    @Binding var people: [UserData]
     var items: [Item]
     @State private var filterSheetMode: SheetMode = .none
     @Binding var filterItemType: FilterItemType
@@ -64,9 +65,7 @@ struct ItemList: View {
                 }
                 ToolbarItem(placement: .navigation) {
                     NavigationLink {
-                        // ***SY Test Data - Refactor
-                        let peopleList = [User.sampleValue(),User.sampleValue()]
-                        PeopleTab(primaryUser: $primaryUser, peopleList: peopleList)
+                        PeopleTab(primaryUser: $primaryUser, people: $people)
                     } label: {
                         Image(systemName: SystemImage.profile.rawValue)
                     }
@@ -101,7 +100,7 @@ struct ItemList: View {
 struct ItemList_Previews: PreviewProvider {
     static var previews: some View {
         let userData = ExampleData.createUserDataWithItems()
-        let user = userData.user
-        ItemList(primaryUser: .constant(user), items: userData.items, filterItemType: .constant(.noFilter), filterItemStatus: .constant(.noFilter))
+        let people = ExampleData.createPeople()
+        ItemList(primaryUser: .constant(userData.user), people: .constant(people), items: userData.items, filterItemType: .constant(.noFilter), filterItemStatus: .constant(.noFilter))
     }
 }

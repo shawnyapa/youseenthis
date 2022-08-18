@@ -13,14 +13,14 @@ struct youseenthisApp: App {
     let labTesting: Bool = false
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @ObservedObject var userData = Coordinator.shared.userData
+    @ObservedObject var userData = Coordinator.shared.primaryUserData
     var body: some Scene {
         WindowGroup {
             if labTesting {
                 LabTesting(user: $userData.user)
             } else {
                 let viewModel = UserLandingViewModel(userData: userData)
-                UserLandingView(primaryUser: $userData.user, items: viewModel.$userData.items)
+                UserLandingView(primaryUser: $userData.user, people: $userData.people, items: viewModel.$userData.items)
             }
             
         }

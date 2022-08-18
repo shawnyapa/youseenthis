@@ -10,7 +10,6 @@ import SwiftUI
 struct EmptyPeopleList: View {
     var body: some View {
         Text(ViewStrings.emptyPeopleList)
-            .font(.title)
     }
 }
 
