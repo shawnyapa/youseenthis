@@ -16,14 +16,14 @@ struct ExampleData {
         let item3 = Item(id: UUID().uuidString, title: "Halo", itemType: .videoGame, itemStatus: .watching)
         let item4 = Item(id: UUID().uuidString, title: "Star Wars", itemType: .movie, itemStatus: .didWatch)
         let items = [item1, item2, item3, item4]
-        let exampleUser1 = User.sampleValue()
+        let exampleUser1 = ExampleData.createExampleUser()
         let userData = UserData(user: exampleUser1, items: items)
         return userData
     }
     
     static func createUserDataWithEmptyItems() -> UserData {
         let items = ExampleData.createEmptyItems()
-        let exampleUser1 = User.sampleValue()
+        let exampleUser1 = ExampleData.createExampleUser()
         let userData = UserData(user: exampleUser1, items: items)
         return userData
     }
@@ -40,6 +40,12 @@ struct ExampleData {
         let primaryUserData = PrimaryUserData(user: user1.user, items: user1.items, people: people)
         
         return primaryUserData
+    }
+    
+    static func createExampleUser() -> User {
+        let uuidString = UUID().uuidString
+        let user = User(id: uuidString, username: "baxter_rundog", firstName: "Baxter", lastName: "RunDog", email: "baxter@email.com")
+        return user
     }
     
     static func createEmptyItems() -> [Item] {

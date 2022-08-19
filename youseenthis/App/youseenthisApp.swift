@@ -14,13 +14,16 @@ struct youseenthisApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @ObservedObject var userData = Coordinator.shared.primaryUserData
+    @ObservedObject var itemData = Coordinator.shared.itemData
     var body: some Scene {
         WindowGroup {
             if labTesting {
                 LabTesting(user: $userData.user)
             } else {
-                let viewModel = UserLandingViewModel(userData: userData)
-                UserLandingView(primaryUser: $userData.user, people: $userData.people, items: viewModel.$userData.items)
+                // TODO: Refactor ViewModels
+                //let viewModel = UserLandingViewModel(userData: userData)
+                //UserLandingView(primaryUser: $userData.user, people: $userData.people, items: viewModel.$userData.items)
+                UserLandingView(primaryUser: $userData.user, people: $userData.people, items: $itemData.items)
             }
             
         }
@@ -35,7 +38,8 @@ struct youseenthisApp: App {
  Update Filter Overlay Color to match bottomBar (Done)
  Add Tabbar and TabItems -> Items, People (Done)
  Refactor Navigation for Profile and People Management (Done)
- Create User Management, just UserName for now
+ Create User Management (Done)
+ Show Items for Selected People->UserData->Items
  
  Remove Sort Icon
  
