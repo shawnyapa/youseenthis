@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct PeopleRow: View {
+    var dismiss: DismissAction? = nil
     var person: User
     var body: some View {
         let personText = "\(person.firstName) \(person.lastName)"
         HStack(alignment: .center) {
             Text(personText)
                 .multilineTextAlignment(.leading)
+            Spacer()
+            PersonItemsButton(dismiss: dismiss, user: person)
         }
         .padding(.all)
     }

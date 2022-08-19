@@ -34,16 +34,16 @@ struct youseenthisApp: App {
  
  Implement Git/Github (Done)
  
+ Add versioning tag to JSON Format (Done)
  Fix "You Got Nothing Bug" (Done)
  Update Filter Overlay Color to match bottomBar (Done)
  Add Tabbar and TabItems -> Items, People (Done)
  Refactor Navigation for Profile and People Management (Done)
  Create User Management (Done)
- Show Items for Selected People->UserData->Items
+ Show Items for Selected People->UserData->Items (Done)
  
  Remove Sort Icon
  
- Add versioning tag to JSON Format
  Create mechanism to export/import json to file
  
  Add Rating

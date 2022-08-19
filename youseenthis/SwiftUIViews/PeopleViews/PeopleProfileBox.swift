@@ -8,17 +8,24 @@
 import SwiftUI
 
 struct PeopleProfileBox: View {
+    var dismiss: DismissAction? = nil
     @Binding var primaryUser: User
     var body: some View {
         let ownerName = primaryUser.firstName + " " + primaryUser.lastName
         List {
             Section(header: PeopleProfileBoxHeader(primaryUser: primaryUser)) {
-                Text(ownerName)
+                HStack {
+                    Text(ownerName)
+                    Spacer()
+                    PersonItemsButton(dismiss: dismiss, user: primaryUser)
+                }
                     .listRowSeparator(.hidden)
                 Text(primaryUser.username)
                     .listRowSeparator(.hidden)
                 Text(primaryUser.email)
                     .listRowSeparator(.hidden)
+                
+                
             }
         }.listStyle(GroupedListStyle())
     }

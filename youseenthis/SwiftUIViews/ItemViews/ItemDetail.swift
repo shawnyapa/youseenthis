@@ -16,6 +16,7 @@ struct ItemDetail: View {
     var canEdit: Bool = false
     @State var mode: Mode
     @State var item: Item
+    // TODO: Refactor with .dismiss
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         VStack {

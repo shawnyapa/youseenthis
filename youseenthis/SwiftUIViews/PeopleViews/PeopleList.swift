@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PeopleList: View {
+    var dismiss: DismissAction? = nil
     var people: [UserData]
     var userArray: [User] {
         get {
@@ -21,7 +22,7 @@ struct PeopleList: View {
                     EmptyPeopleList()
                 } else {
                     ForEach(userArray) { user in
-                        PeopleRow(person: user)
+                        PeopleRow(dismiss: dismiss, person: user)
                     }
                 }
             }

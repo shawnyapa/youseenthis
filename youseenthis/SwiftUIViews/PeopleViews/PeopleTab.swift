@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct PeopleTab: View {
+    @Environment(\.dismiss) private var dismiss
     @Binding var primaryUser: User
     @Binding var people: [UserData]
     var body: some View {
         VStack(alignment: .leading) {
-            PeopleProfileBox(primaryUser: $primaryUser)
+            PeopleProfileBox(dismiss: dismiss, primaryUser: $primaryUser)
                 .frame(height: 180.0)
-            PeopleList(people: people)
+            PeopleList(dismiss: dismiss, people: people)
         }
     }
 }
