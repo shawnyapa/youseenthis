@@ -13,17 +13,18 @@ struct youseenthisApp: App {
     let labTesting: Bool = false
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @ObservedObject var userData = Coordinator.shared.primaryUserData
+    @ObservedObject var primaryUserData = Coordinator.shared.primaryUserData
+    @ObservedObject var viewedUserData = Coordinator.shared.viewedUserData
     @ObservedObject var itemData = Coordinator.shared.itemData
     var body: some Scene {
         WindowGroup {
             if labTesting {
-                LabTesting(user: $userData.user)
+                LabTesting(user: $primaryUserData.user)
             } else {
-                // TODO: Refactor ViewModels
+                // TODO: Refactor ViewModels, currently a total unuseable mess
                 //let viewModel = UserLandingViewModel(userData: userData)
                 //UserLandingView(primaryUser: $userData.user, people: $userData.people, items: viewModel.$userData.items)
-                UserLandingView(primaryUser: $userData.user, people: $userData.people, items: $itemData.items)
+                UserLandingView(primaryUser: $primaryUserData.user, viewedUser: $viewedUserData.user, people: $primaryUserData.people, items: $itemData.items)
             }
             
         }

@@ -9,13 +9,22 @@ import SwiftUI
 
 struct ItemList: View {
     @Binding var primaryUser: User
+    @Binding var viewedUser: User
     @Binding var people: [UserData]
     var items: [Item]
     @State private var filterSheetMode: SheetMode = .none
     @Binding var filterItemType: FilterItemType
     @Binding var filterItemStatus: FilterItemStatus
-    var canEdit: Bool = true
-    var listTitle: String = "Movies/TV Shows"
+    var canEdit: Bool {
+        primaryUser.id == viewedUser.id
+    }
+    var listTitle: String {
+        if primaryUser.id == viewedUser.id {
+            return "Your \(filterItemType.headerStringValue())"
+        } else {
+            return "\(viewedUser.firstName)'s \(filterItemType.headerStringValue())"
+        }
+    }
     var body: some View {
         NavigationView {
             Group() {
@@ -56,11 +65,15 @@ struct ItemList: View {
             .navigationTitle(listTitle)
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
-                    NavigationLink {
-                        let item = Item.defaultValue()
-                        ItemDetail(canEdit: canEdit, mode: .create, item: item)
-                    } label: {
-                        Image(systemName: SystemImage.create.rawValue)
+                    if canEdit == true {
+                        NavigationLink {
+                            let item = Item.defaultValue()
+                            ItemDetail(canEdit: canEdit, mode: .create, item: item)
+                        } label: {
+                            Image(systemName: SystemImage.create.rawValue)
+                        }
+                    } else {
+                        EmptyView()
                     }
                 }
                 ToolbarItem(placement: .navigation) {
@@ -101,6 +114,6 @@ struct ItemList_Previews: PreviewProvider {
     static var previews: some View {
         let userData = ExampleData.createUserDataWithItems()
         let people = ExampleData.createPeople()
-        ItemList(primaryUser: .constant(userData.user), people: .constant(people), items: userData.items, filterItemType: .constant(.noFilter), filterItemStatus: .constant(.noFilter))
+        ItemList(primaryUser: .constant(userData.user), viewedUser: .constant(userData.user), people: .constant(people), items: userData.items, filterItemType: .constant(.noFilter), filterItemStatus: .constant(.noFilter))
     }
 }

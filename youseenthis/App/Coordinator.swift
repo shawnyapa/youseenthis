@@ -11,16 +11,21 @@ import SwiftUI
 class Coordinator {
     static let shared = Coordinator()
     @ObservedObject var primaryUserData: PrimaryUserData
+    @ObservedObject var viewedUserData: UserData
     @ObservedObject var itemData: ItemData
     
     private init() {
         let itemsDictionary = StorageManager.allItems()
         let itemsArray = Coordinator.itemsArray(from: itemsDictionary)
         // TODO: StorageManager.allPeople()
-        let user = User.currentUser() ?? User.sampleValue()
+        let primaryUser = User.currentUser() ?? User.sampleValue()
         let people = ExampleData.createPeople()   // TODO: Remove
-        self.primaryUserData = PrimaryUserData(user: user, items: itemsArray, people: people)
+        let primaryUserData = PrimaryUserData(user: primaryUser, items: itemsArray, people: people)
+        // TODO: StorageManager.lastViewedUserData
+        let viewedUserData = PrimaryUserData(user: primaryUser, items: itemsArray, people: people)
+        self.primaryUserData = primaryUserData
         self.itemData = ItemData(items: itemsArray)
+        self.viewedUserData = viewedUserData
     }
     
     func showItemsForUserId(userId: String) {
@@ -28,6 +33,7 @@ class Coordinator {
             let itemsDictionary = StorageManager.allItems()
             let itemsArray = Coordinator.itemsArray(from: itemsDictionary)
             itemData.items = itemsArray
+            viewedUserData.user = primaryUserData.user
         } else {
             let userData = primaryUserData.people.filter { person in
                 person.user.id == userId
@@ -35,9 +41,10 @@ class Coordinator {
             if userData.count == 1 {
                 let items = userData[0].items
                 itemData.items = items
+                let user = userData[0].user
+                viewedUserData.user = user
             }
         }
-        
     }
     
     // TODO: Move to Peristence Layer
