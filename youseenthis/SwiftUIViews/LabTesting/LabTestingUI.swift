@@ -7,16 +7,17 @@
 
 import SwiftUI
 
-struct LabTesting: View {
-    @Binding var user: User
+struct LabTestingUI: View {
+    var user: UserData
     var body: some View {
-        let canEdit = true
-        //UserProfileView(canEdit: canEdit, mode: .view, user: $user)
+        
+        EmptyView()
     }
 }
 
 struct LabTesting_Previews: PreviewProvider {
     static var previews: some View {
-        LabTesting(user: .constant(User.sampleValue()))
+        let userData = ExampleData.createUserDataWithItems()
+        LabTestingUI(user: userData)
     }
 }

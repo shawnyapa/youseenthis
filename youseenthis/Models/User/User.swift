@@ -14,8 +14,8 @@ struct User: Identifiable, Codable {
     var lastName: String
     var email: String
     
-    func saveCurrentUser(user: User) -> Bool {
-        StorageManager.saveCurrentUser(user: user)
+    func savePrimaryUser(user: User) -> Bool {
+        StorageManager.savePrimaryUser(user: user)
         return true
     }
     
@@ -23,9 +23,9 @@ struct User: Identifiable, Codable {
        User(id: UUID().uuidString, username: "", firstName: "", lastName: "", email: "")
     }
     
-    static func currentUser() -> User? {
-        let currentUser = StorageManager.getCurrentUser()
-        return currentUser
+    static func primaryUser() -> User? {
+        let primaryUser = StorageManager.getPrimaryUser()
+        return primaryUser
     }
     
     static func sampleValue() -> User {

@@ -28,6 +28,7 @@
 		614A8E0F27E4104000D634CA /* FilterItemTypeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614A8E0E27E4104000D634CA /* FilterItemTypeImage.swift */; };
 		614A8E1527E4137900D634CA /* FilterItemTypePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614A8E1427E4137900D634CA /* FilterItemTypePicker.swift */; };
 		614A8E1727E4165300D634CA /* SortAndFilterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614A8E1627E4165300D634CA /* SortAndFilterRow.swift */; };
+		614DC22128B442E100B995CE /* LabTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614DC22028B442E100B995CE /* LabTesting.swift */; };
 		614E802E28AD65E10059D2BF /* ExampleDataJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614E802D28AD65E10059D2BF /* ExampleDataJSON.swift */; };
 		6153633727E67A9C0012B136 /* ItemArraySortAndFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6153633627E67A9C0012B136 /* ItemArraySortAndFilter.swift */; };
 		6153633927E69AA80012B136 /* FilterItemStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6153633827E69AA80012B136 /* FilterItemStatus.swift */; };
@@ -42,7 +43,7 @@
 		6178D2C328AFFFAA000A20CD /* PersonItemsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6178D2C228AFFFAA000A20CD /* PersonItemsButton.swift */; };
 		617A2B5728ADC204006FFBAC /* PrimaryUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617A2B5628ADC204006FFBAC /* PrimaryUserData.swift */; };
 		617AC7252814C64C0055858E /* FilterSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617AC7242814C64C0055858E /* FilterSheet.swift */; };
-		617AC7272815D0080055858E /* LabTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617AC7262815D0080055858E /* LabTesting.swift */; };
+		617AC7272815D0080055858E /* LabTestingUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617AC7262815D0080055858E /* LabTestingUI.swift */; };
 		617AC72A281610FC0055858E /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617AC729281610FC0055858E /* DeleteButton.swift */; };
 		617AC72C281615C20055858E /* EditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617AC72B281615C20055858E /* EditButton.swift */; };
 		619D3ACB28A9945700F46946 /* EmptyItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619D3ACA28A9945700F46946 /* EmptyItemList.swift */; };
@@ -89,6 +90,7 @@
 		614A8E0E27E4104000D634CA /* FilterItemTypeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterItemTypeImage.swift; sourceTree = "<group>"; };
 		614A8E1427E4137900D634CA /* FilterItemTypePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterItemTypePicker.swift; sourceTree = "<group>"; };
 		614A8E1627E4165300D634CA /* SortAndFilterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortAndFilterRow.swift; sourceTree = "<group>"; };
+		614DC22028B442E100B995CE /* LabTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabTesting.swift; sourceTree = "<group>"; };
 		614E802D28AD65E10059D2BF /* ExampleDataJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleDataJSON.swift; sourceTree = "<group>"; };
 		6153633627E67A9C0012B136 /* ItemArraySortAndFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemArraySortAndFilter.swift; sourceTree = "<group>"; };
 		6153633827E69AA80012B136 /* FilterItemStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterItemStatus.swift; sourceTree = "<group>"; };
@@ -103,7 +105,7 @@
 		6178D2C228AFFFAA000A20CD /* PersonItemsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonItemsButton.swift; sourceTree = "<group>"; };
 		617A2B5628ADC204006FFBAC /* PrimaryUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryUserData.swift; sourceTree = "<group>"; };
 		617AC7242814C64C0055858E /* FilterSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSheet.swift; sourceTree = "<group>"; };
-		617AC7262815D0080055858E /* LabTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabTesting.swift; sourceTree = "<group>"; };
+		617AC7262815D0080055858E /* LabTestingUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabTestingUI.swift; sourceTree = "<group>"; };
 		617AC729281610FC0055858E /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
 		617AC72B281615C20055858E /* EditButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButton.swift; sourceTree = "<group>"; };
 		619D3ACA28A9945700F46946 /* EmptyItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyItemList.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				616EFAFC28A7086E007CA794 /* ImportUtility.swift */,
 				616EFAFE28A7087D007CA794 /* ExportUtility.swift */,
 				61FDDC0C28AC1C1800402906 /* Semver.swift */,
+				614DC22028B442E100B995CE /* LabTesting.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -298,7 +301,7 @@
 		617AC7282815D0260055858E /* LabTesting */ = {
 			isa = PBXGroup;
 			children = (
-				617AC7262815D0080055858E /* LabTesting.swift */,
+				617AC7262815D0080055858E /* LabTestingUI.swift */,
 			);
 			path = LabTesting;
 			sourceTree = "<group>";
@@ -464,8 +467,9 @@
 				61CF977E27C449A6008E179A /* StorageManager.swift in Sources */,
 				619D3AD128A9A50B00F46946 /* PeopleListHeader.swift in Sources */,
 				6153633927E69AA80012B136 /* FilterItemStatus.swift in Sources */,
+				614DC22128B442E100B995CE /* LabTesting.swift in Sources */,
 				61CF978327C44A3A008E179A /* UserLandingView.swift in Sources */,
-				617AC7272815D0080055858E /* LabTesting.swift in Sources */,
+				617AC7272815D0080055858E /* LabTestingUI.swift in Sources */,
 				6148340627C36A9500076898 /* ItemList.swift in Sources */,
 				61FDDC0D28AC1C1800402906 /* Semver.swift in Sources */,
 				61CF978827C4A7A7008E179A /* Coordinator.swift in Sources */,

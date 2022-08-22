@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct youseenthisApp: App {
     
-    let labTesting: Bool = false
+    let labTestingUI: Bool = false
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @ObservedObject var primaryUserData = Coordinator.shared.primaryUserData
@@ -18,8 +18,8 @@ struct youseenthisApp: App {
     @ObservedObject var itemData = Coordinator.shared.itemData
     var body: some Scene {
         WindowGroup {
-            if labTesting {
-                LabTesting(user: $primaryUserData.user)
+            if labTestingUI {
+                LabTestingUI(user: primaryUserData)
             } else {
                 // TODO: Refactor ViewModels, currently a total unuseable mess
                 //let viewModel = UserLandingViewModel(userData: userData)
@@ -49,8 +49,8 @@ struct youseenthisApp: App {
  
  Add Rating
  Add Notes
- Add Date Created
  Add Tags
+ Add Date Created
 
  Update to Purple Logo
  Update missing Logo Asset Sizes
@@ -58,12 +58,12 @@ struct youseenthisApp: App {
  Update Name to Danky
  Copy over to AppBundle Danky
  
- Refactor Persistence
- Integrate Network API
+ Refactor Persistence (Use AWS Amplify)
+ Integrate Network API (Use AWS Amplify)
  
  Distribution on TestFlight
  
  Add Search to Toolbar
- Add Sort to Toolbar
+ Add Sort to Toolbar (Alphabetical vs Rating)
  
  */

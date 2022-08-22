@@ -15,8 +15,18 @@ class PrimaryUserData: UserData, HasPeople {
     // TODO: Implement PeopleInvitations
     @Published var people: [UserData]
     
+    private enum CodingKeys: String, CodingKey {
+        case people
+    }
+    
     init(user: User, items: [Item]?, people: [UserData]?) {
         self.people = people ?? [UserData]()
-        super.init(user: user, items: items)        
+        super.init(user: user, items: items, version: nil)
+    }
+        
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.people = try container.decode([UserData].self, forKey: .people)
+        try super.init(from: decoder)
     }
 }

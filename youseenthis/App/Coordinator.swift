@@ -18,7 +18,7 @@ class Coordinator {
         let itemsDictionary = StorageManager.allItems()
         let itemsArray = Coordinator.itemsArray(from: itemsDictionary)
         // TODO: StorageManager.allPeople()
-        let primaryUser = User.currentUser() ?? User.sampleValue()
+        let primaryUser = User.primaryUser() ?? User.sampleValue()
         let people = ExampleData.createPeople()   // TODO: Remove
         let primaryUserData = PrimaryUserData(user: primaryUser, items: itemsArray, people: people)
         // TODO: StorageManager.lastViewedUserData
@@ -70,13 +70,13 @@ class Coordinator {
     }
     
     func addUser(user: User) -> Bool {
-        let success = user.saveCurrentUser(user: user)
+        let success = user.savePrimaryUser(user: user)
         primaryUserData.user = user
         return success
     }
     
     func editUser(user: User) -> Bool {
-        let success = user.saveCurrentUser(user: user)
+        let success = user.savePrimaryUser(user: user)
         primaryUserData.user = user
         return success
     }

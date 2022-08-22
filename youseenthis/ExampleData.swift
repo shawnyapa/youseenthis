@@ -17,14 +17,14 @@ struct ExampleData {
         let item4 = Item(id: UUID().uuidString, title: "Star Wars", itemType: .movie, itemStatus: .didWatch)
         let items = [item1, item2, item3, item4]
         let exampleUser1 = ExampleData.createExampleUser()
-        let userData = UserData(user: exampleUser1, items: items)
+        let userData = UserData(user: exampleUser1, items: items, version: nil)
         return userData
     }
     
     static func createUserDataWithEmptyItems() -> UserData {
         let items = ExampleData.createEmptyItems()
         let exampleUser1 = ExampleData.createExampleUser()
-        let userData = UserData(user: exampleUser1, items: items)
+        let userData = UserData(user: exampleUser1, items: items, version: nil)
         return userData
     }
     

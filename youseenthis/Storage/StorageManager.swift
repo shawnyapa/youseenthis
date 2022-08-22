@@ -16,7 +16,7 @@ class StorageManager {
         case userKey = "userkey"
     }
     
-    static func saveCurrentUser(user: User) {
+    static func savePrimaryUser(user: User) {
         if let userData = StorageManager.encodeUser(userCodable: user) {
             if let defaults = UserDefaults.init(suiteName: Constants.suiteName.rawValue) {
                 defaults.set(userData, forKey: Constants.userKey.rawValue)
@@ -24,7 +24,7 @@ class StorageManager {
         }
     }
     
-    static func getCurrentUser() -> User? {
+    static func getPrimaryUser() -> User? {
         var user: User?
         let defaults = UserDefaults.init(suiteName: Constants.suiteName.rawValue)
         if let userData = defaults?.object(forKey: Constants.userKey.rawValue) as? Data {
