@@ -19,9 +19,9 @@ struct UserProfileFinishedButton: View {
         Button(action: {
             switch mode {
                 case .create:
-                    let _ = Coordinator.shared.addUser(user: user)
+                    let _ = Coordinator.shared.addPrimaryUser(user: user)
                 case .edit:
-                    let _ = Coordinator.shared.editUser(user: user)
+                    let _ = Coordinator.shared.editPrimaryUser(user: user)
             }
             presentationMode.wrappedValue.dismiss()
         }) {

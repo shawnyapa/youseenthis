@@ -15,6 +15,12 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         return true
     }
     
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
+
+        print(url.absoluteString)
+        return true
+    }
+    
     func labTesting() {
         let userData = Coordinator.shared.primaryUserData
         LabTesting.jsonTesting(userData: userData)

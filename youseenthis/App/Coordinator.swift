@@ -17,11 +17,11 @@ class Coordinator {
     private init() {
         let itemsDictionary = StorageManager.allItems()
         let itemsArray = Coordinator.itemsArray(from: itemsDictionary)
-        // TODO: StorageManager.allPeople()
         let primaryUser = User.primaryUser() ?? User.sampleValue()
-        let people = ExampleData.createPeople()   // TODO: Remove
+        //let people = ExampleData.createPeople()   // TODO: Remove
+        let peopleDictionary = StorageManager.allPeopleDictionary()
+        let people = Coordinator.peopleArray(from: peopleDictionary)
         let primaryUserData = PrimaryUserData(user: primaryUser, items: itemsArray, people: people)
-        // TODO: StorageManager.lastViewedUserData
         let viewedUserData = PrimaryUserData(user: primaryUser, items: itemsArray, people: people)
         self.primaryUserData = primaryUserData
         self.itemData = ItemData(items: itemsArray)
@@ -69,19 +69,37 @@ class Coordinator {
         showItemsForUserId(userId: primaryUserData.user.id)
     }
     
-    func addUser(user: User) -> Bool {
-        let success = user.savePrimaryUser(user: user)
-        primaryUserData.user = user
-        return success
-    }
-    
-    func editUser(user: User) -> Bool {
-        let success = user.savePrimaryUser(user: user)
-        primaryUserData.user = user
-        return success
-    }
-    
     static func itemsArray(from itemsDictionary:[String: Item]) -> [Item] {
         return itemsDictionary.map { $0.value }
+    }
+    
+    func addPrimaryUser(user: User) -> Bool {
+        let success = user.savePrimaryUser(user: user)
+        primaryUserData.user = user
+        return success
+    }
+    
+    func editPrimaryUser(user: User) -> Bool {
+        let success = user.savePrimaryUser(user: user)
+        primaryUserData.user = user
+        return success
+    }
+    
+    func addUserDataToPeople(userData: UserData) {
+        var peopleDictionary = StorageManager.allPeopleDictionary()
+        peopleDictionary.updateValue(userData, forKey: userData.user.id)
+        StorageManager.savePeople(peopleDictionary: peopleDictionary)
+        primaryUserData.people = Coordinator.peopleArray(from: StorageManager.allPeopleDictionary())
+    }
+    
+    func removeUserDataFromPeople(with userId: String) {
+        var peopleDictionary = StorageManager.allPeopleDictionary()
+        peopleDictionary.removeValue(forKey: userId)
+        StorageManager.savePeople(peopleDictionary: peopleDictionary)
+        primaryUserData.people = Coordinator.peopleArray(from: StorageManager.allPeopleDictionary())
+    }
+    
+    static func peopleArray(from peopleDictionary:[String: UserData]) -> [UserData] {
+        return peopleDictionary.map { $0.value }
     }
 }

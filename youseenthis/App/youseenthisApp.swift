@@ -25,6 +25,9 @@ struct youseenthisApp: App {
                 //let viewModel = UserLandingViewModel(userData: userData)
                 //UserLandingView(primaryUser: $userData.user, people: $userData.people, items: viewModel.$userData.items)
                 UserLandingView(primaryUser: $primaryUserData.user, viewedUser: $viewedUserData.user, people: $primaryUserData.people, items: $itemData.items)
+                    .onOpenURL { url in
+                        ImportUtility.importUserData(from: url)
+                    }
             }
             
         }
@@ -42,10 +45,16 @@ struct youseenthisApp: App {
  Refactor Navigation for Profile and People Management (Done)
  Create User Management (Done)
  Show Items for Selected People->UserData->Items (Done)
+ Peer-to-Peer Sharing
+    Create mechanism to export/import json from String (Done)
+    Add URL Scheme (Done)
+    Add AppDelegate URL Parser - Testing - xcrun simctl openurl booted "youseenthis://test"
+    Persistence Layer - Add/Delete UserData for userData.people = [UserData]
+    Implement Delete Button for PeopleList
+    Add & Configure ShareSheet
+    Add & Configure MailCompose and MessageCompose for ShareSheet
  
  Remove Sort Icon
- 
- Create mechanism to export/import json to file
  
  Add Rating
  Add Notes

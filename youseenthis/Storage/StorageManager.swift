@@ -14,6 +14,7 @@ class StorageManager {
         case suiteName = "youseenthis"
         case itemsKey = "itemskey"
         case userKey = "userkey"
+        case peopleKey = "peopleKey"
     }
     
     static func savePrimaryUser(user: User) {
@@ -106,6 +107,53 @@ class StorageManager {
             return item
         } catch  {
             print("DecodeItem Failed")
+            return nil
+        }
+    }
+    
+    static func allPeopleDictionary() -> [String: UserData] {
+        var peopleDictionary = [String:UserData]()
+        let defaults = UserDefaults.init(suiteName: Constants.suiteName.rawValue)
+        if let userDefaultPeopleData = defaults?.object(forKey: Constants.peopleKey.rawValue) as? [String: Data] {
+            for (key, value) in userDefaultPeopleData {
+                let userData = StorageManager.decodeUserData(data: value)
+                peopleDictionary[key] = userData
+            }
+        }
+        return peopleDictionary
+    }
+    
+    static func savePeople(peopleDictionary: [String: UserData]) {
+        var peopleData = [String:Data]()
+        for (key, value) in peopleDictionary {
+            let data = StorageManager.encodeUserData(userData: value)
+            peopleData[key] = data
+        }
+        if let defaults = UserDefaults.init(suiteName: Constants.suiteName.rawValue) {
+            defaults.set(peopleData, forKey: Constants.peopleKey.rawValue)
+        }
+    }
+        
+    static func encodeUserData(userData: UserData) -> Data? {
+        let archiver = NSKeyedArchiver(requiringSecureCoding: false)
+        do {
+            try archiver.encodeEncodable(userData, forKey: NSKeyedArchiveRootObjectKey)
+        }
+        catch {
+            fatalError(error.localizedDescription)
+        }
+        archiver.finishEncoding()
+        return archiver.encodedData
+    }
+    
+    static func decodeUserData(data: Data) -> UserData? {
+        do {
+            let unarchiver = try NSKeyedUnarchiver(forReadingFrom: data)
+            let userData = unarchiver.decodeDecodable(UserData.self, forKey:NSKeyedArchiveRootObjectKey)
+            unarchiver.finishDecoding()
+            return userData
+        } catch  {
+            print("DecodeUserData Failed")
             return nil
         }
     }
