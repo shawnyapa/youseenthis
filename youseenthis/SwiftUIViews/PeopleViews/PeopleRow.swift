@@ -13,10 +13,15 @@ struct PeopleRow: View {
     var body: some View {
         let personText = "\(person.firstName) \(person.lastName)"
         HStack(alignment: .center) {
+            DeletePersonButton(userId: person.id)
+                .buttonStyle(BorderlessButtonStyle())
+            Divider()
             Text(personText)
                 .multilineTextAlignment(.leading)
             Spacer()
             PersonItemsButton(dismiss: dismiss, user: person)
+                .buttonStyle(BorderlessButtonStyle())
+            
         }
         .padding(.all)
     }

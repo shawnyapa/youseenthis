@@ -48,18 +48,17 @@ struct youseenthisApp: App {
  Peer-to-Peer Sharing
     Create mechanism to export/import json from String (Done)
     Add URL Scheme (Done)
-    Add AppDelegate URL Parser - Testing - xcrun simctl openurl booted "youseenthis://test"
-    Persistence Layer - Add/Delete UserData for userData.people = [UserData]
-    Implement Delete Button for PeopleList
-    Add & Configure ShareSheet
-    Add & Configure MailCompose and MessageCompose for ShareSheet
- 
- Remove Sort Icon
+    Add AppDelegate URL Parser - Testing - xcrun simctl openurl booted "youseenthis://test" (Done)
+    Persistence Layer - Add/Delete UserData for userData.people = [UserData] (Done)
+    Implement Delete Button for PeopleList (Done)
+    Add & Configure ShareSheet (Done)
  
  Add Rating
  Add Notes
  Add Tags
  Add Date Created
+ 
+ Implement Sort Icon
 
  Update to Purple Logo
  Update missing Logo Asset Sizes
