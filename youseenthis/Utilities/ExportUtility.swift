@@ -9,7 +9,15 @@ import Foundation
 
 struct ExportUtility {
     
-    static func exportUserAndItems(user: User, items:[Item]) {
-        // TODO: Implement
+    static func exportUserDataWithUrl(userData: UserData) -> URL {
+        /// youseenthis://adduserdatatopeople/
+        let urlSchemeString = "youseenthis:///adduserdatatopeople/"
+        let userDataString = userData.jsonString() ?? ""
+        let urlEncodedJSON = userDataString.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        let urlString = urlSchemeString + urlEncodedJSON
+        guard let url = URL(string: urlString) else {
+            return URL(string: urlSchemeString)!
+        }
+        return url
     }
 }
