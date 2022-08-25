@@ -61,6 +61,19 @@ struct ItemDetail: View {
                 }
                 Spacer()
             }
+            Divider()
+            HStack {
+                Text("\(ViewStrings.rating):")
+                    .font(.headline)
+                if mode == .view {
+                    Text(item.rating.intDisplay())
+                    Text(item.rating.stringValue())
+                        .font(.subheadline)
+                } else if mode == .edit || mode == .create {
+                    ItemRatingPicker(item: $item)
+                }
+                Spacer()
+            }
             Spacer()
             if mode == .view, canEdit == true {
                 DeleteButton(item: item)

@@ -13,8 +13,8 @@ struct ItemTypePicker: View {
         Picker("Type:", selection: $item.itemType) {
             ForEach (ItemType.allCases) { type in
                 HStack {
-                    ItemTypeImage(itemType: type)
                     Text(type.stringValue())
+                    ItemTypeImage(itemType: type)
                 }.tag(type)
             }
         }

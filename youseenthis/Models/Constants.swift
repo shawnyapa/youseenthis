@@ -34,6 +34,7 @@ struct ViewStrings {
     static let title = "Title"
     static let status = "Status"
     static let type = "Type"
+    static let rating = "Rating"
     static let emptyItemList = "You got Nothin'"
     static let emptyPeopleList = "You need some friends."
     static let username = "Username"

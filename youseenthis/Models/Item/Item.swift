@@ -14,10 +14,11 @@ struct Item: Identifiable, Hashable, Codable {
     var title: String
     var itemType: ItemType
     var itemStatus: ItemStatus
+    var rating: ItemRating = .notRated
     
     static func defaultValue() -> Item {
         let uuidString = UUID().uuidString
-        let item = Item(id: uuidString, title: "", itemType: .notSelected, itemStatus: .notSelected)
+        let item = Item(id: uuidString, title: "", itemType: .notSelected, itemStatus: .notSelected, rating: .notRated)
         return item
     }
     
@@ -27,6 +28,7 @@ struct Item: Identifiable, Hashable, Codable {
         itemDictionary["title"] = title
         itemDictionary["itemType"] = itemType.rawValue
         itemDictionary["itemStatus"] = itemStatus.rawValue
+        itemDictionary["rating"] = rating
         
         return itemDictionary
     }

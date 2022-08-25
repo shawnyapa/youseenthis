@@ -53,12 +53,13 @@ struct youseenthisApp: App {
     Implement Delete Button for PeopleList (Done)
     Add & Configure ShareSheet (Done)
  
- Add Rating
+ Add Rating (Done)
  Add Notes
  Add Tags
  Add Date Created
  
  Implement Sort Icon
+ Add Sort to Toolbar (Alphabetical vs Rating)
 
  Update to Purple Logo
  Update missing Logo Asset Sizes
@@ -72,6 +73,5 @@ struct youseenthisApp: App {
  Distribution on TestFlight
  
  Add Search to Toolbar
- Add Sort to Toolbar (Alphabetical vs Rating)
  
  */

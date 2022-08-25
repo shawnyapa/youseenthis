@@ -11,10 +11,10 @@ import Foundation
 struct ExampleData {
     
     static func createUserDataWithItems() -> UserData {
-        let item1 = Item(id: UUID().uuidString, title: "The Mandalorian", itemType: .tvShow, itemStatus: .didWatch)
-        let item2 = Item(id: UUID().uuidString, title: "Ahsoka", itemType: .tvShow, itemStatus: .willWatch)
-        let item3 = Item(id: UUID().uuidString, title: "Halo", itemType: .videoGame, itemStatus: .watching)
-        let item4 = Item(id: UUID().uuidString, title: "Star Wars", itemType: .movie, itemStatus: .didWatch)
+        let item1 = Item(id: UUID().uuidString, title: "The Mandalorian", itemType: .tvShow, itemStatus: .didWatch, rating: .danky)
+        let item2 = Item(id: UUID().uuidString, title: "Ahsoka", itemType: .tvShow, itemStatus: .willWatch, rating: .notRated)
+        let item3 = Item(id: UUID().uuidString, title: "Halo", itemType: .videoGame, itemStatus: .watching, rating: .notRated)
+        let item4 = Item(id: UUID().uuidString, title: "Star Wars", itemType: .movie, itemStatus: .didWatch, rating: .danky)
         let items = [item1, item2, item3, item4]
         let exampleUser1 = ExampleData.createExampleUser()
         let userData = UserData(user: exampleUser1, items: items, version: nil)

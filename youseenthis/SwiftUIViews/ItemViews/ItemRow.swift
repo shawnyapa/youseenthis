@@ -15,7 +15,7 @@ struct ItemRow: View {
                 .multilineTextAlignment(.leading)
             Spacer()
             Divider()
-            ItemTypeImage(itemType: item.itemType)
+            Text(item.rating.intDisplay())
                 .frame(width: 20, height: nil, alignment: .center)
             ItemStatusImage(itemStatus: item.itemStatus)
                 .frame(width: 20, height: nil, alignment: .center)
