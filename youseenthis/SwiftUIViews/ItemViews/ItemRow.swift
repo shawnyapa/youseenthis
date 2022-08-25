@@ -21,6 +21,7 @@ struct ItemRow: View {
             let rating = item.rating
             Text(rating.intDisplay())
                 .frame(width: 20, height: nil, alignment: .center)
+            Divider()
             ItemStatusImage(itemStatus: item.itemStatus)
                 .frame(width: 20, height: nil, alignment: .center)
         }
