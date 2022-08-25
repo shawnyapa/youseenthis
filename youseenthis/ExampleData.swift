@@ -44,7 +44,7 @@ struct ExampleData {
     
     static func createExampleUser() -> User {
         let uuidString = UUID().uuidString
-        let user = User(id: uuidString, username: "baxter_rundog", firstName: "Baxter", lastName: "RunDog", email: "baxter@email.com", aboutMe: "")
+        let user = User(id: uuidString, username: "baxter_rundog", firstName: "Baxter", lastName: "RunDog", email: "baxter@email.com", phoneNumber: "", aboutMe: "")
         return user
     }
     

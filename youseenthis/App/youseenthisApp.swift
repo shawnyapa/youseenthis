@@ -57,6 +57,7 @@ struct youseenthisApp: App {
  Add Notes to Item (Done)
  Add Tags to Item (Done)
  Add AboutMe to User (Done)
+ Add PhoneNumber to User
  
  Implement Sort Icon
  Add Sort to Toolbar (Alphabetical vs Rating)
