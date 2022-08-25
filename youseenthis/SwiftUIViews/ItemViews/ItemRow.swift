@@ -11,11 +11,15 @@ struct ItemRow: View {
     var item: Item
     var body: some View {
         HStack(alignment: .center) {
+            ItemTypeImage(itemType: item.itemType)
+                .frame(width: 20, height: nil, alignment: .center)
+            Divider()
             Text(item.title)
                 .multilineTextAlignment(.leading)
             Spacer()
             Divider()
-            Text(item.rating.intDisplay())
+            let rating = item.rating
+            Text(rating.intDisplay())
                 .frame(width: 20, height: nil, alignment: .center)
             ItemStatusImage(itemStatus: item.itemStatus)
                 .frame(width: 20, height: nil, alignment: .center)

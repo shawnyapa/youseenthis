@@ -14,7 +14,7 @@ struct Item: Identifiable, Hashable, Codable {
     var title: String
     var itemType: ItemType
     var itemStatus: ItemStatus
-    var rating: ItemRating = .notRated
+    var rating: ItemRating
     
     static func defaultValue() -> Item {
         let uuidString = UUID().uuidString

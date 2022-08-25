@@ -66,8 +66,9 @@ struct ItemDetail: View {
                 Text("\(ViewStrings.rating):")
                     .font(.headline)
                 if mode == .view {
-                    Text(item.rating.intDisplay())
-                    Text(item.rating.stringValue())
+                    let rating = item.rating
+                    Text(rating.intDisplay())
+                    Text(rating.stringValue())
                         .font(.subheadline)
                 } else if mode == .edit || mode == .create {
                     ItemRatingPicker(item: $item)
