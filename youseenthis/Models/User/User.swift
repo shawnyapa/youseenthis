@@ -13,6 +13,7 @@ struct User: Identifiable, Codable {
     var firstName: String
     var lastName: String
     var email: String
+    var aboutMe: String
     
     func savePrimaryUser(user: User) -> Bool {
         StorageManager.savePrimaryUser(user: user)
@@ -20,7 +21,7 @@ struct User: Identifiable, Codable {
     }
     
     static func newBlankUser() -> User {
-       User(id: UUID().uuidString, username: "", firstName: "", lastName: "", email: "")
+       User(id: UUID().uuidString, username: "", firstName: "", lastName: "", email: "", aboutMe: "")
     }
     
     static func primaryUser() -> User? {
@@ -30,7 +31,7 @@ struct User: Identifiable, Codable {
     
     static func sampleValue() -> User {
         let uuidString = UUID().uuidString
-        let user = User(id: uuidString, username: "username", firstName: "First Name", lastName: "Last Name", email: "address@email.com")
+        let user = User(id: uuidString, username: "username", firstName: "First Name", lastName: "Last Name", email: "address@email.com", aboutMe: "")
         return user
     }
 }

@@ -11,9 +11,9 @@ struct SortAndFilterRow: View {
     @Binding var filterItemType: FilterItemType
     var body: some View {
         HStack {
-        Text("Sort")
+            Text(ViewStrings.sort)
             Divider()
-            Text("Filter")
+            Text(ViewStrings.filter)
             FilterItemTypePicker(filterItemType: $filterItemType)
         }
     }

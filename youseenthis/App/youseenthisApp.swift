@@ -53,10 +53,10 @@ struct youseenthisApp: App {
     Implement Delete Button for PeopleList (Done)
     Add & Configure ShareSheet (Done)
  
- Add Rating (Done)
- Add Notes
- Add Tags
- Add Date Created
+ Add Rating to Item (Done)
+ Add Notes to Item (Done)
+ Add Tags to Item (Done)
+ Add AboutMe to User (Done)
  
  Implement Sort Icon
  Add Sort to Toolbar (Alphabetical vs Rating)

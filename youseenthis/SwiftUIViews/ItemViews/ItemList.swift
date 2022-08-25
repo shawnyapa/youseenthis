@@ -42,15 +42,15 @@ struct ItemList: View {
                     }
                     FilterSheet(sheetMode: $filterSheetMode) {
                         VStack {
-                            Text("Filter")
+                            Text(ViewStrings.filter)
                             Divider()
                             HStack {
-                                Text("Type:")
+                                Text("\(ViewStrings.type):")
                                 FilterItemTypePicker(filterItemType: $filterItemType)
                             }
                             Divider()
                             HStack {
-                                Text("Status:")
+                                Text("\(ViewStrings.status):")
                                 FilterItemStatusPicker(filterItemStatus: $filterItemStatus)
                             }
                             Divider()
