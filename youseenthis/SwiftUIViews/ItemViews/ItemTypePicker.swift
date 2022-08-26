@@ -10,7 +10,7 @@ import SwiftUI
 struct ItemTypePicker: View {
     @Binding var item: Item
     var body: some View {
-        Picker("Type:", selection: $item.itemType) {
+        Picker("\(ViewStrings.type):", selection: $item.itemType) {
             ForEach (ItemType.allCases) { type in
                 HStack {
                     Text(type.stringValue())

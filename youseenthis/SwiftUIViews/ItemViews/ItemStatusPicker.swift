@@ -10,7 +10,7 @@ import SwiftUI
 struct ItemStatusPicker: View {
     @Binding var item: Item
     var body: some View {
-        Picker("Status:", selection: $item.itemStatus) {
+        Picker("\(ViewStrings.status):", selection: $item.itemStatus) {
             ForEach (ItemStatus.allCases) { status in
                 HStack {
                     Text(status.stringValue())

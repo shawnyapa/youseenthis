@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ItemRating: Int, Hashable, Codable, CaseIterable, Identifiable {
+enum ItemRating: Int, Hashable, Codable, CaseIterable, Identifiable, Comparable {
     case notRated
     case janky
     case suspect
@@ -50,5 +50,9 @@ enum ItemRating: Int, Hashable, Codable, CaseIterable, Identifiable {
         case .danky:
             return "5"
         }
+    }
+    
+    public static func <(lhs: ItemRating, rhs: ItemRating) -> Bool {
+        lhs.rawValue < rhs.rawValue
     }
 }

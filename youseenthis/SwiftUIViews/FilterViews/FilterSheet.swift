@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum SheetMode {
+enum SheetMode: Int {
     case none
     case onequarter
     case half

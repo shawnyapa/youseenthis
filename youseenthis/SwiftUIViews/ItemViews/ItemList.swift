@@ -12,6 +12,8 @@ struct ItemList: View {
     @Binding var viewedUser: User
     @Binding var people: [UserData]
     var items: [Item]
+    @State private var sortSheetMode: SheetMode = .none
+    @Binding var itemSortType: ItemSortType
     @State private var filterSheetMode: SheetMode = .none
     @Binding var filterItemType: FilterItemType
     @Binding var filterItemStatus: FilterItemStatus
@@ -39,6 +41,20 @@ struct ItemList: View {
                                 ItemRow(item: item)
                             }
                         }
+                    }
+                    FilterSheet(sheetMode: $sortSheetMode) {
+                        VStack {
+                            Text(ViewStrings.sort)
+                            Divider()
+                            HStack {
+                                ItemSortTypePicker(itemSortType: $itemSortType)
+                            }
+                            Divider()
+                        }
+                        .padding()
+                        .frame(maxWidth:.infinity, maxHeight: .infinity, alignment: .top)
+                        .background(Color(UIColor.systemGroupedBackground))
+                        .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
                     }
                     FilterSheet(sheetMode: $filterSheetMode) {
                         VStack {
@@ -85,9 +101,17 @@ struct ItemList: View {
                 }
                 ToolbarItem(placement: .bottomBar) {
                     Button(action: {
-                        // Show Sort on SheetMode
+                        if sortSheetMode == .none {
+                            sortSheetMode = .threequarter
+                        } else {
+                            sortSheetMode = .none
+                        }
                     }, label: {
-                        Image(systemName: SystemImage.sort.rawValue)
+                        if itemSortType == .titleAscending {
+                            Image(systemName: SystemImage.sort_off.rawValue)
+                        } else {
+                            Image(systemName: SystemImage.sort_on.rawValue)
+                        }
                     })
                 }
                 ToolbarItem(placement: .bottomBar) {
@@ -114,6 +138,6 @@ struct ItemList_Previews: PreviewProvider {
     static var previews: some View {
         let userData = ExampleData.createUserDataWithItems()
         let people = ExampleData.createPeople()
-        ItemList(primaryUser: .constant(userData.user), viewedUser: .constant(userData.user), people: .constant(people), items: userData.items, filterItemType: .constant(.noFilter), filterItemStatus: .constant(.noFilter))
+        ItemList(primaryUser: .constant(userData.user), viewedUser: .constant(userData.user), people: .constant(people), items: userData.items, itemSortType: .constant(.titleAscending), filterItemType: .constant(.noFilter), filterItemStatus: .constant(.noFilter))
     }
 }

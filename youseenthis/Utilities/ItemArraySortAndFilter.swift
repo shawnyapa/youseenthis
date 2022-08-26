@@ -7,11 +7,6 @@
 
 import Foundation
 
-enum ItemSortType: Int {
-    case titleAscending
-    case titleDescending
-}
-
 class ItemArraySortAndFilter {
         
     static func filteredItems(items: [Item], itemType: ItemType?, itemStatus: ItemStatus?) -> [Item] {
@@ -28,25 +23,41 @@ class ItemArraySortAndFilter {
     static func sortedItems(items: [Item], sortType: ItemSortType) -> [Item] {
         var sortedItems = items
         switch sortType {
-        case .titleAscending:
-            sortedItems = sortedItems.sortedItems_By_Title_Alpha_Ascending()
-        case .titleDescending:
-            sortedItems = sortedItems.sortedItems_By_Title_Alpha_Descending()
+            case .titleAscending:
+                sortedItems = sortedItems.sortedItems_By_Title_Ascending()
+            case .titleDescending:
+                sortedItems = sortedItems.sortedItems_By_Title_Descending()
+            case .ratingAscending:
+                sortedItems = sortedItems.sortedItems_By_Rating_Ascending()
+            case .ratingDescending:
+                sortedItems = sortedItems.sortedItems_By_Rating_Descending()
         }
         return sortedItems
     }
 }
 
 extension Array where Element == Item {
-    mutating func sortedItems_By_Title_Alpha_Descending() -> Self {
+    mutating func sortedItems_By_Title_Ascending() -> Self {
         return self.sorted {
             $0.title < $1.title
         }
     }
     
-    mutating func sortedItems_By_Title_Alpha_Ascending() -> Self {
+    mutating func sortedItems_By_Title_Descending() -> Self {
         return self.sorted {
             $0.title > $1.title
+        }
+    }
+    
+    mutating func sortedItems_By_Rating_Ascending() -> Self {
+        return self.sorted {
+            $0.rating < $1.rating
+        }
+    }
+    
+    mutating func sortedItems_By_Rating_Descending() -> Self {
+        return self.sorted {
+            $0.rating > $1.rating
         }
     }
     

@@ -10,7 +10,7 @@ import SwiftUI
 struct FilterItemStatusPicker: View {
     @Binding var filterItemStatus: FilterItemStatus
     var body: some View {
-        Picker("Status:", selection: $filterItemStatus) {
+        Picker("\(ViewStrings.status):", selection: $filterItemStatus) {
             ForEach (FilterItemStatus.allCases) { status in
                 HStack {
                     FilterItemStatusImage(filterItemStatus: status)

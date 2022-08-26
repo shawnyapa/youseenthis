@@ -10,7 +10,7 @@ import SwiftUI
 struct FilterItemTypePicker: View {
     @Binding var filterItemType: FilterItemType
     var body: some View {
-        Picker("Type:", selection: $filterItemType) {
+        Picker("\(ViewStrings.type):", selection: $filterItemType) {
             ForEach (FilterItemType.allCases) { type in
                 HStack {
                     FilterItemTypeImage(filterItemType: type)

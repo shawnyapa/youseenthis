@@ -10,7 +10,7 @@ import SwiftUI
 struct ItemRatingPicker: View {
     @Binding var item: Item
     var body: some View {
-        Picker("Rating:", selection: $item.rating) {
+        Picker("\(ViewStrings.rating):", selection: $item.rating) {
             ForEach (ItemRating.allCases) { rating in
                 HStack {
                     Text(rating.intDisplay() + "  " + rating.stringValue())
