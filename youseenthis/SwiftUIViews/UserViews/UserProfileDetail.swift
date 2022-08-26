@@ -67,8 +67,8 @@ struct UserProfileDetail: View {
                 Spacer()
             }
         }
-        .padding(.bottom)
-        .navigationTitle("User Profile")
+        .padding()
+        .navigationTitle(ViewStrings.userProfile)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 if mode == .view, canEdit == true {

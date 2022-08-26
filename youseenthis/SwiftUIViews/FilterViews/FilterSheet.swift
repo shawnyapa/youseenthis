@@ -46,7 +46,7 @@ struct FilterSheet<Content:View>: View {
         VStack {
             content()
                 .offset(y: calculateOffset())
-                .animation(.spring())
+                .animation(.spring(), value: sheetMode.wrappedValue)
                 .edgesIgnoringSafeArea(.all)
         }
     }

@@ -49,5 +49,7 @@ struct ViewStrings {
     static let email = "Email"
     static let profile = "Profile"
     static let people = "People"
+    static let userProfile = "User Profile"
+    static let your = "Your"
 }
 

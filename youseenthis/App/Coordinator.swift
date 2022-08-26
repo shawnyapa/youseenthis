@@ -18,7 +18,6 @@ class Coordinator {
         let itemsDictionary = StorageManager.allItems()
         let itemsArray = Coordinator.itemsArray(from: itemsDictionary)
         let primaryUser = User.primaryUser() ?? User.sampleValue()
-        //let people = ExampleData.createPeople()   // TODO: Remove
         let peopleDictionary = StorageManager.allPeopleDictionary()
         let people = Coordinator.peopleArray(from: peopleDictionary)
         let primaryUserData = PrimaryUserData(user: primaryUser, items: itemsArray, people: people)

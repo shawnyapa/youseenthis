@@ -52,15 +52,15 @@ struct youseenthisApp: App {
     Persistence Layer - Add/Delete UserData for userData.people = [UserData] (Done)
     Implement Delete Button for PeopleList (Done)
     Add & Configure ShareSheet (Done)
- 
  Add Rating to Item (Done)
  Add Notes to Item (Done)
  Add Tags to Item (Done)
  Add AboutMe to User (Done)
- Add PhoneNumber to User
- 
- Implement Sort Icon
- Add Sort to Toolbar (Alphabetical vs Rating)
+ Add PhoneNumber to User (Done)
+ Add Sort to Toolbar (Alphabetical vs Rating) (Done)
+ Add Notes to UX
+ Add About Me to UX
+ Add Tags to UX
 
  Update to Purple Logo
  Update missing Logo Asset Sizes
