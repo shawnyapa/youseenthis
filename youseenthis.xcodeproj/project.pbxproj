@@ -46,6 +46,12 @@
 		617AC7272815D0080055858E /* LabTestingUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617AC7262815D0080055858E /* LabTestingUI.swift */; };
 		617AC72A281610FC0055858E /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617AC729281610FC0055858E /* DeleteButton.swift */; };
 		617AC72C281615C20055858E /* EditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617AC72B281615C20055858E /* EditButton.swift */; };
+		619B989C28B9916000D8BBC1 /* ItemNotesField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619B989B28B9916000D8BBC1 /* ItemNotesField.swift */; };
+		619B989E28B99F0300D8BBC1 /* ItemRatingField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619B989D28B99F0300D8BBC1 /* ItemRatingField.swift */; };
+		619B98A128B9A17700D8BBC1 /* ItemStatusField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619B98A028B9A17700D8BBC1 /* ItemStatusField.swift */; };
+		619B98A328B9A39C00D8BBC1 /* ItemTypeField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619B98A228B9A39C00D8BBC1 /* ItemTypeField.swift */; };
+		619B98A528B9A45100D8BBC1 /* ItemTitleField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619B98A428B9A45100D8BBC1 /* ItemTitleField.swift */; };
+		619B98A728B9A6C600D8BBC1 /* UserAboutMeField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619B98A628B9A6C600D8BBC1 /* UserAboutMeField.swift */; };
 		619D3ACB28A9945700F46946 /* EmptyItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619D3ACA28A9945700F46946 /* EmptyItemList.swift */; };
 		619D3ACD28A9951600F46946 /* EmptyPeopleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619D3ACC28A9951600F46946 /* EmptyPeopleList.swift */; };
 		619D3ACF28A9A35700F46946 /* PeopleProfileBoxHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619D3ACE28A9A35700F46946 /* PeopleProfileBoxHeader.swift */; };
@@ -114,6 +120,12 @@
 		617AC7262815D0080055858E /* LabTestingUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabTestingUI.swift; sourceTree = "<group>"; };
 		617AC729281610FC0055858E /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
 		617AC72B281615C20055858E /* EditButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButton.swift; sourceTree = "<group>"; };
+		619B989B28B9916000D8BBC1 /* ItemNotesField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNotesField.swift; sourceTree = "<group>"; };
+		619B989D28B99F0300D8BBC1 /* ItemRatingField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRatingField.swift; sourceTree = "<group>"; };
+		619B98A028B9A17700D8BBC1 /* ItemStatusField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStatusField.swift; sourceTree = "<group>"; };
+		619B98A228B9A39C00D8BBC1 /* ItemTypeField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTypeField.swift; sourceTree = "<group>"; };
+		619B98A428B9A45100D8BBC1 /* ItemTitleField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTitleField.swift; sourceTree = "<group>"; };
+		619B98A628B9A6C600D8BBC1 /* UserAboutMeField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAboutMeField.swift; sourceTree = "<group>"; };
 		619D3ACA28A9945700F46946 /* EmptyItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyItemList.swift; sourceTree = "<group>"; };
 		619D3ACC28A9951600F46946 /* EmptyPeopleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyPeopleList.swift; sourceTree = "<group>"; };
 		619D3ACE28A9A35700F46946 /* PeopleProfileBoxHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleProfileBoxHeader.swift; sourceTree = "<group>"; };
@@ -246,6 +258,7 @@
 			children = (
 				61CF978227C44A3A008E179A /* UserLandingView.swift */,
 				6148AAEC281E2C99008A3E2F /* UserProfileDetail.swift */,
+				619B98A628B9A6C600D8BBC1 /* UserAboutMeField.swift */,
 			);
 			path = UserViews;
 			sourceTree = "<group>";
@@ -255,7 +268,7 @@
 			children = (
 				6148340527C36A9500076898 /* ItemList.swift */,
 				6148340327C3594A00076898 /* ItemRow.swift */,
-				61CF977827C41F32008E179A /* ItemDetail.swift */,
+				619B989F28B9A0FD00D8BBC1 /* ItemDetail */,
 				61F9E07E27DD5FD40058D70A /* ItemTypePicker.swift */,
 				6131700C27D5740B00834C08 /* ItemTypeImage.swift */,
 				61F9E08027DD5FEE0058D70A /* ItemStatusPicker.swift */,
@@ -322,6 +335,19 @@
 				617AC7262815D0080055858E /* LabTestingUI.swift */,
 			);
 			path = LabTesting;
+			sourceTree = "<group>";
+		};
+		619B989F28B9A0FD00D8BBC1 /* ItemDetail */ = {
+			isa = PBXGroup;
+			children = (
+				61CF977827C41F32008E179A /* ItemDetail.swift */,
+				619B98A428B9A45100D8BBC1 /* ItemTitleField.swift */,
+				619B98A228B9A39C00D8BBC1 /* ItemTypeField.swift */,
+				619B98A028B9A17700D8BBC1 /* ItemStatusField.swift */,
+				619B989D28B99F0300D8BBC1 /* ItemRatingField.swift */,
+				619B989B28B9916000D8BBC1 /* ItemNotesField.swift */,
+			);
+			path = ItemDetail;
 			sourceTree = "<group>";
 		};
 		61ADCDC028B5B44600849320 /* UserInterface */ = {
@@ -479,8 +505,10 @@
 				617AC72A281610FC0055858E /* DeleteButton.swift in Sources */,
 				612277C028A8740C00015452 /* PeopleTab.swift in Sources */,
 				612277BE28A86BB200015452 /* PeopleList.swift in Sources */,
+				619B989E28B99F0300D8BBC1 /* ItemRatingField.swift in Sources */,
 				61EB806228B702110068B7DE /* ItemRating.swift in Sources */,
 				6131700D27D5740B00834C08 /* ItemTypeImage.swift in Sources */,
+				619B98A328B9A39C00D8BBC1 /* ItemTypeField.swift in Sources */,
 				61CF978127C449C8008E179A /* NetworkManager.swift in Sources */,
 				6131700B27D420BA00834C08 /* UserData.swift in Sources */,
 				61A30FBD27DEC2E000155417 /* ItemStatus.swift in Sources */,
@@ -490,6 +518,7 @@
 				614A8E0F27E4104000D634CA /* FilterItemTypeImage.swift in Sources */,
 				6153633B27E6A0270012B136 /* FilterItemStatusImage.swift in Sources */,
 				616EFAFF28A7087D007CA794 /* ExportUtility.swift in Sources */,
+				619B98A728B9A6C600D8BBC1 /* UserAboutMeField.swift in Sources */,
 				616FA6D028AF272400B365C6 /* ItemData.swift in Sources */,
 				61B7700328289C3700AF4EAF /* EmailExporter.swift in Sources */,
 				61F9E07F27DD5FD40058D70A /* ItemTypePicker.swift in Sources */,
@@ -508,6 +537,8 @@
 				6153633727E67A9C0012B136 /* ItemArraySortAndFilter.swift in Sources */,
 				61B7700728289FF400AF4EAF /* EmailButton.swift in Sources */,
 				614A8E0D27E40BA600D634CA /* FilterItemType.swift in Sources */,
+				619B98A128B9A17700D8BBC1 /* ItemStatusField.swift in Sources */,
+				619B98A528B9A45100D8BBC1 /* ItemTitleField.swift in Sources */,
 				619D3ACF28A9A35700F46946 /* PeopleProfileBoxHeader.swift in Sources */,
 				617A2B5728ADC204006FFBAC /* PrimaryUserData.swift in Sources */,
 				619D3ACD28A9951600F46946 /* EmptyPeopleList.swift in Sources */,
@@ -519,6 +550,7 @@
 				617AC7272815D0080055858E /* LabTestingUI.swift in Sources */,
 				6148340627C36A9500076898 /* ItemList.swift in Sources */,
 				61FDDC0D28AC1C1800402906 /* Semver.swift in Sources */,
+				619B989C28B9916000D8BBC1 /* ItemNotesField.swift in Sources */,
 				61CF978827C4A7A7008E179A /* Coordinator.swift in Sources */,
 				6148340427C3594A00076898 /* ItemRow.swift in Sources */,
 				6157282F27CCA3CB00F0F206 /* UserLandingViewModel.swift in Sources */,

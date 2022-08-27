@@ -7,14 +7,15 @@
 
 import SwiftUI
 
+enum UserEditMode: String {
+    case create
+    case edit
+    case view
+}
+
 struct UserProfileDetail: View {
-    enum Mode: String {
-        case create
-        case edit
-        case view
-    }
     var canEdit: Bool = false
-    @State var mode: Mode
+    @State var mode: UserEditMode
     @State var user: User
     var body: some View {
         VStack(alignment: .leading) {
@@ -30,6 +31,7 @@ struct UserProfileDetail: View {
                 }
                 Spacer()
             }
+            Divider()
             HStack {
                 Text("\(ViewStrings.firstName):")
                     .font(.headline)
@@ -42,6 +44,7 @@ struct UserProfileDetail: View {
                 }
                 Spacer()
             }
+            Divider()
             HStack {
                 Text("\(ViewStrings.lastName):")
                     .font(.headline)
@@ -54,6 +57,7 @@ struct UserProfileDetail: View {
                 }
                 Spacer()
             }
+            Divider()
             HStack {
                 Text("\(ViewStrings.email):")
                     .font(.headline)
@@ -66,6 +70,7 @@ struct UserProfileDetail: View {
                 }
                 Spacer()
             }
+            UserAboutMeField(mode: $mode, user: $user)
         }
         .padding()
         .navigationTitle(ViewStrings.userProfile)
