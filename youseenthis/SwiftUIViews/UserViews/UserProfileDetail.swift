@@ -15,8 +15,8 @@ enum UserEditMode: String {
 
 struct UserProfileDetail: View {
     var canEdit: Bool = false
-    @State var mode: UserEditMode
-    @State var user: User
+    @State private var mode: UserEditMode = .edit
+    @State var user: User   // TODO: Fix this @State property wrapper
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -94,6 +94,6 @@ struct UserProfileDetail: View {
 
 struct UserProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        UserProfileDetail(mode: .view, user: User.sampleValue())
+        UserProfileDetail(user: User.sampleValue())
     }
 }

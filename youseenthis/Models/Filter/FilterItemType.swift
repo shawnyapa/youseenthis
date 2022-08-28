@@ -31,35 +31,33 @@ enum FilterItemType: Int, CaseIterable, Identifiable {
         }
     }
     
-    // TODO: These strings should be localized
     func filterStringValue() -> String {
         switch self {
         case .noFilter:
-            return "Show Everything"
+            return ViewStrings.typeShowEverything
         case .notSelected:
-            return "Only Not Selected"
+            return ViewStrings.typeOnlyNotSelected
         case .movie:
-            return "Only Movies"
+            return ViewStrings.onlyMovies
         case .tvShow:
-            return "Only TV Shows"
+            return ViewStrings.onlyTvshows
         case .videoGame:
-            return "Only Video Games"
+            return ViewStrings.onlyVideoGames
         }
     }
     
-    // TODO: These strings should be localized
     func headerStringValue() -> String {
         switch self {
         case .noFilter:
-            return "Stuff"
+            return ViewStrings.stuff
         case .notSelected:
-            return "Unknown"
+            return ViewStrings.unknown
         case .movie:
-            return "Movies"
+            return ViewStrings.movies
         case .tvShow:
-            return "TV Shows"
+            return ViewStrings.tvShows
         case .videoGame:
-            return "Video Games"
+            return ViewStrings.videoGames
         }
     }
 }

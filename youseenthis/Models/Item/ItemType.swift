@@ -16,17 +16,16 @@ enum ItemType: Int, Hashable, Codable, CaseIterable, Identifiable {
     
     var id: Int { self.rawValue }
     
-    // TODO: These strings should be localized
     func stringValue() -> String {
         switch self{
         case .notSelected:
-            return "Not Selected"
+            return ViewStrings.typeNotSelected
         case .movie:
-            return "Movie"
+            return ViewStrings.movie
         case .tvShow:
-            return "TV Show"
+            return ViewStrings.tvShow
         case .videoGame:
-            return "Video Game"
+            return ViewStrings.videoGame
         }
     }
     

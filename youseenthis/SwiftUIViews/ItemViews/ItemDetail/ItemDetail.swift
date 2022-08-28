@@ -15,8 +15,8 @@ enum ItemEditMode: String {
 
 struct ItemDetail: View {
     var canEdit: Bool = false
-    @State var mode: ItemEditMode
-    @State var item: Item
+    @State var mode: ItemEditMode   // TODO: Fix this @State property wrapper
+    @State var item: Item   // TODO: Fix this @State property wrapper
     // TODO: Refactor with .dismiss
     @Environment(\.presentationMode) var presentationMode
     var body: some View {

@@ -22,7 +22,7 @@ struct ItemList: View {
     }
     var listTitle: String {
         if primaryUser.id == viewedUser.id {
-            return "\(ViewStrings.your) \(filterItemType.headerStringValue())"
+            return "\(ViewStrings.my) \(filterItemType.headerStringValue())"
         } else {
             return "\(viewedUser.firstName)'s \(filterItemType.headerStringValue())"
         }

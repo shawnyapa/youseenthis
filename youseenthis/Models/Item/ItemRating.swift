@@ -17,21 +17,20 @@ enum ItemRating: Int, Hashable, Codable, CaseIterable, Identifiable, Comparable 
     
     var id: Int { self.rawValue }
     
-    // TODO: These strings should be localized
     func stringValue() -> String {
         switch self {
         case .notRated:
-            return "Not Rated"
+            return ViewStrings.notRated
         case .janky:
-            return "Janky"
+            return ViewStrings.janky
         case .suspect:
-            return "Suspect"
+            return ViewStrings.suspect
         case .meh:
-            return "Meh"
+            return ViewStrings.meh
         case .solid:
-            return "Solid"
+            return ViewStrings.solid
         case .danky:
-            return "Danky"
+            return ViewStrings.danky
         }
     }
     

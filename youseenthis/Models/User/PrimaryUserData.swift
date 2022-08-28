@@ -12,7 +12,7 @@ protocol HasPeople {
 }
 
 class PrimaryUserData: UserData, HasPeople {
-    // TODO: Implement PeopleInvitations
+    
     @Published var people: [UserData]
     
     private enum CodingKeys: String, CodingKey {

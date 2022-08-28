@@ -16,19 +16,18 @@ enum ItemStatus: Int, Hashable, Codable, CaseIterable, Identifiable {
     
     var id: Int { self.rawValue }
     
-    // TODO: These strings should be localized
     func stringValue() -> String {
         switch self {
         case .notSelected:
-            return "Not Selected"
+            return ViewStrings.statusNotSelected
         case .willWatch:
-            return "Want to Watch"
+            return ViewStrings.willWatch
         case .watching:
-            return "Watching"
+            return ViewStrings.watching
         case .didWatch:
-            return "Watched"
+            return ViewStrings.didWatch
         case .wontWatch:
-            return "Not Interested"
+            return ViewStrings.wontWatch
         }
     }
 }

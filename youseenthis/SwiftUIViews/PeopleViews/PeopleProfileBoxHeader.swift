@@ -14,7 +14,7 @@ struct PeopleProfileBoxHeader: View {
             Text(ViewStrings.profile)
             Spacer()
             NavigationLink {
-                UserProfileDetail(canEdit: true, mode: .edit, user: primaryUser)
+                UserProfileDetail(canEdit: true, user: primaryUser)
             } label: {
                 Image(systemName: SystemImage.edit.rawValue)
             }

@@ -27,6 +27,7 @@ struct ItemNotesField: View {
                             .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                             .frame(height: 150)
                             .cornerRadius(16)
+                            .multilineTextAlignment(.leading)
                     }
                 }
                 Spacer()

@@ -12,9 +12,9 @@ struct UserLandingView: View {
     @Binding var viewedUser: User
     @Binding var people: [UserData]
     @Binding var items: [Item]
-    @State var itemSortType: ItemSortType = .titleAscending
-    @State var filterItemType: FilterItemType = .noFilter
-    @State var filterItemStatus: FilterItemStatus = .noFilter
+    @State private var itemSortType: ItemSortType = .titleAscending
+    @State private var filterItemType: FilterItemType = .noFilter
+    @State private var filterItemStatus: FilterItemStatus = .noFilter
     var body: some View {
         let sortedItems = ItemArraySortAndFilter.sortedItems(items: items, sortType: itemSortType)
         let filteredItems = ItemArraySortAndFilter.filteredItems(items: sortedItems, itemType: filterItemType.itemTypeForFilterItemType(), itemStatus: filterItemStatus.itemStatusForFilterItemStatus())

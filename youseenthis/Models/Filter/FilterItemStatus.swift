@@ -34,21 +34,20 @@ enum FilterItemStatus: Int, CaseIterable, Identifiable {
         }
     }
     
-    // TODO: These strings should be localized
     func stringValue() -> String {
         switch self {
         case .noFilter:
-            return "Show Everything"
+            return ViewStrings.statusShowEverything
         case .notSelected:
-            return "Only Not Selected"
+            return ViewStrings.statusOnlyNotSelected
         case .willWatch:
-            return "Only Want to Watch"
+            return ViewStrings.onlyWantToWatch
         case .watching:
-            return "Only Watching"
+            return ViewStrings.onlyWatching
         case .didWatch:
-            return "Only Watched"
+            return ViewStrings.onlyWatched
         case .wontWatch:
-            return "Only Not Interested"
+            return ViewStrings.onlyNotInterested
         }
     }
 }
