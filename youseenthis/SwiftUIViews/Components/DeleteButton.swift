@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct DeleteButton: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) private var dismiss
     var item: Item
     var body: some View {
         HStack {
             Spacer()
             Button(action: {
                 Coordinator.shared.removeItem(item: item)
-                presentationMode.wrappedValue.dismiss()
+                dismiss()
             }) {
                 Image(systemName: SystemImage.delete.rawValue)
             }

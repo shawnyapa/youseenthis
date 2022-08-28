@@ -22,6 +22,7 @@ struct UserAboutMeField: View {
                             .font(.title)
                             .frame(height: 160)
                             .cornerRadius(16)
+                            .multilineTextAlignment(.leading)
                     } else if mode == .edit || mode == .create {
                         TextField("\(ViewStrings.aboutMe)", text:$user.aboutMe)
                             .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)

@@ -12,7 +12,7 @@ struct FinishedButton: View {
         case create
         case edit
     }
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) private var dismiss
     var mode: Mode
     var item: Item
     var body: some View {
@@ -23,7 +23,7 @@ struct FinishedButton: View {
                 case .edit:
                     Coordinator.shared.editItem(item: item)
             }
-            presentationMode.wrappedValue.dismiss()
+            dismiss()
         }) {
             Image(systemName: SystemImage.done.rawValue)
         }

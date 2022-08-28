@@ -22,6 +22,7 @@ struct ItemNotesField: View {
                             .font(.title)
                             .frame(height: 160)
                             .cornerRadius(16)
+                            .multilineTextAlignment(.leading)
                     } else if mode == .edit || mode == .create {
                         TextField("\(ViewStrings.notes)", text:$item.notes)
                             .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)

@@ -12,7 +12,7 @@ struct UserProfileFinishedButton: View {
         case create
         case edit
     }
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) private var dismiss
     var mode: Mode
     var user: User
     var body: some View {
@@ -23,7 +23,7 @@ struct UserProfileFinishedButton: View {
                 case .edit:
                     let _ = Coordinator.shared.editPrimaryUser(user: user)
             }
-            presentationMode.wrappedValue.dismiss()
+            dismiss()
         }) {
             Image(systemName: SystemImage.done.rawValue)
         }
