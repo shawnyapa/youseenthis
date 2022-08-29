@@ -103,6 +103,9 @@ struct ItemList: View {
                     Button(action: {
                         if sortSheetMode == .none {
                             sortSheetMode = .threequarter
+                            if filterSheetMode != .none {
+                                filterSheetMode = .none
+                            }
                         } else {
                             sortSheetMode = .none
                         }
@@ -118,6 +121,9 @@ struct ItemList: View {
                     Button(action: {
                         if filterSheetMode == .none {
                             filterSheetMode = .threequarter
+                            if sortSheetMode != .none {
+                                sortSheetMode = .none
+                            }
                         } else {
                             filterSheetMode = .none
                         }

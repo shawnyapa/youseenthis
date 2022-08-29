@@ -58,9 +58,9 @@ struct youseenthisApp: App {
  Add AboutMe to User (Done)
  Add PhoneNumber to User (Done)
  Add Sort to Toolbar (Alphabetical vs Rating) (Done)
- Add Notes to UX
- Add About Me to UX
- Add Tags to UX
+ Add Notes to UX (Done)
+ Add About Me to UX (Done)
+ Add Tags to UX -> Use Capsule()
 
  Update to Purple Logo
  Update missing Logo Asset Sizes
