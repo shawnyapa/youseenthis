@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct PeopleProfileBoxHeader: View {
-    var primaryUser: User
+    @Binding var primaryUser: User
     var body: some View {
         HStack {
             Text(ViewStrings.profile)
             Spacer()
             NavigationLink {
                 UserProfileDetail(canEdit: true, user: primaryUser)
+                // TODO: Debug UserProfileForm double dismiss issue
+                //UserProfileForm(user: primaryUser)
             } label: {
                 Image(systemName: SystemImage.edit.rawValue)
             }
@@ -25,6 +27,6 @@ struct PeopleProfileBoxHeader: View {
 struct PeopleProfileBoxHeader_Previews: PreviewProvider {
     static var previews: some View {
         let user = User.sampleValue()
-        PeopleProfileBoxHeader(primaryUser: user)
+        PeopleProfileBoxHeader(primaryUser:.constant(user))
     }
 }

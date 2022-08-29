@@ -12,7 +12,6 @@ struct UserProfileFinishedButton: View {
         case create
         case edit
     }
-    @Environment(\.dismiss) private var dismiss
     var mode: Mode
     var user: User
     var body: some View {
@@ -23,7 +22,6 @@ struct UserProfileFinishedButton: View {
                 case .edit:
                     let _ = Coordinator.shared.editPrimaryUser(user: user)
             }
-            dismiss()
         }) {
             Image(systemName: SystemImage.done.rawValue)
         }

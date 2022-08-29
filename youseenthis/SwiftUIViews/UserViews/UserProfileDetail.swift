@@ -27,7 +27,6 @@ struct UserProfileDetail: View {
                         .font(.title)
                 } else if mode == .edit || mode == .create {
                     TextField("\(ViewStrings.username)", text:$user.username)
-                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                 }
                 Spacer()
             }
@@ -40,7 +39,6 @@ struct UserProfileDetail: View {
                         .font(.title)
                 } else if mode == .edit || mode == .create {
                     TextField("\(ViewStrings.firstName)", text:$user.firstName)
-                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                 }
                 Spacer()
             }
@@ -53,7 +51,6 @@ struct UserProfileDetail: View {
                         .font(.title)
                 } else if mode == .edit || mode == .create {
                     TextField("\(ViewStrings.lastName)", text:$user.lastName)
-                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                 }
                 Spacer()
             }
@@ -66,7 +63,6 @@ struct UserProfileDetail: View {
                         .font(.title)
                 } else if mode == .edit || mode == .create {
                     TextField("\(ViewStrings.email)", text:$user.email)
-                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                 }
                 Spacer()
             }

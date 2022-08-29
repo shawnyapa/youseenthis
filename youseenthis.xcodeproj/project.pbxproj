@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6103F0F528BD66A50057A9AD /* UserProfileForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6103F0F428BD66A50057A9AD /* UserProfileForm.swift */; };
 		612277BA28A86B8A00015452 /* PeopleProfileBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612277B928A86B8A00015452 /* PeopleProfileBox.swift */; };
 		612277BC28A86BA300015452 /* PeopleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612277BB28A86BA200015452 /* PeopleRow.swift */; };
 		612277BE28A86BB200015452 /* PeopleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612277BD28A86BB200015452 /* PeopleList.swift */; };
@@ -79,6 +80,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6103F0F428BD66A50057A9AD /* UserProfileForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileForm.swift; sourceTree = "<group>"; };
 		612277B928A86B8A00015452 /* PeopleProfileBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleProfileBox.swift; sourceTree = "<group>"; };
 		612277BB28A86BA200015452 /* PeopleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleRow.swift; sourceTree = "<group>"; };
 		612277BD28A86BB200015452 /* PeopleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleList.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 			children = (
 				61CF978227C44A3A008E179A /* UserLandingView.swift */,
 				6148AAEC281E2C99008A3E2F /* UserProfileDetail.swift */,
+				6103F0F428BD66A50057A9AD /* UserProfileForm.swift */,
 				619B98A628B9A6C600D8BBC1 /* UserAboutMeField.swift */,
 			);
 			path = UserViews;
@@ -542,6 +545,7 @@
 				619D3AD128A9A50B00F46946 /* PeopleListHeader.swift in Sources */,
 				6153633927E69AA80012B136 /* FilterItemStatus.swift in Sources */,
 				614DC22128B442E100B995CE /* LabTesting.swift in Sources */,
+				6103F0F528BD66A50057A9AD /* UserProfileForm.swift in Sources */,
 				61CF978327C44A3A008E179A /* UserLandingView.swift in Sources */,
 				617AC7272815D0080055858E /* LabTestingUI.swift in Sources */,
 				6148340627C36A9500076898 /* ItemList.swift in Sources */,

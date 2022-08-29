@@ -13,7 +13,7 @@ struct PeopleProfileBox: View {
     var body: some View {
         let ownerName = primaryUser.firstName + " " + primaryUser.lastName
         List {
-            Section(header: PeopleProfileBoxHeader(primaryUser: primaryUser)) {
+            Section(header: PeopleProfileBoxHeader(primaryUser: $primaryUser)) {
                 HStack {
                     Text(ownerName)
                     Spacer()
