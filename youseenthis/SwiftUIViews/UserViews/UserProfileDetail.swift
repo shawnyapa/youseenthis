@@ -16,7 +16,7 @@ enum UserEditMode: String {
 struct UserProfileDetail: View {
     var canEdit: Bool = false
     @State private var mode: UserEditMode = .edit
-    @State var user: User   // TODO: Fix this @State property wrapper
+    @State var user: User
     var body: some View {
         VStack(alignment: .leading) {
             HStack {

@@ -15,8 +15,8 @@ enum ItemEditMode: String {
 
 struct ItemDetail: View {
     var canEdit: Bool = false
-    @State var mode: ItemEditMode   // TODO: Fix this @State property wrapper
-    @State var item: Item   // TODO: Fix this @State property wrapper
+    @State var mode: ItemEditMode
+    @State var item: Item
     var body: some View {
         VStack {
             Spacer()

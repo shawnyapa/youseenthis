@@ -32,6 +32,7 @@ enum SystemImage: String {
     case arrow_up = "arrow.up"
     case arrow_down = "arrow.down"
     case deleteX = "x.circle"
+    case search = "magnifyingglass"
 }
 
 // TODO: These strings should be localized

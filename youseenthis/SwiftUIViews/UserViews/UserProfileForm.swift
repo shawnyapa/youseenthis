@@ -9,7 +9,7 @@ import SwiftUI
 
 struct UserProfileForm: View {
     @State private var mode: UserEditMode = .edit
-    @State var user: User   // TODO: Fix this @State property wrapper
+    @State var user: User
     var body: some View {
         Form {
             Section(header: Text(ViewStrings.username)) {

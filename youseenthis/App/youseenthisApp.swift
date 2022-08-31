@@ -60,7 +60,11 @@ struct youseenthisApp: App {
  Add Sort to Toolbar (Alphabetical vs Rating) (Done)
  Add Notes to UX (Done)
  Add About Me to UX (Done)
- Add Tags to UX -> Use Capsule()
+ Create Tags UX (Done)
+    TagsView -> Use Capsule() (Done)
+    TagsEditor (Done)
+    TagsSelector (Done)
+ Integrate Tags UX into existing UX
 
  Update to Purple Logo
  Update missing Logo Asset Sizes

@@ -38,6 +38,8 @@ struct TagsSelector: View {
             }
             Divider()
             HStack {
+                Image(systemName: SystemImage.search.rawValue)
+                    .padding()
                 TextField(ViewStrings.searchTags, text: $searchString)
                     .background(.background)
                     .padding()
