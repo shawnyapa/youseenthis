@@ -88,8 +88,10 @@ struct ViewStrings {
     static let tvShows = "TV Shows"
     static let videoGames = "Video Games"
     static let newTag = "New Tag"
+    static let searchTags = "Search Tags"
 }
 
 struct SystemColors {
-    static let tagFill = Color(UIColor.systemCyan)
+    static let activeTagFill = Color(UIColor.systemCyan)
+    static let deactiveTagFill = Color(UIColor.systemGray)
 }

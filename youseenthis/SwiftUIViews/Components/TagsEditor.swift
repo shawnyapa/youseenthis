@@ -34,7 +34,7 @@ struct TagsEditor: View {
                                 .foregroundColor(Color(UIColor.systemBackground))
                         }
                         .background(RoundedRectangle(cornerRadius: 15)
-                            .foregroundColor(SystemColors.tagFill))
+                            .foregroundColor(SystemColors.activeTagFill))
                     }
                 }
             }

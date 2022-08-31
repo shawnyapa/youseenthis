@@ -15,7 +15,7 @@ struct TagsView: View {
             ForEach(tags, id: \.self) { tag in
                 Text(tag)
                     .padding(5)
-                    .background(SystemColors.tagFill)
+                    .background(SystemColors.activeTagFill)
                     .clipShape(Capsule())
                     .font(.body)
                     .foregroundColor(Color(UIColor.systemBackground))

@@ -6,15 +6,87 @@
 //
 
 import SwiftUI
+import WrappingStack
 
 struct TagsSelector: View {
+    @State var searchString: String = ""
+    @State var existingTags: [String]
+    var filteredTags: [String] {
+        if searchString.isEmpty {
+            return existingTags
+        }
+        return existingTags.filter { $0.contains($searchString.wrappedValue)}
+    }
+    @State var selectedTags:[String] = [String]()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Group {
+                WrappingHStack(id: \.self) {
+                    ForEach(filteredTags, id: \.self) { tag in
+                        Button(action: {
+                            selectTag(tag: tag)
+                        }) {
+                            Label(tag, systemImage: SystemImage.create.rawValue)
+                                .padding(5)
+                                .foregroundColor(Color(UIColor.systemBackground))
+                        }
+                        .background(RoundedRectangle(cornerRadius: 15)
+                            .foregroundColor(SystemColors.deactiveTagFill))
+                    }
+                }
+            }
+            Divider()
+            HStack {
+                TextField(ViewStrings.searchTags, text: $searchString)
+                    .background(.background)
+                    .padding()
+                    .frame(maxWidth:250)
+                Spacer()
+            }
+            Divider()
+            Group {
+                WrappingHStack(id: \.self) {
+                    ForEach(selectedTags, id: \.self) { tag in
+                        Button(action: {
+                            deselectTag(tag: tag)
+                        }) {
+                            Label(tag, systemImage: SystemImage.deleteX.rawValue)
+                                .padding(5)
+                                .foregroundColor(Color(UIColor.systemBackground))
+                        }
+                        .background(RoundedRectangle(cornerRadius: 15)
+                            .foregroundColor(SystemColors.activeTagFill))
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    
+    func selectTag(tag: String) {
+        if !tag.isEmpty, !selectedTags.contains(tag) {
+            selectedTags.append(tag)
+            existingTags = existingTags.filter { $0 != tag }
+        }
+        if filteredTags.isEmpty {
+            $searchString.wrappedValue = ""
+        }
+        
+    }
+    
+    func deselectTag(tag: String) {
+        if !tag.isEmpty {
+            existingTags.append(tag)
+            selectedTags = selectedTags.filter { $0 != tag }
+        }
     }
 }
 
 struct TagsSelector_Previews: PreviewProvider {
     static var previews: some View {
-        TagsSelector()
+        let existingTags = ExampleData.createRandomTags()
+        TagsSelector(existingTags: existingTags)
     }
 }

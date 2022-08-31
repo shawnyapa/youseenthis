@@ -57,4 +57,23 @@ struct ExampleData {
         
         return [UserData]()
     }
+    
+    static func createRandomTags() -> [String] {
+        let tags = ["Drama",
+                    "Comedy",
+                    "SciFi",
+                    "Family",
+                    "Kids",
+                    "Action",
+                    "Horror",
+                    "Independent",
+                    "Romance",
+                    "Live",
+                    "Sports",
+                    "Reality",
+                    "Documentary"
+        ]
+        
+        return tags
+    }
 }
