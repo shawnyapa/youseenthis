@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6103F0F528BD66A50057A9AD /* UserProfileForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6103F0F428BD66A50057A9AD /* UserProfileForm.swift */; };
+		6103F0F728BD8B8A0057A9AD /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6103F0F628BD8B8A0057A9AD /* TagsView.swift */; };
+		6103F10028BE8EB20057A9AD /* TagsEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6103F0FF28BE8EB20057A9AD /* TagsEditor.swift */; };
 		612277BA28A86B8A00015452 /* PeopleProfileBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612277B928A86B8A00015452 /* PeopleProfileBox.swift */; };
 		612277BC28A86BA300015452 /* PeopleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612277BB28A86BA200015452 /* PeopleRow.swift */; };
 		612277BE28A86BB200015452 /* PeopleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612277BD28A86BB200015452 /* PeopleList.swift */; };
@@ -36,6 +38,7 @@
 		6153633D27E6A1880012B136 /* FilterItemStatusPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6153633C27E6A1880012B136 /* FilterItemStatusPicker.swift */; };
 		6157282C27CC9BEB00F0F206 /* ItemListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6157282B27CC9BEB00F0F206 /* ItemListViewModel.swift */; };
 		6157282F27CCA3CB00F0F206 /* UserLandingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6157282E27CCA3CB00F0F206 /* UserLandingViewModel.swift */; };
+		616C18C528BF0D7E007DE1E9 /* WrappingStack in Frameworks */ = {isa = PBXBuildFile; productRef = 616C18C428BF0D7E007DE1E9 /* WrappingStack */; };
 		616EFAFB28A70796007CA794 /* LogUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616EFAFA28A70796007CA794 /* LogUtility.swift */; };
 		616EFAFD28A7086E007CA794 /* ImportUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616EFAFC28A7086E007CA794 /* ImportUtility.swift */; };
 		616EFAFF28A7087D007CA794 /* ExportUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616EFAFE28A7087D007CA794 /* ExportUtility.swift */; };
@@ -46,6 +49,8 @@
 		617AC7272815D0080055858E /* LabTestingUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617AC7262815D0080055858E /* LabTestingUI.swift */; };
 		617AC72A281610FC0055858E /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617AC729281610FC0055858E /* DeleteButton.swift */; };
 		617AC72C281615C20055858E /* EditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617AC72B281615C20055858E /* EditButton.swift */; };
+		61843E7D28BFE50000C71B5A /* TagsSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61843E7C28BFE50000C71B5A /* TagsSelector.swift */; };
+		61843E7F28BFF2E900C71B5A /* String+Cleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61843E7E28BFF2E900C71B5A /* String+Cleaner.swift */; };
 		619B989C28B9916000D8BBC1 /* ItemNotesField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619B989B28B9916000D8BBC1 /* ItemNotesField.swift */; };
 		619B989E28B99F0300D8BBC1 /* ItemRatingField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619B989D28B99F0300D8BBC1 /* ItemRatingField.swift */; };
 		619B98A128B9A17700D8BBC1 /* ItemStatusField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619B98A028B9A17700D8BBC1 /* ItemStatusField.swift */; };
@@ -81,6 +86,8 @@
 
 /* Begin PBXFileReference section */
 		6103F0F428BD66A50057A9AD /* UserProfileForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileForm.swift; sourceTree = "<group>"; };
+		6103F0F628BD8B8A0057A9AD /* TagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsView.swift; sourceTree = "<group>"; };
+		6103F0FF28BE8EB20057A9AD /* TagsEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsEditor.swift; sourceTree = "<group>"; };
 		612277B928A86B8A00015452 /* PeopleProfileBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleProfileBox.swift; sourceTree = "<group>"; };
 		612277BB28A86BA200015452 /* PeopleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleRow.swift; sourceTree = "<group>"; };
 		612277BD28A86BB200015452 /* PeopleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleList.swift; sourceTree = "<group>"; };
@@ -120,6 +127,8 @@
 		617AC7262815D0080055858E /* LabTestingUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabTestingUI.swift; sourceTree = "<group>"; };
 		617AC729281610FC0055858E /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
 		617AC72B281615C20055858E /* EditButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButton.swift; sourceTree = "<group>"; };
+		61843E7C28BFE50000C71B5A /* TagsSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsSelector.swift; sourceTree = "<group>"; };
+		61843E7E28BFF2E900C71B5A /* String+Cleaner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Cleaner.swift"; sourceTree = "<group>"; };
 		619B989B28B9916000D8BBC1 /* ItemNotesField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNotesField.swift; sourceTree = "<group>"; };
 		619B989D28B99F0300D8BBC1 /* ItemRatingField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRatingField.swift; sourceTree = "<group>"; };
 		619B98A028B9A17700D8BBC1 /* ItemStatusField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStatusField.swift; sourceTree = "<group>"; };
@@ -159,6 +168,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				616C18C528BF0D7E007DE1E9 /* WrappingStack in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +304,9 @@
 		614A8E1327E4131500D634CA /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				6103F0F628BD8B8A0057A9AD /* TagsView.swift */,
+				6103F0FF28BE8EB20057A9AD /* TagsEditor.swift */,
+				61843E7C28BFE50000C71B5A /* TagsSelector.swift */,
 				619D3ACA28A9945700F46946 /* EmptyItemList.swift */,
 				619D3ACC28A9951600F46946 /* EmptyPeopleList.swift */,
 				6148AAF0281E34B8008A3E2F /* UserProfileFinishedButton.swift */,
@@ -315,6 +328,7 @@
 				616EFAFC28A7086E007CA794 /* ImportUtility.swift */,
 				616EFAFE28A7087D007CA794 /* ExportUtility.swift */,
 				61FDDC0C28AC1C1800402906 /* Semver.swift */,
+				61843E7E28BFF2E900C71B5A /* String+Cleaner.swift */,
 				614DC22028B442E100B995CE /* LabTesting.swift */,
 			);
 			path = Utilities;
@@ -443,6 +457,9 @@
 			dependencies = (
 			);
 			name = youseenthis;
+			packageProductDependencies = (
+				616C18C428BF0D7E007DE1E9 /* WrappingStack */,
+			);
 			productName = youseenthis;
 			productReference = 614833EC27C334AA00076898 /* Favorite Shows.app */;
 			productType = "com.apple.product-type.application";
@@ -471,6 +488,9 @@
 				Base,
 			);
 			mainGroup = 614833E327C334AA00076898;
+			packageReferences = (
+				616C18C328BF0D7E007DE1E9 /* XCRemoteSwiftPackageReference "swiftui-wrapping-stack" */,
+			);
 			productRefGroup = 614833ED27C334AA00076898 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -510,6 +530,7 @@
 				6131700D27D5740B00834C08 /* ItemTypeImage.swift in Sources */,
 				619B98A328B9A39C00D8BBC1 /* ItemTypeField.swift in Sources */,
 				61CF978127C449C8008E179A /* NetworkManager.swift in Sources */,
+				61843E7D28BFE50000C71B5A /* TagsSelector.swift in Sources */,
 				6131700B27D420BA00834C08 /* UserData.swift in Sources */,
 				61A30FBD27DEC2E000155417 /* ItemStatus.swift in Sources */,
 				6148AAED281E2C99008A3E2F /* UserProfileDetail.swift in Sources */,
@@ -539,6 +560,7 @@
 				619B98A128B9A17700D8BBC1 /* ItemStatusField.swift in Sources */,
 				619B98A528B9A45100D8BBC1 /* ItemTitleField.swift in Sources */,
 				619D3ACF28A9A35700F46946 /* PeopleProfileBoxHeader.swift in Sources */,
+				61843E7F28BFF2E900C71B5A /* String+Cleaner.swift in Sources */,
 				617A2B5728ADC204006FFBAC /* PrimaryUserData.swift in Sources */,
 				619D3ACD28A9951600F46946 /* EmptyPeopleList.swift in Sources */,
 				61CF977E27C449A6008E179A /* StorageManager.swift in Sources */,
@@ -550,9 +572,11 @@
 				617AC7272815D0080055858E /* LabTestingUI.swift in Sources */,
 				6148340627C36A9500076898 /* ItemList.swift in Sources */,
 				61FDDC0D28AC1C1800402906 /* Semver.swift in Sources */,
+				6103F0F728BD8B8A0057A9AD /* TagsView.swift in Sources */,
 				619B989C28B9916000D8BBC1 /* ItemNotesField.swift in Sources */,
 				61CF978827C4A7A7008E179A /* Coordinator.swift in Sources */,
 				6148340427C3594A00076898 /* ItemRow.swift in Sources */,
+				6103F10028BE8EB20057A9AD /* TagsEditor.swift in Sources */,
 				6157282F27CCA3CB00F0F206 /* UserLandingViewModel.swift in Sources */,
 				612277BC28A86BA300015452 /* PeopleRow.swift in Sources */,
 				61CF977927C41F32008E179A /* ItemDetail.swift in Sources */,
@@ -769,6 +793,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		616C18C328BF0D7E007DE1E9 /* XCRemoteSwiftPackageReference "swiftui-wrapping-stack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/diniska/swiftui-wrapping-stack";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		616C18C428BF0D7E007DE1E9 /* WrappingStack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 616C18C328BF0D7E007DE1E9 /* XCRemoteSwiftPackageReference "swiftui-wrapping-stack" */;
+			productName = WrappingStack;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 614833E427C334AA00076898 /* Project object */;
 }

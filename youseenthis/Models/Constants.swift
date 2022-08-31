@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum SystemImage: String {
     case edit = "square.and.pencil"
@@ -30,6 +31,7 @@ enum SystemImage: String {
     case people = "person.3"
     case arrow_up = "arrow.up"
     case arrow_down = "arrow.down"
+    case deleteX = "x.circle"
 }
 
 // TODO: These strings should be localized
@@ -85,4 +87,9 @@ struct ViewStrings {
     static let movies = "Movies"
     static let tvShows = "TV Shows"
     static let videoGames = "Video Games"
+    static let newTag = "New Tag"
+}
+
+struct SystemColors {
+    static let tagFill = Color(UIColor.systemCyan)
 }

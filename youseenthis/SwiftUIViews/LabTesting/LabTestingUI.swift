@@ -10,8 +10,8 @@ import SwiftUI
 struct LabTestingUI: View {
     var user: UserData
     var body: some View {
-        
-        EmptyView()
+        let tags = ["SciFi", "StarWars", "Detective1", "Detective2", "ExtraTag", "OneMoreToWrap"]
+        TagsEditor(tags: tags)
     }
 }
 
