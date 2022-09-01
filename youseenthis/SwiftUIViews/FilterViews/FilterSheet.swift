@@ -2,62 +2,42 @@
 //  FilterSheet.swift
 //  youseenthis
 //
-//  Created by Shawn Yapa on 4/23/22.
+//  Created by Shawn Yapa on 8/31/22.
 //
 
 import SwiftUI
 
-enum SheetMode: Int {
-    case none
-    case onequarter
-    case half
-    case threequarter
-    case full
-}
-
-struct FilterSheet<Content:View>: View {
-    
-    let content: () -> Content
-    var sheetMode: Binding<SheetMode>
-    
-    init(sheetMode: Binding<SheetMode>, @ViewBuilder content: @escaping () -> Content) {
-        self.content = content
-        self.sheetMode = sheetMode
-    }
-    
-    private func calculateOffset() -> CGFloat {
-        
-        switch sheetMode.wrappedValue {
-        case .none:
-            return UIScreen.main.bounds.height
-        case .onequarter:
-            return UIScreen.main.bounds.height/4
-        case .half:
-            return UIScreen.main.bounds.height/2
-        case .threequarter:
-            return (UIScreen.main.bounds.height/4)*3
-        case .full:
-            return 0
-        }
-        
-    }
-    
+struct FilterSheet: View {
+    @Binding var filterItemType: FilterItemType
+    @Binding var filterItemStatus: FilterItemStatus
+    @Binding var selectedTags: [String]
+    var existingTags: [String]
     var body: some View {
         VStack {
-            content()
-                .offset(y: calculateOffset())
-                .animation(.spring(), value: sheetMode.wrappedValue)
-                .edgesIgnoringSafeArea(.all)
+            Text(ViewStrings.filter)
+            Divider()
+            HStack {
+                Text("\(ViewStrings.type):")
+                FilterItemTypePicker(filterItemType: $filterItemType)
+            }
+            Divider()
+            HStack {
+                Text("\(ViewStrings.status):")
+                FilterItemStatusPicker(filterItemStatus: $filterItemStatus)
+            }
+            Divider()
+            TagsSelector(existingTags: existingTags, selectedTags: $selectedTags)
+            Divider()
         }
+        .padding()
+        .frame(maxWidth:.infinity, maxHeight: .infinity, alignment: .top)
+        .background(Color(UIColor.systemGroupedBackground))
+        .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
     }
 }
 
 struct FilterSheet_Previews: PreviewProvider {
     static var previews: some View {
-        FilterSheet(sheetMode: .constant(.threequarter)) {
-            VStack {
-                Text("Filter Sheet across the screen")
-            }
-        }
+        FilterSheet(filterItemType: .constant(.movie), filterItemStatus: .constant(.willWatch), selectedTags: .constant([String]()), existingTags: [String]())
     }
 }

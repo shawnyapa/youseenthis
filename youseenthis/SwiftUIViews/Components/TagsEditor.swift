@@ -10,13 +10,15 @@ import WrappingStack
 
 struct TagsEditor: View {
     @State var newTag: String = ""
-    @State var tags: [String]
+    @Binding var tags: [String]
     var body: some View {
         VStack {
             HStack {
                 Button(action: {
                     addNewTag(newTag: $newTag)
-                }, label: {Image(systemName: SystemImage.create.rawValue)})
+                }, label: { Text("+")
+                            Image(systemName: SystemImage.tag.rawValue)
+                })
                 TextField(ViewStrings.newTag, text: $newTag)
                     .background(.background)
                     .padding()
@@ -58,6 +60,6 @@ struct TagsEditor: View {
 struct TagsEditor_Previews: PreviewProvider {
     static var previews: some View {
         let tags = ["SciFi", "StarWars", "Detective", "Detective", "ExtraTag"]
-        TagsEditor(tags: tags)
+        TagsEditor(tags: .constant(tags))
     }
 }

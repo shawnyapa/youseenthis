@@ -17,6 +17,7 @@ struct ItemList: View {
     @State private var filterSheetMode: SheetMode = .none
     @Binding var filterItemType: FilterItemType
     @Binding var filterItemStatus: FilterItemStatus
+    @Binding var selectedTags: [String]
     var canEdit: Bool {
         primaryUser.id == viewedUser.id
     }
@@ -42,39 +43,12 @@ struct ItemList: View {
                             }
                         }
                     }
-                    FilterSheet(sheetMode: $sortSheetMode) {
-                        VStack {
-                            Text(ViewStrings.sort)
-                            Divider()
-                            HStack {
-                                ItemSortTypePicker(itemSortType: $itemSortType)
-                            }
-                            Divider()
-                        }
-                        .padding()
-                        .frame(maxWidth:.infinity, maxHeight: .infinity, alignment: .top)
-                        .background(Color(UIColor.systemGroupedBackground))
-                        .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
+                    OverlaySheet(sheetMode: $sortSheetMode) {
+                        SortSheet(itemSortType: $itemSortType)
                     }
-                    FilterSheet(sheetMode: $filterSheetMode) {
-                        VStack {
-                            Text(ViewStrings.filter)
-                            Divider()
-                            HStack {
-                                Text("\(ViewStrings.type):")
-                                FilterItemTypePicker(filterItemType: $filterItemType)
-                            }
-                            Divider()
-                            HStack {
-                                Text("\(ViewStrings.status):")
-                                FilterItemStatusPicker(filterItemStatus: $filterItemStatus)
-                            }
-                            Divider()
-                        }
-                        .padding()
-                        .frame(maxWidth:.infinity, maxHeight: .infinity, alignment: .top)
-                        .background(Color(UIColor.systemGroupedBackground))
-                        .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
+                    let existingTags = ItemArraySortAndFilter.existingTags(from: items)
+                    OverlaySheet(sheetMode: $filterSheetMode) {
+                        FilterSheet(filterItemType: $filterItemType, filterItemStatus: $filterItemStatus, selectedTags: $selectedTags, existingTags: existingTags)
                     }
                 }
             }
@@ -120,7 +94,7 @@ struct ItemList: View {
                 ToolbarItem(placement: .bottomBar) {
                     Button(action: {
                         if filterSheetMode == .none {
-                            filterSheetMode = .threequarter
+                            filterSheetMode = .onequarter
                             if sortSheetMode != .none {
                                 sortSheetMode = .none
                             }
@@ -144,6 +118,6 @@ struct ItemList_Previews: PreviewProvider {
     static var previews: some View {
         let userData = ExampleData.createUserDataWithItems()
         let people = ExampleData.createPeople()
-        ItemList(primaryUser: .constant(userData.user), viewedUser: .constant(userData.user), people: .constant(people), items: userData.items, itemSortType: .constant(.titleAscending), filterItemType: .constant(.noFilter), filterItemStatus: .constant(.noFilter))
+        ItemList(primaryUser: .constant(userData.user), viewedUser: .constant(userData.user), people: .constant(people), items: userData.items, itemSortType: .constant(.titleAscending), filterItemType: .constant(.noFilter), filterItemStatus: .constant(.noFilter), selectedTags: .constant([String]()))
     }
 }

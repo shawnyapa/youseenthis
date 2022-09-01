@@ -33,6 +33,8 @@ enum SystemImage: String {
     case arrow_down = "arrow.down"
     case deleteX = "x.circle"
     case search = "magnifyingglass"
+    case tag = "tag"
+    case noTag = "tag.slash"
 }
 
 // TODO: These strings should be localized
@@ -41,6 +43,7 @@ struct ViewStrings {
     static let status = "Status"
     static let type = "Type"
     static let rating = "Rating"
+    static let tags = "Tags"
     static let notes = "Notes"
     static let alphabetical = "A to Z"
     static let sort = "Sort"

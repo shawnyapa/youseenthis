@@ -24,6 +24,7 @@ struct ItemDetail: View {
             ItemTypeField(mode: $mode, item: $item)
             ItemStatusField(mode: $mode, item: $item)
             ItemRatingField(mode: $mode, item: $item)
+            ItemTagsField(mode: $mode, item: $item)
             ItemNotesField(mode: $mode, item: $item)
             Spacer()
             if mode == .view, canEdit == true {

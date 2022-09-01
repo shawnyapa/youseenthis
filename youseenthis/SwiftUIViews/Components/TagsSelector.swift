@@ -17,7 +17,7 @@ struct TagsSelector: View {
         }
         return existingTags.filter { $0.contains($searchString.wrappedValue)}
     }
-    @State var selectedTags:[String] = [String]()
+    @Binding var selectedTags:[String]
     
     var body: some View {
         VStack {
@@ -39,11 +39,8 @@ struct TagsSelector: View {
             Divider()
             HStack {
                 Image(systemName: SystemImage.search.rawValue)
-                    .padding()
+                    .padding(10)
                 TextField(ViewStrings.searchTags, text: $searchString)
-                    .background(.background)
-                    .padding()
-                    .frame(maxWidth:250)
                 Spacer()
             }
             Divider()
@@ -89,6 +86,6 @@ struct TagsSelector: View {
 struct TagsSelector_Previews: PreviewProvider {
     static var previews: some View {
         let existingTags = ExampleData.createRandomTags()
-        TagsSelector(existingTags: existingTags)
+        TagsSelector(existingTags: existingTags, selectedTags: .constant([String]()))
     }
 }

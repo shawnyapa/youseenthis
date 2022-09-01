@@ -8,6 +8,26 @@
 import Foundation
 
 class ItemArraySortAndFilter {
+    
+    static func existingTags(from items:[Item]) -> [String] {
+        let flatTags = items.flatMap { $0.tags }
+        let tagsSet = Set(flatTags)
+        let tags = Array(tagsSet).sorted()
+        return tags
+    }
+    
+    static func matchedTaggedItems(items: [Item], selectedTags: [String]) -> [Item] {
+        var matchedTaggedItems = items
+        if selectedTags.isEmpty {
+            return matchedTaggedItems
+        } else {
+            matchedTaggedItems = items.filter { item in
+                let matched = item.tags.filter(selectedTags.contains)
+                return !matched.isEmpty
+            }
+            return matchedTaggedItems
+        }
+    }
         
     static func filteredItems(items: [Item], itemType: ItemType?, itemStatus: ItemStatus?) -> [Item] {
         var filteredItems = items

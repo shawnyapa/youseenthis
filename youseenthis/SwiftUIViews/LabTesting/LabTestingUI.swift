@@ -11,7 +11,7 @@ struct LabTestingUI: View {
     var user: UserData
     var body: some View {
         let tags = ["SciFi", "StarWars", "Detective1", "Detective2", "ExtraTag", "OneMoreToWrap"]
-        TagsEditor(tags: tags)
+        TagsEditor(tags: .constant(tags))
     }
 }
 
