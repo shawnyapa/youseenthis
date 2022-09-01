@@ -9,9 +9,11 @@ import Foundation
 
 class ItemArraySortAndFilter {
     
-    static func existingTags(from items:[Item]) -> [String] {
+    static func existingTags(from items:[Item], selectedTags: [String]) -> [String] {
         let flatTags = items.flatMap { $0.tags }
-        let tagsSet = Set(flatTags)
+        let flatTagsSet = Set(flatTags)
+        let selectedSet = Set(selectedTags)
+        let tagsSet = flatTagsSet.subtracting(selectedSet)
         let tags = Array(tagsSet).sorted()
         return tags
     }

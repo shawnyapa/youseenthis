@@ -64,7 +64,7 @@ struct youseenthisApp: App {
     TagsView -> Use Capsule() (Done)
     TagsEditor (Done)
     TagsSelector (Done)
- Integrate Tags UX into existing UX
+ Integrate Tags UX into existing UX (Done)
 
  Update to Purple Logo
  Update missing Logo Asset Sizes
@@ -74,6 +74,10 @@ struct youseenthisApp: App {
  
  Refactor Persistence (Use AWS Amplify)
  Integrate Network API (Use AWS Amplify)
+ 
+ Fix ViewModels
+ Refactor with Forms
+ Separate View/Edit
  
  Distribution on TestFlight
  

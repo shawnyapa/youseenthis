@@ -10,7 +10,7 @@ import WrappingStack
 
 struct TagsSelector: View {
     @State var searchString: String = ""
-    @State var existingTags: [String]
+    @Binding var existingTags: [String]
     var filteredTags: [String] {
         if searchString.isEmpty {
             return existingTags
@@ -62,8 +62,6 @@ struct TagsSelector: View {
         }
     }
     
-    
-    
     func selectTag(tag: String) {
         if !tag.isEmpty, !selectedTags.contains(tag) {
             selectedTags.append(tag)
@@ -86,6 +84,6 @@ struct TagsSelector: View {
 struct TagsSelector_Previews: PreviewProvider {
     static var previews: some View {
         let existingTags = ExampleData.createRandomTags()
-        TagsSelector(existingTags: existingTags, selectedTags: .constant([String]()))
+        TagsSelector(existingTags: .constant(existingTags), selectedTags: .constant([String]()))
     }
 }

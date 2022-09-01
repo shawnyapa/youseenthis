@@ -11,13 +11,14 @@ struct ItemList: View {
     @Binding var primaryUser: User
     @Binding var viewedUser: User
     @Binding var people: [UserData]
-    var items: [Item]
+    @Binding var items: [Item]
     @State private var sortSheetMode: SheetMode = .none
-    @Binding var itemSortType: ItemSortType
     @State private var filterSheetMode: SheetMode = .none
+    @Binding var itemSortType: ItemSortType
     @Binding var filterItemType: FilterItemType
     @Binding var filterItemStatus: FilterItemStatus
     @Binding var selectedTags: [String]
+    @Binding var existingTags: [String]
     var canEdit: Bool {
         primaryUser.id == viewedUser.id
     }
@@ -29,13 +30,16 @@ struct ItemList: View {
         }
     }
     var body: some View {
+        let sortedItems = ItemArraySortAndFilter.sortedItems(items: items, sortType: itemSortType)
+        let filteredItems = ItemArraySortAndFilter.filteredItems(items: sortedItems, itemType: filterItemType.itemTypeForFilterItemType(), itemStatus: filterItemStatus.itemStatusForFilterItemStatus())
+        let matchedTaggedItems = ItemArraySortAndFilter.matchedTaggedItems(items: filteredItems, selectedTags: selectedTags)
         NavigationView {
             Group() {
                 ZStack {
-                    if items.count == 0 {
+                    if matchedTaggedItems.count == 0 {
                         EmptyItemList()
                     } else {
-                        List(items) { item in
+                        List(matchedTaggedItems) { item in
                             NavigationLink {
                                 ItemDetail(canEdit: canEdit, mode: .view, item: item)
                             } label: {
@@ -46,9 +50,8 @@ struct ItemList: View {
                     OverlaySheet(sheetMode: $sortSheetMode) {
                         SortSheet(itemSortType: $itemSortType)
                     }
-                    let existingTags = ItemArraySortAndFilter.existingTags(from: items)
                     OverlaySheet(sheetMode: $filterSheetMode) {
-                        FilterSheet(filterItemType: $filterItemType, filterItemStatus: $filterItemStatus, selectedTags: $selectedTags, existingTags: existingTags)
+                        FilterSheet(filterItemType: $filterItemType, filterItemStatus: $filterItemStatus, selectedTags: $selectedTags, items: $items, existingTags: $existingTags)
                     }
                 }
             }
@@ -118,6 +121,6 @@ struct ItemList_Previews: PreviewProvider {
     static var previews: some View {
         let userData = ExampleData.createUserDataWithItems()
         let people = ExampleData.createPeople()
-        ItemList(primaryUser: .constant(userData.user), viewedUser: .constant(userData.user), people: .constant(people), items: userData.items, itemSortType: .constant(.titleAscending), filterItemType: .constant(.noFilter), filterItemStatus: .constant(.noFilter), selectedTags: .constant([String]()))
+        ItemList(primaryUser: .constant(userData.user), viewedUser: .constant(userData.user), people: .constant(people), items: .constant(userData.items), itemSortType: .constant(.titleAscending), filterItemType: .constant(.noFilter), filterItemStatus: .constant(.noFilter), selectedTags: .constant([String]()), existingTags: .constant([String]()))
     }
 }
