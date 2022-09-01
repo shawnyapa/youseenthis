@@ -105,7 +105,7 @@ struct ItemList: View {
                             filterSheetMode = .none
                         }
                     }, label: {
-                        if filterItemType == .noFilter && filterItemStatus == .noFilter {
+                        if filterItemType == .noFilter && filterItemStatus == .noFilter && selectedTags.count == 0 {
                             Image(systemName: SystemImage.filter_off.rawValue)
                         } else {
                             Image(systemName: SystemImage.filter_on.rawValue)
