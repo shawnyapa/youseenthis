@@ -16,7 +16,7 @@ struct UserLandingView: View {
     @State private var filterItemType: FilterItemType = .noFilter
     @State private var filterItemStatus: FilterItemStatus = .noFilter
     @State private var selectedTags: [String] = [String]()
-    @State private var existingTags: [String] = [String]() // TODO: Bug Fix for adding New Tags to Items updating Filter
+    @State private var existingTags: [String] = [String]()
     var body: some View {
         ItemList(primaryUser: $primaryUser, viewedUser: $viewedUser, people: $people, items: $items, itemSortType: $itemSortType, filterItemType: $filterItemType, filterItemStatus: $filterItemStatus, selectedTags: $selectedTags, existingTags: $existingTags)
     }

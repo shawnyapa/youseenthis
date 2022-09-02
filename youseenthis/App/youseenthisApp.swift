@@ -16,6 +16,8 @@ struct youseenthisApp: App {
     @ObservedObject var primaryUserData = Coordinator.shared.primaryUserData
     @ObservedObject var viewedUserData = Coordinator.shared.viewedUserData
     @ObservedObject var itemData = Coordinator.shared.itemData
+    @State private var showingAlert = false
+    @State private var importUserMessage: String = ""
     var body: some Scene {
         WindowGroup {
             if labTestingUI {
@@ -26,7 +28,16 @@ struct youseenthisApp: App {
                 //UserLandingView(primaryUser: $userData.user, people: $userData.people, items: viewModel.$userData.items)
                 UserLandingView(primaryUser: $primaryUserData.user, viewedUser: $viewedUserData.user, people: $primaryUserData.people, items: $itemData.items)
                     .onOpenURL { url in
-                        ImportUtility.importUserData(from: url)
+                        if let message = ImportUtility.importUserData(from: url) {
+                            importUserMessage = message
+                            showingAlert = true
+                        }
+                    }
+                    .alert(importUserMessage, isPresented: $showingAlert) {
+                        Button("OK", role: .cancel) {
+                            importUserMessage = ""
+                            showingAlert = false
+                        }
                     }
             }
             
@@ -65,7 +76,13 @@ struct youseenthisApp: App {
     TagsEditor (Done)
     TagsSelector (Done)
  Integrate Tags UX into existing UX (Done)
+ 
+ Fix ViewModels
+ Refactor with Forms
+ Separate View/Edit
+ Remove Confirm Button from Edit, Save on Back
 
+ Update Ratings with 5 Images, Logo->GreenFace
  Update to Purple Logo
  Update missing Logo Asset Sizes
  Setup LocalizedStrings and Files
@@ -74,10 +91,6 @@ struct youseenthisApp: App {
  
  Refactor Persistence (Use AWS Amplify)
  Integrate Network API (Use AWS Amplify)
- 
- Fix ViewModels
- Refactor with Forms
- Separate View/Edit
  
  Distribution on TestFlight
  

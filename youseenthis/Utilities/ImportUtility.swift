@@ -13,18 +13,19 @@ struct ImportUtility {
         static let addUser = "adduserdatatopeople/"
     }
     
-    static func importUserData(from url: URL) {
+    static func importUserData(from url: URL) -> String? {
         /// url String format == youseenthis://adduserdatatopeople/[UserData] in JSON Format
         let string = url.absoluteString
         let components = string.components(separatedBy: Constants.addUser)
         guard let userDataString = components.last,
               let urlDecoded = userDataString.removingPercentEncoding,
               let userData = UserData(jsonString: urlDecoded) else {
-            return
+            return nil
         }
         let username = userData.user.username
-        print("Adding \(username) UserData to People")
-        // TODO: Implement Pop-Up Import Confirmation with Yes/No
+        let message = "Adding \(username) UserData to People"
         Coordinator.shared.addUserDataToPeople(userData: userData)
+        
+        return message
     }
 }
