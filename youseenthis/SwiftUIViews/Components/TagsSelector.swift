@@ -22,17 +22,17 @@ struct TagsSelector: View {
     var body: some View {
         VStack {
             Group {
-                WrappingHStack(id: \.self) {
-                    ForEach(filteredTags, id: \.self) { tag in
+                WrappingHStack(id: \.self, horizontalSpacing: 10, verticalSpacing: 6) {
+                    ForEach(selectedTags, id: \.self) { tag in
                         Button(action: {
-                            selectTag(tag: tag)
+                            deselectTag(tag: tag)
                         }) {
-                            Label(tag, systemImage: SystemImage.create.rawValue)
+                            Label(tag, systemImage: SystemImage.deleteX.rawValue)
                                 .padding(5)
                                 .foregroundColor(Color(UIColor.systemBackground))
                         }
                         .background(RoundedRectangle(cornerRadius: 15)
-                            .foregroundColor(SystemColors.deactiveTagFill))
+                            .foregroundColor(SystemColors.activeTagFill))
                     }
                 }
             }
@@ -45,17 +45,17 @@ struct TagsSelector: View {
             }
             Divider()
             Group {
-                WrappingHStack(id: \.self) {
-                    ForEach(selectedTags, id: \.self) { tag in
+                WrappingHStack(id: \.self, horizontalSpacing: 10, verticalSpacing: 6) {
+                    ForEach(filteredTags, id: \.self) { tag in
                         Button(action: {
-                            deselectTag(tag: tag)
+                            selectTag(tag: tag)
                         }) {
-                            Label(tag, systemImage: SystemImage.deleteX.rawValue)
+                            Label(tag, systemImage: SystemImage.create.rawValue)
                                 .padding(5)
                                 .foregroundColor(Color(UIColor.systemBackground))
                         }
                         .background(RoundedRectangle(cornerRadius: 15)
-                            .foregroundColor(SystemColors.activeTagFill))
+                            .foregroundColor(SystemColors.deactiveTagFill))
                     }
                 }
             }

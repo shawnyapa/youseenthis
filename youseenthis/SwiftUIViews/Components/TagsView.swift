@@ -11,7 +11,7 @@ import WrappingStack
 struct TagsView: View {
     var tags: [String]
     var body: some View {
-        WrappingHStack(id: \.self) {
+        WrappingHStack(id: \.self, horizontalSpacing: 10, verticalSpacing: 6) {
             ForEach(tags, id: \.self) { tag in
                 Text(tag)
                     .padding(5)

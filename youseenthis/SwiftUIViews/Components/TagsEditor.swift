@@ -26,7 +26,7 @@ struct TagsEditor: View {
                 Spacer()
             }
             Group {
-                WrappingHStack(id: \.self) {
+                WrappingHStack(id: \.self, horizontalSpacing: 10, verticalSpacing: 6) {
                     ForEach(tags, id: \.self) { tag in
                         Button(action: {
                             deleteTag(tag: tag)
