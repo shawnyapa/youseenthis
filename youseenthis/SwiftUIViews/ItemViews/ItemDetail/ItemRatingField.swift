@@ -18,7 +18,7 @@ struct ItemRatingField: View {
                     .font(.headline)
                 if mode == .view {
                     let rating = item.rating
-                    Text(rating.intDisplay())
+                    ItemRatingImage(itemRating: rating)
                     Text(rating.stringValue())
                         .font(.subheadline)
                 } else if mode == .edit || mode == .create {

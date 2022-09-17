@@ -51,6 +51,23 @@ enum ItemRating: Int, Hashable, Codable, CaseIterable, Identifiable, Comparable 
         }
     }
     
+    func imageString() -> String? {
+        switch self {
+        case .notRated:
+            return nil
+        case .janky:
+            return "Janky"
+        case .suspect:
+            return "Suspect"
+        case .meh:
+            return "Meh"
+        case .solid:
+            return "Solid"
+        case .danky:
+            return "Danky"
+        }
+    }
+    
     public static func <(lhs: ItemRating, rhs: ItemRating) -> Bool {
         lhs.rawValue < rhs.rawValue
     }

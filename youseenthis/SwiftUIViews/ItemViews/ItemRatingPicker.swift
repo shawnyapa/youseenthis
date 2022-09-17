@@ -13,6 +13,7 @@ struct ItemRatingPicker: View {
         Picker("\(ViewStrings.rating):", selection: $item.rating) {
             ForEach (ItemRating.allCases) { rating in
                 HStack {
+                    // TODO: Investigate Picker Custom Image Display Bug
                     Text(rating.intDisplay() + "  " + rating.stringValue())
                 }.tag(rating)
             }

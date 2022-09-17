@@ -18,14 +18,14 @@ struct ItemRow: View {
                 .multilineTextAlignment(.leading)
             Spacer()
             Divider()
-            let rating = item.rating
-            Text(rating.intDisplay())
+            ItemRatingImage(itemRating: item.rating)
                 .frame(width: 20, height: nil, alignment: .center)
+                .padding(6)
             Divider()
             ItemStatusImage(itemStatus: item.itemStatus)
                 .frame(width: 20, height: nil, alignment: .center)
         }
-        .padding(.all)
+        .padding(6)
     }
 }
 

@@ -35,6 +35,7 @@ enum SystemImage: String {
     case search = "magnifyingglass"
     case tag = "tag"
     case noTag = "tag.slash"
+    case minus = "minus"
 }
 
 // TODO: These strings should be localized

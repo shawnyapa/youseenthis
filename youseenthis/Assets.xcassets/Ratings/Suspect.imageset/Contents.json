@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "suspect_png.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
