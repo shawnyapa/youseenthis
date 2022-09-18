@@ -11,10 +11,10 @@ struct ItemRatingPicker: View {
     @Binding var item: Item
     var body: some View {
         Picker("\(ViewStrings.rating):", selection: $item.rating) {
-            ForEach (ItemRating.allCases) { rating in
+            ForEach (ItemRating.allCases.reversed()) { rating in
                 HStack {
-                    // TODO: Investigate Picker Custom Image Display Bug
-                    Text(rating.intDisplay() + "  " + rating.stringValue())
+                    Text(rating.stringValue())
+                    ItemRatingImage(itemRating: rating)
                 }.tag(rating)
             }
         }
@@ -24,7 +24,7 @@ struct ItemRatingPicker: View {
 struct ItemRatingPicker_Previews: PreviewProvider {
     static var previews: some View {
         let user = ExampleData.createUserDataWithItems()
-        let item = user.items.first!
+        let item = user.items[1]
         ItemRatingPicker(item: .constant(item))
     }
 }

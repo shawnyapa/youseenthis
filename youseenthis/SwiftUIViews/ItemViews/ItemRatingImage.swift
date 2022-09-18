@@ -17,6 +17,7 @@ struct ItemRatingImage: View {
                 .cornerRadius(5)
         } else {
             Image(systemName: SystemImage.minus.rawValue)
+                .frame(width: 30, height: 30, alignment: .center)
         }
     }
 }

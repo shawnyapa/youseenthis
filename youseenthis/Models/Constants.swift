@@ -38,7 +38,6 @@ enum SystemImage: String {
     case minus = "minus"
 }
 
-// TODO: These strings should be localized
 struct ViewStrings {
     static let title = "Title"
     static let status = "Status"
