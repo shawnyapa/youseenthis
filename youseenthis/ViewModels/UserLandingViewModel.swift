@@ -14,10 +14,4 @@ class UserLandingViewModel {
     init(userData: UserData) {
         self.userData = userData
     }
-    
-    func itemListViewModel() -> ItemListViewModel {
-        let itemListViewModel = ItemListViewModel(canEdit: true, userData: userData)
-        return itemListViewModel
-    }
-    
 }
