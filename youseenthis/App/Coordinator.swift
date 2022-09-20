@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+// TODO: Refactor to REMOVE Coordinator
 class Coordinator {
     static let shared = Coordinator()
     @ObservedObject var primaryUserData: PrimaryUserData
@@ -46,7 +47,6 @@ class Coordinator {
         }
     }
     
-    // TODO: Move to Peristence Layer
     func addItem(item: Item) {
         var itemsDictionary = StorageManager.allItems()
         itemsDictionary[item.id] = item

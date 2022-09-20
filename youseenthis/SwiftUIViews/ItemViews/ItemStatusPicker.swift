@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ItemStatusPicker: View {
-    @Binding var item: Item
+    @Binding var itemStatus: ItemStatus
     var body: some View {
-        Picker("\(ViewStrings.status):", selection: $item.itemStatus) {
+        Picker("\(ViewStrings.status):", selection: $itemStatus) {
             ForEach (ItemStatus.allCases) { status in
                 HStack {
                     Text(status.stringValue())
@@ -23,8 +23,6 @@ struct ItemStatusPicker: View {
 
 struct ItemStatusPicker_Previews: PreviewProvider {
     static var previews: some View {
-        let user = ExampleData.createUserDataWithItems()
-        let item = user.items.first!
-        ItemStatusPicker(item: .constant(item))
+        ItemStatusPicker(itemStatus: .constant(.watching))
     }
 }

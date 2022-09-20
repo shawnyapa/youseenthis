@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ItemRatingPicker: View {
-    @Binding var item: Item
+    @Binding var itemRating: ItemRating
     var body: some View {
-        Picker("\(ViewStrings.rating):", selection: $item.rating) {
+        Picker("\(ViewStrings.rating):", selection: $itemRating) {
             ForEach (ItemRating.allCases.reversed()) { rating in
                 HStack {
                     Text(rating.stringValue())
@@ -23,8 +23,6 @@ struct ItemRatingPicker: View {
 
 struct ItemRatingPicker_Previews: PreviewProvider {
     static var previews: some View {
-        let user = ExampleData.createUserDataWithItems()
-        let item = user.items[1]
-        ItemRatingPicker(item: .constant(item))
+        ItemRatingPicker(itemRating: .constant(.danky))
     }
 }

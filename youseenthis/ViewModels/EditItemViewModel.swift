@@ -7,6 +7,6 @@
 
 import Foundation
 
-class EditItemVM: ObservableObject {
+class EditItemViewModel: ObservableObject {
     
 }

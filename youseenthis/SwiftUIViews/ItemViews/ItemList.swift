@@ -8,29 +8,25 @@
 import SwiftUI
 
 struct ItemList: View {
-    @Binding var primaryUser: User
-    @Binding var viewedUser: User
-    @Binding var people: [UserData]
-    @Binding var items: [Item]
+    @ObservedObject var listItemsVM: ListItemsViewModel
+    @State private var showCreateItem: Bool = false
     @State private var sortSheetMode: SheetMode = .none
     @State private var filterSheetMode: SheetMode = .none
-    @Binding var itemSortType: ItemSortType
-    @Binding var filterItemType: FilterItemType
-    @Binding var filterItemStatus: FilterItemStatus
-    @Binding var selectedTags: [String]
-    @Binding var existingTags: [String]
-    var canEdit: Bool {
-        primaryUser.id == viewedUser.id
-    }
+    @State private var itemSortType: ItemSortType = .titleAscending
+    @State private var filterItemType: FilterItemType = .noFilter
+    @State private var filterItemStatus: FilterItemStatus = .noFilter
+    @State private var selectedTags: [String] = [String]()
+    @State private var existingTags: [String] = [String]()
+
     var listTitle: String {
-        if primaryUser.id == viewedUser.id {
+        if listItemsVM.showingPrimaryUserItems {
             return "\(ViewStrings.my) \(filterItemType.headerStringValue())"
         } else {
-            return "\(viewedUser.firstName)'s \(filterItemType.headerStringValue())"
+            return "\(listItemsVM.viewedUser.firstName)'s \(filterItemType.headerStringValue())"
         }
     }
     var body: some View {
-        let sortedItems = ItemArraySortAndFilter.sortedItems(items: items, sortType: itemSortType)
+        let sortedItems = ItemArraySortAndFilter.sortedItems(items: listItemsVM.items, sortType: itemSortType)
         let filteredItems = ItemArraySortAndFilter.filteredItems(items: sortedItems, itemType: filterItemType.itemTypeForFilterItemType(), itemStatus: filterItemStatus.itemStatusForFilterItemStatus())
         let matchedTaggedItems = ItemArraySortAndFilter.matchedTaggedItems(items: filteredItems, selectedTags: selectedTags)
         NavigationView {
@@ -41,41 +37,45 @@ struct ItemList: View {
                     } else {
                         List(matchedTaggedItems) { item in
                             NavigationLink {
-                                ItemDetail(canEdit: canEdit, mode: .view, item: item)
+                                ItemDetail(canEdit: listItemsVM.canEdit, mode: .view, item: item)
                             } label: {
                                 ItemRow(item: item)
                             }
                         }
                     }
+                    
                     OverlaySheet(sheetMode: $sortSheetMode) {
                         SortSheet(itemSortType: $itemSortType)
                     }
                     OverlaySheet(sheetMode: $filterSheetMode) {
-                        FilterSheet(filterItemType: $filterItemType, filterItemStatus: $filterItemStatus, selectedTags: $selectedTags, items: $items, existingTags: $existingTags)
+                        FilterSheet(filterItemType: $filterItemType, filterItemStatus: $filterItemStatus, selectedTags: $selectedTags, items: $listItemsVM.items, existingTags: $existingTags)
                     }
                 }
+            }
+            .sheet(isPresented: $showCreateItem) {
+                CreateItemView(showCreateItem: $showCreateItem)
             }
             .navigationTitle(listTitle)
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
-                    if canEdit == true {
-                        NavigationLink {
-                            let item = Item.defaultValue()
-                            ItemDetail(canEdit: canEdit, mode: .create, item: item)
-                        } label: {
+                    if listItemsVM.canEdit == true {
+                        Button(action: {
+                            showCreateItem.toggle()
+                        }, label: {
                             Image(systemName: SystemImage.create.rawValue)
-                        }
+                        })
                     } else {
                         EmptyView()
                     }
                 }
-                ToolbarItem(placement: .navigation) {
-                    NavigationLink {
-                        PeopleTab(primaryUser: $primaryUser, people: $people)
-                    } label: {
-                        Image(systemName: SystemImage.profile.rawValue)
-                    }
-                }
+                // TODO: Refactor for People Model Needed
+//                ToolbarItem(placement: .navigation) {
+//                    NavigationLink {
+//                        PeopleTab(primaryUser: $primaryUser, people: $people)
+//                    } label: {
+//                        Image(systemName: SystemImage.profile.rawValue)
+//                    }
+//                }
                 ToolbarItem(placement: .bottomBar) {
                     Button(action: {
                         if sortSheetMode == .none {
@@ -119,8 +119,6 @@ struct ItemList: View {
 
 struct ItemList_Previews: PreviewProvider {
     static var previews: some View {
-        let userData = ExampleData.createUserDataWithItems()
-        let people = ExampleData.createPeople()
-        ItemList(primaryUser: .constant(userData.user), viewedUser: .constant(userData.user), people: .constant(people), items: .constant(userData.items), itemSortType: .constant(.titleAscending), filterItemType: .constant(.noFilter), filterItemStatus: .constant(.noFilter), selectedTags: .constant([String]()), existingTags: .constant([String]()))
+        ItemList(listItemsVM: ListItemsViewModel())
     }
 }

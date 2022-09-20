@@ -22,7 +22,7 @@ struct ItemRatingField: View {
                     Text(rating.stringValue())
                         .font(.subheadline)
                 } else if mode == .edit || mode == .create {
-                    ItemRatingPicker(item: $item)
+                    ItemRatingPicker(itemRating: $item.rating)
                 }
                 Spacer()
             }

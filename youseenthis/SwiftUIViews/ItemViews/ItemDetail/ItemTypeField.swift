@@ -21,7 +21,7 @@ struct ItemTypeField: View {
                     Text(item.itemType.stringValue())
                         .font(.subheadline)
                 } else if mode == .edit || mode == .create {
-                    ItemTypePicker(item: $item)
+                    ItemTypePicker(itemType: $item.itemType)
                 }
                 Spacer()
             }

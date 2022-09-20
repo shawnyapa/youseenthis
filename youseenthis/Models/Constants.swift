@@ -93,6 +93,8 @@ struct ViewStrings {
     static let videoGames = "Video Games"
     static let newTag = "New Tag"
     static let searchTags = "Search Tags"
+    static let cancel = "Cancel"
+    static let add = "Add"
 }
 
 struct SystemColors {

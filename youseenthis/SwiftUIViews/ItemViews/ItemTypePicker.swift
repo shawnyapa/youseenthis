@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ItemTypePicker: View {
-    @Binding var item: Item
+    @Binding var itemType: ItemType
     var body: some View {
-        Picker("\(ViewStrings.type):", selection: $item.itemType) {
+        Picker("\(ViewStrings.type):", selection: $itemType) {
             ForEach (ItemType.allCases) { type in
                 HStack {
                     Text(type.stringValue())
@@ -23,8 +23,6 @@ struct ItemTypePicker: View {
 
 struct ItemTypePicker_Previews: PreviewProvider {
     static var previews: some View {
-        let user = ExampleData.createUserDataWithItems()
-        let item = user.items.first!
-        ItemTypePicker(item: .constant(item))
+        ItemTypePicker(itemType: .constant(.movie))
     }
 }

@@ -13,20 +13,14 @@ struct youseenthisApp: App {
     let labTestingUI: Bool = false
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @ObservedObject var primaryUserData = Coordinator.shared.primaryUserData
-    @ObservedObject var viewedUserData = Coordinator.shared.viewedUserData
-    @ObservedObject var itemData = Coordinator.shared.itemData
     @State private var showingAlert = false
     @State private var importUserMessage: String = ""
     var body: some Scene {
         WindowGroup {
             if labTestingUI {
-                LabTestingUI(user: primaryUserData)
+                LabTestingUI()
             } else {
-                // TODO: Refactor ViewModels, currently a total unuseable mess
-                //let viewModel = UserLandingViewModel(userData: userData)
-                //UserLandingView(primaryUser: $userData.user, people: $userData.people, items: viewModel.$userData.items)
-                UserLandingView(primaryUser: $primaryUserData.user, viewedUser: $viewedUserData.user, people: $primaryUserData.people, items: $itemData.items)
+                HomeScreenView(homeScreenViewModel: HomeScreenViewModel())
                     .onOpenURL { url in
                         if let message = ImportUtility.importUserData(from: url) {
                             importUserMessage = message
@@ -76,14 +70,13 @@ struct youseenthisApp: App {
     TagsEditor (Done)
     TagsSelector (Done)
  Integrate Tags UX into existing UX (Done)
+ Update Ratings with 5 Images, Logo->GreenFace (Done)
  
- Fix ViewModels
- Refactor with Forms
+ Fix ViewModels (In progress)
+ Refactor with Forms (In progress)
  Separate View/Edit
  Remove Confirm Button from Edit, Save on Back
 
- Update Ratings with 5 Images, Logo->GreenFace (Done)
- 
  Update to Purple Logo
  Update missing Logo Asset Sizes
  Setup LocalizedStrings and Files

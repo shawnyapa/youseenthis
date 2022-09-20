@@ -21,7 +21,7 @@ struct ItemStatusField: View {
                     Text(item.itemStatus.stringValue())
                         .font(.subheadline)
                 } else if mode == .edit || mode == .create {
-                    ItemStatusPicker(item: $item)
+                    ItemStatusPicker(itemStatus: $item.itemStatus)
                 }
                 Spacer()
             }

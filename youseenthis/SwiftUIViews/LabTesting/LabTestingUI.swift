@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LabTestingUI: View {
-    var user: UserData
+    var user = ExampleData.createUserDataWithItems()
     var body: some View {
         let tags = ["SciFi", "StarWars", "Detective1", "Detective2", "ExtraTag", "OneMoreToWrap"]
         TagsEditor(tags: .constant(tags))
