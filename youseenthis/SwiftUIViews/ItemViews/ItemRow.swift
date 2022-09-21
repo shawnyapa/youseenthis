@@ -33,5 +33,6 @@ struct ItemRow_Previews: PreviewProvider {
     static var previews: some View {
         let userData = ExampleData.createUserDataWithItems()
         ItemRow(item: userData.items[0])
+            .frame(height: 30)
     }
 }

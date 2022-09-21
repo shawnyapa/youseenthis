@@ -6,24 +6,24 @@
 //
 
 import Foundation
+import Combine
 
 class CreateItemViewModel: ObservableObject {
+    
+    let updateItemsSubject = PassthroughSubject<Void, Never>()
+    @Published var item: Item
+    
+    init(item: Item) {
+        self.item = item
+    }
             
-    func addItem(title: String,
-                 itemType: ItemType,
-                 itemStatus: ItemStatus,
-                 itemRating: ItemRating,
-                 tags: [String],
-                 notes: String) {
-        var item = Item.defaultValue()
-        item.title = title
-        item.itemType = itemType
-        item.itemStatus = itemStatus
-        item.rating = itemRating
-        item.tags = tags
-        item.notes = notes
+    func addItem() {
+        guard item.title.isEmpty == false else {
+            return
+        }
         var itemsDictionary = StorageManager.allItems()
         itemsDictionary[item.id] = item
         StorageManager.saveItems(items: itemsDictionary)
+        updateItemsSubject.send()
     }
 }

@@ -11,11 +11,11 @@ struct HomeScreenView: View {
     @ObservedObject var homeScreenViewModel: HomeScreenViewModel
     
     var body: some View {
-        ItemList(listItemsVM: ListItemsViewModel())
+        ListItemsView(listItemsVM: ListItemsViewModel())
     }
 }
 
-struct UserLandingView_Previews: PreviewProvider {
+struct HomeScreenView_Previews: PreviewProvider {
     static var previews: some View {
         HomeScreenView(homeScreenViewModel: HomeScreenViewModel())
     }

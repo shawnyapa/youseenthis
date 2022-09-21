@@ -8,22 +8,16 @@
 import SwiftUI
 
 struct ItemRatingField: View {
-    @Binding var mode: ItemEditMode
-    @Binding var item: Item
+    var item: Item
     var body: some View {
         VStack {
             Divider()
             HStack {
                 Text("\(ViewStrings.rating):")
                     .font(.headline)
-                if mode == .view {
-                    let rating = item.rating
-                    ItemRatingImage(itemRating: rating)
-                    Text(rating.stringValue())
-                        .font(.subheadline)
-                } else if mode == .edit || mode == .create {
-                    ItemRatingPicker(itemRating: $item.rating)
-                }
+                ItemRatingImage(itemRating: item.rating)
+                Text(item.rating.stringValue())
+                    .font(.subheadline)
                 Spacer()
             }
         }
@@ -34,6 +28,6 @@ struct ItemRatingField_Previews: PreviewProvider {
     static var previews: some View {
         let userData = ExampleData.createUserDataWithItems()
         let item1 = userData.items[0]
-        ItemRatingField(mode: .constant(ItemEditMode.view), item: .constant(item1))
+        ItemRatingField(item: item1)
     }
 }

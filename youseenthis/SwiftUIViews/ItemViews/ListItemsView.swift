@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ItemList: View {
+struct ListItemsView: View {
     @ObservedObject var listItemsVM: ListItemsViewModel
     @State private var showCreateItem: Bool = false
     @State private var sortSheetMode: SheetMode = .none
@@ -37,7 +37,12 @@ struct ItemList: View {
                     } else {
                         List(matchedTaggedItems) { item in
                             NavigationLink {
-                                ItemDetail(canEdit: listItemsVM.canEdit, mode: .view, item: item)
+                                if listItemsVM.canEdit {
+                                    EditItemView(editItemVM: listItemsVM.editItemViewModel(item: item))
+                                } else {
+                                    ViewItemView(item: item)
+                                }
+                                
                             } label: {
                                 ItemRow(item: item)
                             }
@@ -53,7 +58,7 @@ struct ItemList: View {
                 }
             }
             .sheet(isPresented: $showCreateItem) {
-                CreateItemView(showCreateItem: $showCreateItem)
+                CreateItemView(showCreateItem: $showCreateItem, createItemVM: listItemsVM.createItemViewModel())
             }
             .navigationTitle(listTitle)
             .toolbar {
@@ -117,8 +122,8 @@ struct ItemList: View {
     }
 }
 
-struct ItemList_Previews: PreviewProvider {
+struct ListItemsView_Previews: PreviewProvider {
     static var previews: some View {
-        ItemList(listItemsVM: ListItemsViewModel())
+        ListItemsView(listItemsVM: ListItemsViewModel())
     }
 }

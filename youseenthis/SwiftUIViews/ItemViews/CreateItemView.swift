@@ -9,13 +9,13 @@ import SwiftUI
 
 struct CreateItemView: View {
     @Binding var showCreateItem: Bool
-    @ObservedObject var createItemVM = CreateItemViewModel()
-    @State private var itemTitle = ""
-    @State private var itemType = ItemType.notSelected
-    @State private var itemStatus = ItemStatus.willWatch
-    @State private var itemRating = ItemRating.notRated
-    @State private var tags = [String]()
-    @State private var notes = ""
+    @ObservedObject var createItemVM: CreateItemViewModel
+//    @State private var itemTitle = ""
+//    @State private var itemType = ItemType.notSelected
+//    @State private var itemStatus = ItemStatus.willWatch
+//    @State private var itemRating = ItemRating.notRated
+//    @State private var tags = [String]()
+//    @State private var notes = ""
     
     var body: some View {
         VStack {
@@ -26,14 +26,7 @@ struct CreateItemView: View {
                 .buttonStyle(BorderlessButtonStyle())
                 Spacer()
                 Button(ViewStrings.add) {
-                    if !itemTitle.isEmpty {
-                        createItemVM.addItem(title: itemTitle,
-                                             itemType: itemType,
-                                             itemStatus: itemStatus,
-                                             itemRating: itemRating,
-                                             tags: tags,
-                                             notes: notes)
-                    }
+                    createItemVM.addItem()
                     showCreateItem.toggle()
                 }
                 .buttonStyle(BorderlessButtonStyle())
@@ -42,20 +35,20 @@ struct CreateItemView: View {
             Form {
 
                 Section(header: Text(ViewStrings.title)) {
-                    TextField("\(ViewStrings.title)", text:$itemTitle)
+                    TextField("\(ViewStrings.title)", text:$createItemVM.item.title)
                 }
                 Section(header: Text(ViewStrings.type)) {
-                    ItemTypePicker(itemType: $itemType)
+                    ItemTypePicker(itemType: $createItemVM.item.itemType)
                 }
                 Section(header: Text(ViewStrings.status)) {
-                    ItemStatusPicker(itemStatus: $itemStatus)
+                    ItemStatusPicker(itemStatus: $createItemVM.item.itemStatus)
                 }
                 Section(header: Text(ViewStrings.type)) {
-                    ItemRatingPicker(itemRating: $itemRating)
+                    ItemRatingPicker(itemRating: $createItemVM.item.rating)
                 }
-                TagsEditor(tags: $tags)
+                TagsEditor(tags: $createItemVM.item.tags)
                 Section(header: Text(ViewStrings.notes)) {
-                    TextEditor(text: $notes)
+                    TextEditor(text: $createItemVM.item.notes)
                         .frame(height: 150, alignment: .top)
                 }
             }
@@ -65,6 +58,6 @@ struct CreateItemView: View {
 
 struct CreateItemView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateItemView(showCreateItem: .constant(true))
+        CreateItemView(showCreateItem: .constant(true), createItemVM: CreateItemViewModel(item: Item.defaultValue()))
     }
 }

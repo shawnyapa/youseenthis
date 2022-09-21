@@ -9,4 +9,9 @@ import Foundation
 
 class ViewItemViewModel: ObservableObject {
     
+    var item: Item
+    
+    init(item: Item) {
+        self.item = item
+    }
 }
