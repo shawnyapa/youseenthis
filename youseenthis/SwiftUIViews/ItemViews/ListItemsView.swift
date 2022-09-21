@@ -26,6 +26,7 @@ struct ListItemsView: View {
         }
     }
     var body: some View {
+        // TODO: Move to ViewModel
         let sortedItems = ItemArraySortAndFilter.sortedItems(items: listItemsVM.items, sortType: itemSortType)
         let filteredItems = ItemArraySortAndFilter.filteredItems(items: sortedItems, itemType: filterItemType.itemTypeForFilterItemType(), itemStatus: filterItemStatus.itemStatusForFilterItemStatus())
         let matchedTaggedItems = ItemArraySortAndFilter.matchedTaggedItems(items: filteredItems, selectedTags: selectedTags)
@@ -62,7 +63,8 @@ struct ListItemsView: View {
             }
             .navigationTitle(listTitle)
             .toolbar {
-                ToolbarItem(placement: .primaryAction) {
+                // TODO: Move to BottomRight on top Z Layer
+                ToolbarItem(placement: .navigation) {
                     if listItemsVM.canEdit == true {
                         Button(action: {
                             showCreateItem.toggle()
@@ -81,25 +83,26 @@ struct ListItemsView: View {
 //                        Image(systemName: SystemImage.profile.rawValue)
 //                    }
 //                }
-                ToolbarItem(placement: .bottomBar) {
-                    Button(action: {
-                        if sortSheetMode == .none {
-                            sortSheetMode = .threequarter
-                            if filterSheetMode != .none {
-                                filterSheetMode = .none
-                            }
-                        } else {
-                            sortSheetMode = .none
-                        }
-                    }, label: {
-                        if itemSortType == .titleAscending {
-                            Image(systemName: SystemImage.sort_off.rawValue)
-                        } else {
-                            Image(systemName: SystemImage.sort_on.rawValue)
-                        }
-                    })
-                }
-                ToolbarItem(placement: .bottomBar) {
+                // TODO: Refactor into Filter Sheet
+//                ToolbarItem(placement: .bottomBar) {
+//                    Button(action: {
+//                        if sortSheetMode == .none {
+//                            sortSheetMode = .threequarter
+//                            if filterSheetMode != .none {
+//                                filterSheetMode = .none
+//                            }
+//                        } else {
+//                            sortSheetMode = .none
+//                        }
+//                    }, label: {
+//                        if itemSortType == .titleAscending {
+//                            Image(systemName: SystemImage.sort_off.rawValue)
+//                        } else {
+//                            Image(systemName: SystemImage.sort_on.rawValue)
+//                        }
+//                    })
+//                }
+                ToolbarItem(placement: .primaryAction) {
                     Button(action: {
                         if filterSheetMode == .none {
                             filterSheetMode = .onequarter

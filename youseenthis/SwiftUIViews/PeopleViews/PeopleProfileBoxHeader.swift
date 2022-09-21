@@ -14,8 +14,8 @@ struct PeopleProfileBoxHeader: View {
             Text(ViewStrings.profile)
             Spacer()
             NavigationLink {
-                UserProfileDetail(canEdit: true, user: primaryUser)
-                // TODO: Debug UserProfileForm double dismiss issue
+                //ViewUserView(canEdit: true, user: primaryUser)
+                // TODO: Debug UserProfileForm double dismiss issue ^^ 
                 //UserProfileForm(user: primaryUser)
             } label: {
                 Image(systemName: SystemImage.edit.rawValue)

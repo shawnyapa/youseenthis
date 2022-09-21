@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-// TODO: Refactor to REMOVE Coordinator
+// TODO: Refactor to REMOVE Coordinator and CustomButtons
 class Coordinator {
     static let shared = Coordinator()
     @ObservedObject var primaryUserData: PrimaryUserData
@@ -18,7 +18,7 @@ class Coordinator {
     private init() {
         let itemsDictionary = StorageManager.allItems()
         let itemsArray = Coordinator.itemsArray(from: itemsDictionary)
-        let primaryUser = User.primaryUser() ?? User.sampleValue()
+        let primaryUser = StorageManager.getPrimaryUser() ?? User.sampleValue()
         let peopleDictionary = StorageManager.allPeopleDictionary()
         let people = Coordinator.peopleArray(from: peopleDictionary)
         let primaryUserData = PrimaryUserData(user: primaryUser, items: itemsArray, people: people)
@@ -72,16 +72,14 @@ class Coordinator {
         return itemsDictionary.map { $0.value }
     }
     
-    func addPrimaryUser(user: User) -> Bool {
-        let success = user.savePrimaryUser(user: user)
+    func addPrimaryUser(user: User) {
+        StorageManager.savePrimaryUser(user: user)
         primaryUserData.user = user
-        return success
     }
     
-    func editPrimaryUser(user: User) -> Bool {
-        let success = user.savePrimaryUser(user: user)
+    func editPrimaryUser(user: User) {
+        StorageManager.savePrimaryUser(user: user)
         primaryUserData.user = user
-        return success
     }
     
     func addUserDataToPeople(userData: UserData) {

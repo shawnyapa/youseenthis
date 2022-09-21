@@ -16,20 +16,11 @@ struct User: Identifiable, Codable {
     var phoneNumber: String
     var aboutMe: String
     
-    func savePrimaryUser(user: User) -> Bool {
-        StorageManager.savePrimaryUser(user: user)
-        return true
-    }
     
     static func newBlankUser() -> User {
         User(id: UUID().uuidString, username: "", firstName: "", lastName: "", email: "", phoneNumber: "", aboutMe: "")
     }
-    
-    static func primaryUser() -> User? {
-        let primaryUser = StorageManager.getPrimaryUser()
-        return primaryUser
-    }
-    
+        
     static func sampleValue() -> User {
         let uuidString = UUID().uuidString
         let user = User(id: uuidString, username: "username", firstName: "First Name", lastName: "Last Name", email: "address@email.com", phoneNumber: "", aboutMe: "")

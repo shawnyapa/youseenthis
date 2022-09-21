@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+// TODO: Refactor with a ItemsServiceProtocol, UserServiceProtocol, FollowingServiceProtocol
 class StorageManager {
     
     enum Constants:String {

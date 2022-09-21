@@ -8,14 +8,9 @@
 import SwiftUI
 
 struct CreateItemView: View {
+    
     @Binding var showCreateItem: Bool
     @ObservedObject var createItemVM: CreateItemViewModel
-//    @State private var itemTitle = ""
-//    @State private var itemType = ItemType.notSelected
-//    @State private var itemStatus = ItemStatus.willWatch
-//    @State private var itemRating = ItemRating.notRated
-//    @State private var tags = [String]()
-//    @State private var notes = ""
     
     var body: some View {
         VStack {

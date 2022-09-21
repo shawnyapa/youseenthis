@@ -20,7 +20,7 @@ struct youseenthisApp: App {
             if labTestingUI {
                 LabTestingUI()
             } else {
-                HomeScreenView(homeScreenViewModel: HomeScreenViewModel())
+                HomeScreenView(homeScreenVM: HomeScreenViewModel())
                     .onOpenURL { url in
                         if let message = ImportUtility.importUserData(from: url) {
                             importUserMessage = message

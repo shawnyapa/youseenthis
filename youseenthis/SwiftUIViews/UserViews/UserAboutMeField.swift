@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct UserAboutMeField: View {
-    @Binding var mode: UserEditMode
-    @Binding var user: User
+    var aboutMe: String
     var body: some View {
         VStack {
             Divider()
@@ -17,19 +16,11 @@ struct UserAboutMeField: View {
                 VStack(alignment: .leading) {
                     Text("\(ViewStrings.aboutMe):")
                         .font(.headline)
-                    if mode == .view {
-                        Text(user.aboutMe)
-                            .font(.title)
-                            .frame(height: 160)
-                            .cornerRadius(16)
-                            .multilineTextAlignment(.leading)
-                    } else if mode == .edit || mode == .create {
-                        TextField("\(ViewStrings.aboutMe)", text:$user.aboutMe)
-                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                            .frame(height: 150)
-                            .cornerRadius(16)
-                            .multilineTextAlignment(.leading)
-                    }
+                    Text(aboutMe)
+                        .font(.body)
+                        .frame(height: 160)
+                        .cornerRadius(16)
+                        .multilineTextAlignment(.leading)
                 }
                 Spacer()
             }
@@ -42,8 +33,6 @@ struct UserAboutMeField: View {
 
 struct UserAboutMeField_Previews: PreviewProvider {
     static var previews: some View {
-        let userData = ExampleData.createUserDataWithItems()
-        let user = userData.user
-        UserAboutMeField(mode: .constant(UserEditMode.view), user: .constant(user))
+        UserAboutMeField(aboutMe: "I'm into Star Wars")
     }
 }
