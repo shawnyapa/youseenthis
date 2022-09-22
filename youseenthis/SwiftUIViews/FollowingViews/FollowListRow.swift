@@ -7,15 +7,12 @@
 
 import SwiftUI
 
-struct PeopleRow: View {
+struct FollowListRow: View {
     var dismiss: DismissAction? = nil
     var person: User
     var body: some View {
         let personText = "\(person.firstName) \(person.lastName)"
         HStack(alignment: .center) {
-            DeletePersonButton(userId: person.id)
-                .buttonStyle(BorderlessButtonStyle())
-            Divider()
             Text(personText)
                 .multilineTextAlignment(.leading)
             Spacer()
@@ -27,9 +24,9 @@ struct PeopleRow: View {
     }
 }
 
-struct PeopleRow_Previews: PreviewProvider {
+struct FollowListRow_Previews: PreviewProvider {
     static var previews: some View {
         let person = User.sampleValue()
-        PeopleRow(person: person)
+        FollowListRow(person: person)
     }
 }

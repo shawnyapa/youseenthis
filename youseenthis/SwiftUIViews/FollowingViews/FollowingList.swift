@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PeopleList: View {
+struct FollowingList: View {
     var dismiss: DismissAction? = nil
     var people: [UserData]
     var userArray: [User] {
@@ -17,12 +17,12 @@ struct PeopleList: View {
     }
     var body: some View {
         List {
-            Section(header: PeopleListHeader()) {
+            Section(header: FollowingListHeader()) {
                 if userArray.count == 0 {
                     EmptyPeopleList()
                 } else {
                     ForEach(userArray) { user in
-                        PeopleRow(dismiss: dismiss, person: user)
+                        FollowListRow(dismiss: dismiss, person: user)
                     }
                 }
             }
@@ -30,9 +30,9 @@ struct PeopleList: View {
     }
 }
 
-struct PeopleList_Previews: PreviewProvider {
+struct FollowingList_Previews: PreviewProvider {
     static var previews: some View {
         let people = ExampleData.createEmptyPeople()
-        PeopleList(people: people)
+        FollowingList(people: people)
     }
 }
