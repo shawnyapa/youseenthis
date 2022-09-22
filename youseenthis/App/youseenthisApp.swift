@@ -71,11 +71,13 @@ struct youseenthisApp: App {
     TagsSelector (Done)
  Integrate Tags UX into existing UX (Done)
  Update Ratings with 5 Images, Logo->GreenFace (Done)
- 
- Fix ViewModels (In progress)
- Refactor with Forms (In progress)
- Separate View/Edit
+ Fix ViewModels (Done)
+ Refactor with Forms (Done)
+ Separate View/Edit (Done)
  Remove Confirm Button from Edit, Save on Back
+ 
+ Refactor Following Users
+ Refactor Import/Export Utility
 
  Update to Purple Logo
  Update missing Logo Asset Sizes

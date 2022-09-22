@@ -18,12 +18,18 @@ struct HomeScreenView: View {
                     Image(systemName: SystemImage.list.rawValue)
                 }
                 .tag(1)
+            FollowingListView(followingListVM: homeScreenVM.createFollowingListViewModel())
+                .tabItem {
+                    Text(ViewStrings.following)
+                    Image(systemName: SystemImage.people.rawValue)
+                }
+                .tag(2)
             ViewUserView(viewUserVM: homeScreenVM.createViewUserViewModel())
                 .tabItem {
                     Text(ViewStrings.my + " " + ViewStrings.profile)
                     Image(systemName: SystemImage.profile.rawValue)
                 }
-                .tag(2)
+                .tag(3)
         }
     }
 }

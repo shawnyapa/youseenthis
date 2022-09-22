@@ -24,8 +24,24 @@ struct ImportUtility {
         }
         let username = userData.user.username
         let message = "Adding \(username) UserData to People"
-        Coordinator.shared.addUserDataToPeople(userData: userData)
+        ImportUtility.addUserDataToPeople(userData: userData)
         
         return message
+    }
+    
+    static func addUserDataToPeople(userData: UserData) {
+        var peopleDictionary = StorageManager.allPeopleDictionary()
+        peopleDictionary.updateValue(userData, forKey: userData.user.id)
+        StorageManager.savePeople(peopleDictionary: peopleDictionary)
+    }
+    
+    static func removeUserDataFromPeople(with userId: String) {
+        var peopleDictionary = StorageManager.allPeopleDictionary()
+        peopleDictionary.removeValue(forKey: userId)
+        StorageManager.savePeople(peopleDictionary: peopleDictionary)
+    }
+    
+    static func peopleArray(from peopleDictionary:[String: UserData]) -> [UserData] {
+        return peopleDictionary.map { $0.value }
     }
 }

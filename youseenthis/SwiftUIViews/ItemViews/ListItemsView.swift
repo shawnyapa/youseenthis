@@ -75,14 +75,6 @@ struct ListItemsView: View {
                         EmptyView()
                     }
                 }
-                // TODO: Refactor for People Model Needed
-//                ToolbarItem(placement: .navigation) {
-//                    NavigationLink {
-//                        PeopleTab(primaryUser: $primaryUser, people: $people)
-//                    } label: {
-//                        Image(systemName: SystemImage.profile.rawValue)
-//                    }
-//                }
                 // TODO: Refactor into Filter Sheet
 //                ToolbarItem(placement: .bottomBar) {
 //                    Button(action: {

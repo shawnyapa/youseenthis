@@ -58,7 +58,7 @@ struct FilterSheet: View {
 
 struct FilterSheet_Previews: PreviewProvider {
     static var previews: some View {
-        let userData = ExampleData.createUserDataWithItems()
-        FilterSheet(filterItemType: .constant(.movie), filterItemStatus: .constant(.willWatch), selectedTags: .constant([String]()), items: .constant(userData.items), existingTags: .constant([String]()))
+        let items = ExampleData.createItems()
+        FilterSheet(filterItemType: .constant(.movie), filterItemStatus: .constant(.willWatch), selectedTags: .constant([String]()), items: .constant(items), existingTags: .constant([String]()))
     }
 }

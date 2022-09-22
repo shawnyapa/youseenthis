@@ -19,4 +19,10 @@ class HomeScreenViewModel: ObservableObject {
         let user = StorageManager.getPrimaryUser() ?? User.newBlankUser()
         return ViewUserViewModel(user: user)
     }
+    
+    func createFollowingListViewModel() -> FollowingListViewModel {
+        // TODO: StorageManager or FollowingService
+        let users = ExampleData.createExampleUsersForFollowing()
+        return FollowingListViewModel(following: users)
+    }
 }

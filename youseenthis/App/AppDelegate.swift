@@ -22,7 +22,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     }
     
     func labTesting() {
-        let userData = Coordinator.shared.primaryUserData
-        LabTesting.jsonTesting(userData: userData)
+
+        //LabTesting.jsonTesting(userData: userData)
     }
 }

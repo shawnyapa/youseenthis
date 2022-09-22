@@ -28,8 +28,7 @@ struct ViewItemView: View {
 
 struct ViewItemView_Previews: PreviewProvider {
     static var previews: some View {
-        let userData = ExampleData.createUserDataWithItems()
-        let item1 = userData.items[0]
-        ViewItemView(item: item1)
+        let item = ExampleData.createItem()
+        ViewItemView(item: item)
     }
 }

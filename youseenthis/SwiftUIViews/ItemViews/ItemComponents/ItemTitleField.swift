@@ -27,8 +27,7 @@ struct ItemTitleField: View {
 
 struct ItemTitleField_Previews: PreviewProvider {
     static var previews: some View {
-        let userData = ExampleData.createUserDataWithItems()
-        let item1 = userData.items[0]
-        ItemTitleField(item: item1)
+        let item = ExampleData.createItem()
+        ItemTitleField(item: item)
     }
 }

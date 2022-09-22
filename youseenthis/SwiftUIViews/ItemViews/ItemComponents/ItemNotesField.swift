@@ -33,8 +33,7 @@ struct ItemNotesField: View {
 
 struct ItemNotesField_Previews: PreviewProvider {
     static var previews: some View {
-        let userData = ExampleData.createUserDataWithItems()
-        let item1 = userData.items[0]
-        ItemNotesField(item: item1)
+        let item = ExampleData.createItem()
+        ItemNotesField(item: item)
     }
 }

@@ -33,19 +33,33 @@ struct ExampleData {
         
         return [user1]
     }
-
-    static func createPrimaryUserDataWithEmptyItemsAndEmptyPeople() -> PrimaryUserData {
-        let user1 = ExampleData.createUserDataWithEmptyItems()
-        let people = ExampleData.createEmptyPeople()
-        let primaryUserData = PrimaryUserData(user: user1.user, items: user1.items, people: people)
+    
+    static func createItem() -> Item {
+        Item(id: UUID().uuidString, title: "Star Wars", itemType: .movie, itemStatus: .didWatch, rating: .danky, notes: "", tags:["StarWars, SciFi"])
+    }
+    
+    static func createItems() -> [Item] {
+        let item1 = Item(id: UUID().uuidString, title: "The Mandalorian", itemType: .tvShow, itemStatus: .didWatch, rating: .danky, notes: "", tags:[String]())
+        let item2 = Item(id: UUID().uuidString, title: "Ahsoka", itemType: .tvShow, itemStatus: .willWatch, rating: .janky, notes: "", tags:[String]())
+        let item3 = Item(id: UUID().uuidString, title: "Halo", itemType: .videoGame, itemStatus: .watching, rating: .notRated, notes: "", tags:[String]())
+        let item4 = Item(id: UUID().uuidString, title: "Star Wars", itemType: .movie, itemStatus: .didWatch, rating: .danky, notes: "", tags:["StarWars, SciFi"])
         
-        return primaryUserData
+        return [item1, item2, item3, item4]
     }
     
     static func createExampleUser() -> User {
         let uuidString = UUID().uuidString
         let user = User(id: uuidString, username: "baxter_rundog", firstName: "Baxter", lastName: "RunDog", email: "baxter@email.com", phoneNumber: "", aboutMe: "I'm a big fan of multiple genres, including Detective, Drama, and Rom-Coms.")
         return user
+    }
+    
+    static func createExampleUsersForFollowing() -> [User] {
+
+        let user1 = User(id: UUID().uuidString, username: "baxter_rundog", firstName: "Baxter", lastName: "RunDog", email: "baxter@email.com", phoneNumber: "", aboutMe: "")
+        let user2 = User(id: UUID().uuidString, username: "testuser_2", firstName: "Test", lastName: "User2", email: "testuser_2@email.com", phoneNumber: "", aboutMe: "")
+        let user3 = User(id: UUID().uuidString, username: "testuser_3", firstName: "Chess", lastName: "Checkers", email: "testuser_3@email.com", phoneNumber: "", aboutMe: "")
+        
+        return [user1, user2, user3]
     }
     
     static func createEmptyItems() -> [Item] {
