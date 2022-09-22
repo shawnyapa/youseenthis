@@ -8,8 +8,8 @@
 import Foundation
 
 class UserData: ObservableObject, Codable {
-    @Published var user: User
-    @Published var items:[Item]
+    var user: User
+    var items:[Item]
     var version: Semver = Semver(major: 0, minor: 0, patch: 0)
     
     enum CodingKeys: String, CodingKey {

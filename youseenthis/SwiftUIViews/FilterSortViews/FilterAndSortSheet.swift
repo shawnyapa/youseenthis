@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct FilterSheet: View {
+struct FilterAndSortSheet: View {
+    @Binding var itemSortType: ItemSortType
     @Binding var filterItemType: FilterItemType
     @Binding var filterItemStatus: FilterItemStatus
     @Binding var selectedTags: [String]
@@ -16,15 +17,18 @@ struct FilterSheet: View {
     
     var body: some View {
         VStack {
-            Text(ViewStrings.filter)
+            HStack {
+                Text("\(ViewStrings.sort):")
+                ItemSortTypePicker(itemSortType: $itemSortType)
+            }
             Divider()
             HStack {
-                Text("\(ViewStrings.type):")
+                Text("\(ViewStrings.filter + " " + ViewStrings.type):")
                 FilterItemTypePicker(filterItemType: $filterItemType)
             }
             Divider()
             HStack {
-                Text("\(ViewStrings.status):")
+                Text("\(ViewStrings.filter + " " + ViewStrings.status):")
                 FilterItemStatusPicker(filterItemStatus: $filterItemStatus)
             }
             Divider()
@@ -56,9 +60,9 @@ struct FilterSheet: View {
     }
 }
 
-struct FilterSheet_Previews: PreviewProvider {
+struct FilterAndSortSheet_Previews: PreviewProvider {
     static var previews: some View {
         let items = ExampleData.createItems()
-        FilterSheet(filterItemType: .constant(.movie), filterItemStatus: .constant(.willWatch), selectedTags: .constant([String]()), items: .constant(items), existingTags: .constant([String]()))
+        FilterAndSortSheet(itemSortType: .constant(.titleAscending), filterItemType: .constant(.movie), filterItemStatus: .constant(.willWatch), selectedTags: .constant([String]()), items: .constant(items), existingTags: .constant([String]()))
     }
 }

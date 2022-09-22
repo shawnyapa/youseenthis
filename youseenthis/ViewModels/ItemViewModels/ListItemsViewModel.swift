@@ -60,4 +60,15 @@ class ListItemsViewModel: ObservableObject {
         return editVM
     }
     
+    func massagedItems(itemSortType: ItemSortType,
+                       filterItemType: FilterItemType,
+                       filterItemStatus: FilterItemStatus,
+                       selectedTags: [String]) -> [Item] {
+        let sortedItems = ItemArraySortAndFilter.sortedItems(items: items, sortType: itemSortType)
+        let filteredItems = ItemArraySortAndFilter.filteredItems(items: sortedItems, itemType: filterItemType.itemTypeForFilterItemType(), itemStatus: filterItemStatus.itemStatusForFilterItemStatus())
+        let matchedTaggedItems = ItemArraySortAndFilter.matchedTaggedItems(items: filteredItems, selectedTags: selectedTags)
+        
+        return matchedTaggedItems
+    }
+    
 }

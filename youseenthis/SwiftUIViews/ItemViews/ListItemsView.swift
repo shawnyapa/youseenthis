@@ -10,7 +10,6 @@ import SwiftUI
 struct ListItemsView: View {
     @ObservedObject var listItemsVM: ListItemsViewModel
     @State private var showCreateItem: Bool = false
-    @State private var sortSheetMode: SheetMode = .none
     @State private var filterSheetMode: SheetMode = .none
     @State private var itemSortType: ItemSortType = .titleAscending
     @State private var filterItemType: FilterItemType = .noFilter
@@ -25,18 +24,17 @@ struct ListItemsView: View {
             return "\(listItemsVM.viewedUser.firstName)'s \(filterItemType.headerStringValue())"
         }
     }
+    var massagedItems: [Item] {
+        listItemsVM.massagedItems(itemSortType: itemSortType, filterItemType: filterItemType, filterItemStatus: filterItemStatus, selectedTags: selectedTags)
+    }
     var body: some View {
-        // TODO: Move to ViewModel
-        let sortedItems = ItemArraySortAndFilter.sortedItems(items: listItemsVM.items, sortType: itemSortType)
-        let filteredItems = ItemArraySortAndFilter.filteredItems(items: sortedItems, itemType: filterItemType.itemTypeForFilterItemType(), itemStatus: filterItemStatus.itemStatusForFilterItemStatus())
-        let matchedTaggedItems = ItemArraySortAndFilter.matchedTaggedItems(items: filteredItems, selectedTags: selectedTags)
         NavigationView {
             Group() {
                 ZStack {
-                    if matchedTaggedItems.count == 0 {
+                    if massagedItems.count == 0 {
                         EmptyItemList()
                     } else {
-                        List(matchedTaggedItems) { item in
+                        List(massagedItems) { item in
                             NavigationLink {
                                 if listItemsVM.canEdit {
                                     EditItemView(editItemVM: listItemsVM.editItemViewModel(item: item))
@@ -49,12 +47,8 @@ struct ListItemsView: View {
                             }
                         }
                     }
-                    
-                    OverlaySheet(sheetMode: $sortSheetMode) {
-                        SortSheet(itemSortType: $itemSortType)
-                    }
                     OverlaySheet(sheetMode: $filterSheetMode) {
-                        FilterSheet(filterItemType: $filterItemType, filterItemStatus: $filterItemStatus, selectedTags: $selectedTags, items: $listItemsVM.items, existingTags: $existingTags)
+                        FilterAndSortSheet(itemSortType: $itemSortType, filterItemType: $filterItemType, filterItemStatus: $filterItemStatus, selectedTags: $selectedTags, items: $listItemsVM.items, existingTags: $existingTags)
                     }
                 }
             }
@@ -75,33 +69,11 @@ struct ListItemsView: View {
                         EmptyView()
                     }
                 }
-                // TODO: Refactor into Filter Sheet
-//                ToolbarItem(placement: .bottomBar) {
-//                    Button(action: {
-//                        if sortSheetMode == .none {
-//                            sortSheetMode = .threequarter
-//                            if filterSheetMode != .none {
-//                                filterSheetMode = .none
-//                            }
-//                        } else {
-//                            sortSheetMode = .none
-//                        }
-//                    }, label: {
-//                        if itemSortType == .titleAscending {
-//                            Image(systemName: SystemImage.sort_off.rawValue)
-//                        } else {
-//                            Image(systemName: SystemImage.sort_on.rawValue)
-//                        }
-//                    })
-//                }
                 // TODO: Move to TopRight on top Z Layer
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: {
                         if filterSheetMode == .none {
                             filterSheetMode = .onequarter
-                            if sortSheetMode != .none {
-                                sortSheetMode = .none
-                            }
                         } else {
                             filterSheetMode = .none
                         }
