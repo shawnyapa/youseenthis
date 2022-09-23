@@ -25,7 +25,6 @@ struct ItemRow: View {
             ItemStatusImage(itemStatus: item.itemStatus)
                 .frame(width: 20, height: nil, alignment: .center)
         }
-        .padding(6)
     }
 }
 

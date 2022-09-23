@@ -39,7 +39,7 @@ struct youseenthisApp: App {
     }
 }
 
-/* ***SY TODO: List
+/*  TODO: List
  
  Implement Git/Github (Done)
  

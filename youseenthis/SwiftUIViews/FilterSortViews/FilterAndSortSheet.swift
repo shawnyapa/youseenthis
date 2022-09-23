@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct FilterAndSortSheet: View {
+    @Binding var filterSheetMode: SheetMode
     @Binding var itemSortType: ItemSortType
     @Binding var filterItemType: FilterItemType
     @Binding var filterItemStatus: FilterItemStatus
@@ -17,6 +18,16 @@ struct FilterAndSortSheet: View {
     
     var body: some View {
         VStack {
+            HStack {
+                Spacer()
+                Button {
+                    filterSheetMode = .none
+                } label: {
+                    Text(ViewStrings.done)
+                }
+
+            }
+            .padding(4)
             HStack {
                 Text("\(ViewStrings.sort):")
                 ItemSortTypePicker(itemSortType: $itemSortType)
@@ -63,6 +74,6 @@ struct FilterAndSortSheet: View {
 struct FilterAndSortSheet_Previews: PreviewProvider {
     static var previews: some View {
         let items = ExampleData.createItems()
-        FilterAndSortSheet(itemSortType: .constant(.titleAscending), filterItemType: .constant(.movie), filterItemStatus: .constant(.willWatch), selectedTags: .constant([String]()), items: .constant(items), existingTags: .constant([String]()))
+        FilterAndSortSheet(filterSheetMode: .constant(.onequarter), itemSortType: .constant(.titleAscending), filterItemType: .constant(.movie), filterItemStatus: .constant(.willWatch), selectedTags: .constant([String]()), items: .constant(items), existingTags: .constant([String]()))
     }
 }

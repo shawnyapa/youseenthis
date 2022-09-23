@@ -14,16 +14,16 @@ struct FollowingListView: View {
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text(ViewStrings.following)) {
-                    if followingListVM.following.count == 0 {
-                        EmptyPeopleList()
-                    } else {
-                        ForEach(followingListVM.following) { user in
-                            Text(user.firstName + " " + user.lastName)
-                        }
+                if followingListVM.following.count == 0 {
+                    EmptyPeopleList()
+                } else {
+                    ForEach(followingListVM.following) { user in
+                        Text(user.firstName + " " + user.lastName)
                     }
                 }
-            }.listStyle(GroupedListStyle())
+            }
+            .navigationTitle(ViewStrings.following)
+            .listStyle(.plain)
         }
     }
 }

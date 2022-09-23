@@ -46,9 +46,36 @@ struct ListItemsView: View {
                                 ItemRow(item: item)
                             }
                         }
+                        .listStyle(.plain)
+                    }
+                    VStack {
+                        Spacer()
+                        HStack {
+                            Spacer()
+                            if listItemsVM.canEdit == true {
+                                Button(action: {
+                                    showCreateItem.toggle()
+                                }, label: {
+                                    Text("+")
+                                        .font(.system(.largeTitle))
+                                        .frame(width: 67, height: 60)
+                                        .foregroundColor(Color.white)
+                                        .padding(.bottom, 7)
+                                })
+                                .background(Color.purple)
+                                .cornerRadius(38.5)
+                                .padding()
+                                .shadow(color: Color.black.opacity(0.3),
+                                        radius: 3,
+                                        x: 3,
+                                        y: 3)
+                            } else {
+                                EmptyView()
+                            }
+                        }
                     }
                     OverlaySheet(sheetMode: $filterSheetMode) {
-                        FilterAndSortSheet(itemSortType: $itemSortType, filterItemType: $filterItemType, filterItemStatus: $filterItemStatus, selectedTags: $selectedTags, items: $listItemsVM.items, existingTags: $existingTags)
+                        FilterAndSortSheet(filterSheetMode: $filterSheetMode, itemSortType: $itemSortType, filterItemType: $filterItemType, filterItemStatus: $filterItemStatus, selectedTags: $selectedTags, items: $listItemsVM.items, existingTags: $existingTags)
                     }
                 }
             }
@@ -56,20 +83,8 @@ struct ListItemsView: View {
                 CreateItemView(showCreateItem: $showCreateItem, createItemVM: listItemsVM.createItemViewModel())
             }
             .navigationTitle(listTitle)
+            .toolbarBackground(Color.purple, for: .navigationBar)
             .toolbar {
-                // TODO: Move to BottomRight on top Z Layer
-                ToolbarItem(placement: .navigation) {
-                    if listItemsVM.canEdit == true {
-                        Button(action: {
-                            showCreateItem.toggle()
-                        }, label: {
-                            Image(systemName: SystemImage.create.rawValue)
-                        })
-                    } else {
-                        EmptyView()
-                    }
-                }
-                // TODO: Move to TopRight on top Z Layer
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: {
                         if filterSheetMode == .none {
