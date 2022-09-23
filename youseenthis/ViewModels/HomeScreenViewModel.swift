@@ -9,19 +9,23 @@ import Foundation
 
 class HomeScreenViewModel: ObservableObject {
     
-    init() {}
+    var modelService: (UserService & ItemService)
+    
+    init(modelService: (UserService & ItemService) = ServiceFactory.makeServices()) {
+        self.modelService = modelService
+    }
     
     func createListItemsViewModel() -> ListItemsViewModel {
-        ListItemsViewModel()
+        ListItemsViewModel(modelService: modelService)
     }
     
     func createViewUserViewModel() -> ViewUserViewModel {
-        let user = StorageManager.getPrimaryUser() ?? User.newBlankUser()
+        let user = modelService.getUser() ?? User.newBlankUser()
         return ViewUserViewModel(user: user)
     }
     
     func createFollowingListViewModel() -> FollowingListViewModel {
-        // TODO: StorageManager or FollowingService
+        // TODO: use FollowService
         let users = ExampleData.createExampleUsersForFollowing()
         return FollowingListViewModel(following: users)
     }

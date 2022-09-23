@@ -10,15 +10,17 @@ import Combine
 
 class EditUserViewModel: ObservableObject {
     
+    var userService: UserService
     let updateUserSubject = PassthroughSubject<Void, Never>()
     @Published var user: User
     
-    init(user: User) {
+    init(user: User, userService: UserService = ServiceFactory.makeServices()) {
         self.user = user
+        self.userService = userService
     }
     
     func savePrimaryUser() {
-        StorageManager.savePrimaryUser(user: user)
+        userService.saveUser(user: user)
         updateUserSubject.send()
     }
 }

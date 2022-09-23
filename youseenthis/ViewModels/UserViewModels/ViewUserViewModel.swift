@@ -10,16 +10,17 @@ import Combine
 
 class ViewUserViewModel: ObservableObject {
     
+    var userService: UserService
     @Published var user: User
     var cancellables = Set<AnyCancellable>()
     
-    init(user: User) {
+    init(user: User, userService: UserService = ServiceFactory.makeServices()) {
         self.user = user
+        self.userService = userService
     }
     
     func primaryUser() -> User? {
-        let primaryUser = StorageManager.getPrimaryUser()
-        return primaryUser
+        userService.getUser()
     }
     
     func createEditUserViewModel() -> EditUserViewModel {

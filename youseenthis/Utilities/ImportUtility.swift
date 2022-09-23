@@ -30,15 +30,15 @@ struct ImportUtility {
     }
     
     static func addUserDataToPeople(userData: UserData) {
-        var peopleDictionary = StorageManager.allPeopleDictionary()
+        var peopleDictionary = StorageManager.shared.allPeopleDictionary()
         peopleDictionary.updateValue(userData, forKey: userData.user.id)
-        StorageManager.savePeople(peopleDictionary: peopleDictionary)
+        StorageManager.shared.savePeople(peopleDictionary: peopleDictionary)
     }
     
     static func removeUserDataFromPeople(with userId: String) {
-        var peopleDictionary = StorageManager.allPeopleDictionary()
+        var peopleDictionary = StorageManager.shared.allPeopleDictionary()
         peopleDictionary.removeValue(forKey: userId)
-        StorageManager.savePeople(peopleDictionary: peopleDictionary)
+        StorageManager.shared.savePeople(peopleDictionary: peopleDictionary)
     }
     
     static func peopleArray(from peopleDictionary:[String: UserData]) -> [UserData] {

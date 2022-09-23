@@ -7,8 +7,8 @@
 
 import Foundation
 
-// TODO: Refactor with a ItemsServiceProtocol, UserServiceProtocol, FollowingServiceProtocol
-class StorageManager {
+class StorageManager: UserService, ItemService {
+    static let shared = StorageManager()
     
     enum Constants:String {
         case suiteName = "youseenthis"
@@ -17,15 +17,18 @@ class StorageManager {
         case peopleKey = "peopleKey"
     }
     
-    static func savePrimaryUser(user: User) {
-        if let user = StorageManager.encodeUser(userCodable: user) {
+    private init() {}
+    
+    /// UserService Implementation
+    func saveUser(user: User) {
+        if let user = encodeUser(userCodable: user) {
             if let defaults = UserDefaults.init(suiteName: Constants.suiteName.rawValue) {
                 defaults.set(user, forKey: Constants.userKey.rawValue)
             }
         }
     }
     
-    static func getPrimaryUser() -> User? {
+    func getUser() -> User? {
         var user: User?
         let defaults = UserDefaults.init(suiteName: Constants.suiteName.rawValue)
         if let data = defaults?.object(forKey: Constants.userKey.rawValue) as? Data {
@@ -34,7 +37,7 @@ class StorageManager {
         return user
     }
     
-    static func encodeUser(userCodable: User) -> Data? {
+    private func encodeUser(userCodable: User) -> Data? {
         let archiver = NSKeyedArchiver(requiringSecureCoding: false)
         do {
             try archiver.encodeEncodable(userCodable, forKey: NSKeyedArchiveRootObjectKey)
@@ -46,7 +49,7 @@ class StorageManager {
         return archiver.encodedData
     }
     
-    static func decodeUser(data: Data) -> User? {
+    private func decodeUser(data: Data) -> User? {
         do {
             let unarchiver = try NSKeyedUnarchiver(forReadingFrom: data)
             let user = unarchiver.decodeDecodable(User.self, forKey:NSKeyedArchiveRootObjectKey)
@@ -58,22 +61,49 @@ class StorageManager {
         }
     }
 
-    static func allItems() -> [String:Item] {
+    /// ItemsService Implementation
+    func saveItem(item: Item) {
+        var itemsDictionary = allItems()
+        itemsDictionary.updateValue(item, forKey: item.id)
+        saveItems(items: itemsDictionary)
+    }
+    func returnAllItems() -> [Item] {
+        let allItems = allItems()
+        return allItems.map { $0.value }
+    }
+    func findItemById(itemId: String) -> Item? {
+        let itemsDictionary = allItems()
+        guard let item = itemsDictionary[itemId] else {
+            return nil
+        }
+        return item
+    }
+    func removeItemById(itemId: String) {
+        var itemsDictionary = allItems()
+        itemsDictionary.removeValue(forKey: itemId)
+        saveItems(items: itemsDictionary)
+    }
+    func findItemsForUser(userId: String) -> [Item] {
+        // TODO: Implement
+        return [Item]()
+    }
+    
+    private func allItems() -> [String:Item] {
         var items = [String:Item]()
         let defaults = UserDefaults.init(suiteName: Constants.suiteName.rawValue)
         if let userDefaultItemsData = defaults?.object(forKey: Constants.itemsKey.rawValue) as? [String: Data] {
             for (key, value) in userDefaultItemsData {
-                let item = StorageManager.decodeItem(data: value)
+                let item = decodeItem(data: value)
                 items[key] = item
             }
         }
         return items
     }
     
-    static func saveItems(items: [String: Item]) {
+    private func saveItems(items: [String: Item]) {
         var itemsData = [String:Data]()
         for (key, value) in items {
-            let data = StorageManager.encodeItem(itemCodable: value)
+            let data = encodeItem(itemCodable: value)
             itemsData[key] = data
         }
         if let defaults = UserDefaults.init(suiteName: Constants.suiteName.rawValue) {
@@ -81,13 +111,13 @@ class StorageManager {
         }
     }
     
-    static func deleteAllItems() {
+    private func deleteAllItems() {
         let defaults = UserDefaults.init(suiteName: Constants.suiteName.rawValue)
         defaults?.removeObject(forKey: Constants.itemsKey.rawValue)        
     }
     
 
-    static func encodeItem(itemCodable: Item) -> Data? {
+    private func encodeItem(itemCodable: Item) -> Data? {
         let archiver = NSKeyedArchiver(requiringSecureCoding: false)
         do {
             try archiver.encodeEncodable(itemCodable, forKey: NSKeyedArchiveRootObjectKey)
@@ -99,7 +129,7 @@ class StorageManager {
         return archiver.encodedData
     }
     
-    static func decodeItem(data: Data) -> Item? {
+    private func decodeItem(data: Data) -> Item? {
         do {
             let unarchiver = try NSKeyedUnarchiver(forReadingFrom: data)
             let item = unarchiver.decodeDecodable(Item.self, forKey:NSKeyedArchiveRootObjectKey)
@@ -111,22 +141,22 @@ class StorageManager {
         }
     }
     
-    static func allPeopleDictionary() -> [String: UserData] {
+    func allPeopleDictionary() -> [String: UserData] {
         var peopleDictionary = [String:UserData]()
         let defaults = UserDefaults.init(suiteName: Constants.suiteName.rawValue)
         if let userDefaultPeopleData = defaults?.object(forKey: Constants.peopleKey.rawValue) as? [String: Data] {
             for (key, value) in userDefaultPeopleData {
-                let userData = StorageManager.decodeUserData(data: value)
+                let userData = decodeUserData(data: value)
                 peopleDictionary[key] = userData
             }
         }
         return peopleDictionary
     }
     
-    static func savePeople(peopleDictionary: [String: UserData]) {
+    func savePeople(peopleDictionary: [String: UserData]) {
         var peopleData = [String:Data]()
         for (key, value) in peopleDictionary {
-            let data = StorageManager.encodeUserData(userData: value)
+            let data = encodeUserData(userData: value)
             peopleData[key] = data
         }
         if let defaults = UserDefaults.init(suiteName: Constants.suiteName.rawValue) {
@@ -134,7 +164,7 @@ class StorageManager {
         }
     }
         
-    static func encodeUserData(userData: UserData) -> Data? {
+    func encodeUserData(userData: UserData) -> Data? {
         let archiver = NSKeyedArchiver(requiringSecureCoding: false)
         do {
             try archiver.encodeEncodable(userData, forKey: NSKeyedArchiveRootObjectKey)
@@ -146,7 +176,7 @@ class StorageManager {
         return archiver.encodedData
     }
     
-    static func decodeUserData(data: Data) -> UserData? {
+    func decodeUserData(data: Data) -> UserData? {
         do {
             let unarchiver = try NSKeyedUnarchiver(forReadingFrom: data)
             let userData = unarchiver.decodeDecodable(UserData.self, forKey:NSKeyedArchiveRootObjectKey)

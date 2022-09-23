@@ -10,24 +10,22 @@ import Combine
 
 class EditItemViewModel: ObservableObject {
     
+    var modelService: (UserService & ItemService)
     let updateItemsSubject = PassthroughSubject<Void, Never>()
     @Published var item: Item
     
-    init(item: Item) {
+    init(item: Item, modelService: (UserService & ItemService) = ServiceFactory.makeServices()) {
         self.item = item
+        self.modelService = modelService
     }
     
     func editItem() {
-        var itemsDictionary = StorageManager.allItems()
-        itemsDictionary.updateValue(item, forKey: item.id)
-        StorageManager.saveItems(items: itemsDictionary)
+        modelService.saveItem(item: item)
         updateItemsSubject.send()
     }
     
     func removeItem() {
-        var itemsDictionary = StorageManager.allItems()
-        itemsDictionary.removeValue(forKey: item.id)
-        StorageManager.saveItems(items: itemsDictionary)
+        modelService.removeItemById(itemId: item.id)
         updateItemsSubject.send()
     }
 }

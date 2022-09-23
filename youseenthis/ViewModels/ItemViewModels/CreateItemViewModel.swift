@@ -10,20 +10,20 @@ import Combine
 
 class CreateItemViewModel: ObservableObject {
     
+    var modelService: (UserService & ItemService)
     let updateItemsSubject = PassthroughSubject<Void, Never>()
     @Published var item: Item
     
-    init(item: Item) {
+    init(item: Item, modelService: (UserService & ItemService) = ServiceFactory.makeServices()) {
         self.item = item
+        self.modelService = modelService
     }
             
     func addItem() {
         guard item.title.isEmpty == false else {
             return
         }
-        var itemsDictionary = StorageManager.allItems()
-        itemsDictionary[item.id] = item
-        StorageManager.saveItems(items: itemsDictionary)
+        modelService.saveItem(item: item)
         updateItemsSubject.send()
     }
 }

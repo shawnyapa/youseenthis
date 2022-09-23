@@ -10,6 +10,7 @@ import Combine
 
 class ListItemsViewModel: ObservableObject {
     
+    var modelService: (UserService & ItemService)
     @Published var primaryUser: User
     @Published var viewedUser: User
     @Published var items: [Item] = [Item]()
@@ -23,8 +24,9 @@ class ListItemsViewModel: ObservableObject {
         primaryUser.id == viewedUser.id
     }
     
-    init() {
-        let user = StorageManager.getPrimaryUser() ?? User.newBlankUser()
+    init(modelService: (UserService & ItemService) = ServiceFactory.makeServices()) {
+        self.modelService = modelService
+        let user = modelService.getUser() ?? User.newBlankUser()
         self.primaryUser = user
         self.viewedUser = user
         refreshItems()
@@ -36,9 +38,7 @@ class ListItemsViewModel: ObservableObject {
     }
     
     func refreshItems() {
-        let itemsDictionary = StorageManager.allItems()
-        let itemsArray = itemsDictionary.map { $0.value }
-        items = itemsArray
+        items = modelService.returnAllItems()
     }
     
     func onUpdateItems(subject: PassthroughSubject<Void, Never>) {

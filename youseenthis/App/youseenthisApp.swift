@@ -85,6 +85,7 @@ struct youseenthisApp: App {
  Update Name to Danky
  Copy over to AppBundle Danky
  
+ Refactor ModelServices with Protocols
  Refactor Persistence (Use AWS Amplify)
  Integrate Network API (Use AWS Amplify)
  
