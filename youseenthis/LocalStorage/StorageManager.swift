@@ -141,6 +141,13 @@ class StorageManager: UserService, ItemService {
         }
     }
     
+    // TODO: Implement FollowService & Deprecate People functions
+//    func requestToFollow(primaryUserId: String, followUserId: String)
+//    func removeRequestToFollow(primaryUserId: String, followUserId: String)
+//    func respondToFollowRequest(primaryUserId: String, followUserId: String, approve: Bool)
+//    func returnAllFollowRequests(for primaryUserId: String) -> [Follow]
+//    func returnAllFollowAppovals(for primaryUserId: String) -> [Follow]
+    
     func allPeopleDictionary() -> [String: UserData] {
         var peopleDictionary = [String:UserData]()
         let defaults = UserDefaults.init(suiteName: Constants.suiteName.rawValue)

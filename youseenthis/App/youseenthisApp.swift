@@ -76,7 +76,8 @@ struct youseenthisApp: App {
  Separate View/Edit (Done)
  Remove Confirm Button from Edit, Save on Back
  
- Refactor Following Users
+ Refactor with UserService and ItemService Protocol (Done)
+ Add Follow Model & FollowService (WIP)
  Refactor Import/Export Utility
 
  Update to Purple Logo
@@ -85,7 +86,7 @@ struct youseenthisApp: App {
  Update Name to Danky
  Copy over to AppBundle Danky
  
- Refactor ModelServices with Protocols
+ 
  Refactor Persistence (Use AWS Amplify)
  Integrate Network API (Use AWS Amplify)
  

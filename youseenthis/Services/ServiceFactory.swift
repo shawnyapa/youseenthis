@@ -7,6 +7,7 @@
 
 import Foundation
 
+// TODO: UserService should be changed to an array, with a primaryUser marker
 protocol UserService {
     func saveUser(user: User)
     func getUser() -> User?
@@ -21,7 +22,11 @@ protocol ItemService {
 }
 
 protocol FollowService {
-    // TODO: Define FollowServic Protocol
+    func requestToFollow(primaryUserId: String, followUserId: String)
+    func removeRequestToFollow(primaryUserId: String, followUserId: String)
+    func respondToFollowRequest(primaryUserId: String, followUserId: String, approve: Bool)
+    func returnAllFollowRequests(for primaryUserId: String) -> [Follow]
+    func returnAllFollowAppovals(for primaryUserId: String) -> [Follow]
 }
 
 class ServiceFactory {

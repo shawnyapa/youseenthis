@@ -36,7 +36,6 @@
 		616EFAFB28A70796007CA794 /* LogUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616EFAFA28A70796007CA794 /* LogUtility.swift */; };
 		616EFAFD28A7086E007CA794 /* ImportUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616EFAFC28A7086E007CA794 /* ImportUtility.swift */; };
 		616EFAFF28A7087D007CA794 /* ExportUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616EFAFE28A7087D007CA794 /* ExportUtility.swift */; };
-		616FA6D028AF272400B365C6 /* ItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616FA6CF28AF272400B365C6 /* ItemData.swift */; };
 		617AC7252814C64C0055858E /* OverlaySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617AC7242814C64C0055858E /* OverlaySheet.swift */; };
 		617AC7272815D0080055858E /* LabTestingUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617AC7262815D0080055858E /* LabTestingUI.swift */; };
 		617AE75928DB84200051498A /* ViewUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617AE75828DB84200051498A /* ViewUserViewModel.swift */; };
@@ -73,6 +72,7 @@
 		61CF977E27C449A6008E179A /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF977D27C449A6008E179A /* StorageManager.swift */; };
 		61CF978127C449C8008E179A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF978027C449C8008E179A /* NetworkManager.swift */; };
 		61CF978327C44A3A008E179A /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF978227C44A3A008E179A /* HomeScreenView.swift */; };
+		61DCA78628DFF48200AA7EA3 /* Follow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DCA78528DFF48200AA7EA3 /* Follow.swift */; };
 		61E9783427D416300014398D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E9783327D416300014398D /* AppDelegate.swift */; };
 		61EB806228B702110068B7DE /* ItemRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EB806128B702110068B7DE /* ItemRating.swift */; };
 		61EB806428B704000068B7DE /* ItemRatingPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EB806328B704000068B7DE /* ItemRatingPicker.swift */; };
@@ -113,7 +113,6 @@
 		616EFAFA28A70796007CA794 /* LogUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogUtility.swift; sourceTree = "<group>"; };
 		616EFAFC28A7086E007CA794 /* ImportUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportUtility.swift; sourceTree = "<group>"; };
 		616EFAFE28A7087D007CA794 /* ExportUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportUtility.swift; sourceTree = "<group>"; };
-		616FA6CF28AF272400B365C6 /* ItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemData.swift; sourceTree = "<group>"; };
 		617AC7242814C64C0055858E /* OverlaySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlaySheet.swift; sourceTree = "<group>"; };
 		617AC7262815D0080055858E /* LabTestingUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabTestingUI.swift; sourceTree = "<group>"; };
 		617AE75828DB84200051498A /* ViewUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUserViewModel.swift; sourceTree = "<group>"; };
@@ -150,6 +149,7 @@
 		61CF977D27C449A6008E179A /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		61CF978027C449C8008E179A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		61CF978227C44A3A008E179A /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
+		61DCA78528DFF48200AA7EA3 /* Follow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follow.swift; sourceTree = "<group>"; };
 		61E9783327D416300014398D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61EA3A8028B55B03003DAD3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		61EB806128B702110068B7DE /* ItemRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRating.swift; sourceTree = "<group>"; };
@@ -250,7 +250,6 @@
 				61A30FBC27DEC2E000155417 /* ItemStatus.swift */,
 				61EB806128B702110068B7DE /* ItemRating.swift */,
 				614833FD27C3491500076898 /* Item.swift */,
-				616FA6CF28AF272400B365C6 /* ItemData.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -431,6 +430,7 @@
 				614A8E0B27E40B6A00D634CA /* Filter */,
 				614A8E0A27E40B2100D634CA /* Item */,
 				614A8E0927E40AFA00D634CA /* User */,
+				61DCA78428DFF45900AA7EA3 /* Follow */,
 				61F9E07A27DD39F10058D70A /* Constants.swift */,
 			);
 			path = Models;
@@ -460,6 +460,14 @@
 				61E9783327D416300014398D /* AppDelegate.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		61DCA78428DFF45900AA7EA3 /* Follow */ = {
+			isa = PBXGroup;
+			children = (
+				61DCA78528DFF48200AA7EA3 /* Follow.swift */,
+			);
+			path = Follow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -540,6 +548,7 @@
 			files = (
 				6148340027C34CFC00076898 /* User.swift in Sources */,
 				6131700F27D5790200834C08 /* ItemStatusImage.swift in Sources */,
+				61DCA78628DFF48200AA7EA3 /* Follow.swift in Sources */,
 				612277BE28A86BB200015452 /* FollowingListView.swift in Sources */,
 				6181C2EF28DCC2DD00FDDA66 /* FollowingListViewModel.swift in Sources */,
 				619B989E28B99F0300D8BBC1 /* ItemRatingField.swift in Sources */,
@@ -561,7 +570,6 @@
 				61843E8128C01B0C00C71B5A /* ItemTagsField.swift in Sources */,
 				619B98A728B9A6C600D8BBC1 /* UserAboutMeField.swift in Sources */,
 				6199F69D28D7DC9200C663D7 /* EditItemViewModel.swift in Sources */,
-				616FA6D028AF272400B365C6 /* ItemData.swift in Sources */,
 				61B7700328289C3700AF4EAF /* EmailExporter.swift in Sources */,
 				61F9E07F27DD5FD40058D70A /* ItemTypePicker.swift in Sources */,
 				616EFAFB28A70796007CA794 /* LogUtility.swift in Sources */,
