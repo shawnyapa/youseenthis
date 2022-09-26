@@ -45,6 +45,14 @@ struct ViewUserView: View {
                     Spacer()
                 }
                 UserAboutMeField(aboutMe: viewUserVM.user.aboutMe)
+                Divider()
+                HStack {
+                    Spacer()
+                    Button(viewUserVM.logInButtonString) {
+                        viewUserVM.loginButtonPressed()
+                    }
+                    Spacer()
+                }
             }
             .padding()
             .navigationTitle(ViewStrings.userProfile)
@@ -66,7 +74,8 @@ struct ViewUserView: View {
 
 struct ViewUserView_Previews: PreviewProvider {
     static var previews: some View {
-        let viewUserVM = ViewUserViewModel(user: ExampleData.createExampleUser())
+        let exampleUser = ExampleData.createExampleUser()
+        let viewUserVM = ViewUserViewModel(user: exampleUser, loggedInUser: exampleUser)
         ViewUserView(viewUserVM: viewUserVM)
     }
 }

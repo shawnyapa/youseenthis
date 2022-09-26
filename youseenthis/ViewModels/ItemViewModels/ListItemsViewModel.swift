@@ -10,7 +10,7 @@ import Combine
 
 class ListItemsViewModel: ObservableObject {
     
-    var modelService: (UserService & ItemService)
+    var modelService: (LogInService & UserService & ItemService)
     @Published var primaryUser: User
     @Published var viewedUser: User
     @Published var items: [Item] = [Item]()
@@ -24,9 +24,9 @@ class ListItemsViewModel: ObservableObject {
         primaryUser.id == viewedUser.id
     }
     
-    init(modelService: (UserService & ItemService) = ServiceFactory.makeServices()) {
+    init(modelService: (LogInService & UserService & ItemService) = ServiceFactory.makeServices()) {
         self.modelService = modelService
-        let user = modelService.getUser() ?? User.newBlankUser()
+        let user = modelService.loggedInUser() ?? User.newBlankUser()
         self.primaryUser = user
         self.viewedUser = user
         refreshItems()

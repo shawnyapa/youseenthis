@@ -7,34 +7,83 @@
 
 import Foundation
 
-class StorageManager: UserService, ItemService {
+class StorageManager: LogInService, UserService, ItemService {
     static let shared = StorageManager()
     
     enum Constants:String {
         case suiteName = "youseenthis"
         case itemsKey = "itemskey"
-        case userKey = "userkey"
+        case loggedInKey = "loggedinkey"
+        case usersKey = "userskey"
         case peopleKey = "peopleKey"
     }
     
     private init() {}
     
-    /// UserService Implementation
-    func saveUser(user: User) {
-        if let user = encodeUser(userCodable: user) {
-            if let defaults = UserDefaults.init(suiteName: Constants.suiteName.rawValue) {
-                defaults.set(user, forKey: Constants.userKey.rawValue)
-            }
+    /// LogInService Implementation
+    func logUserIn(username: String) {
+        if let defaults = UserDefaults.init(suiteName: Constants.suiteName.rawValue) {
+            defaults.set(username, forKey: Constants.loggedInKey.rawValue)
+        }
+    }
+    func loggedInUser() -> User? {
+        var user: User?
+        let defaults = UserDefaults.init(suiteName: Constants.suiteName.rawValue)
+        if let username = defaults?.object(forKey: Constants.loggedInKey.rawValue) as? String {
+            user = getUser(for: username)
+        }
+        return user
+    }
+    func logoutUser() {
+        if let defaults = UserDefaults.init(suiteName: Constants.suiteName.rawValue) {
+            defaults.removeObject(forKey: Constants.loggedInKey.rawValue)
         }
     }
     
-    func getUser() -> User? {
-        var user: User?
-        let defaults = UserDefaults.init(suiteName: Constants.suiteName.rawValue)
-        if let data = defaults?.object(forKey: Constants.userKey.rawValue) as? Data {
-            user = decodeUser(data: data)
+    /// UserService Implementation
+    func saveUser(user: User) {
+        var usersDictionary = allUsers()
+        usersDictionary.updateValue(user, forKey: user.id)
+        saveUsers(users: usersDictionary)
+    }
+    
+    func getUser(for username: String) -> User? {
+        let users = returnAllUsers().filter { $0.username == username }
+        guard users.count == 1 else {
+            return nil
         }
-        return user
+        return users.first
+    }
+    
+    func returnAllUsers() -> [User] {
+        allUsers().map { $0.value }
+    }
+    
+    func returnAllUser(with userNames: [String]) -> [User] {
+        returnAllUsers().filter { userNames.contains( $0.username) }
+    }
+    
+    private func allUsers() -> [String:User] {
+        var users = [String:User]()
+        let defaults = UserDefaults.init(suiteName: Constants.suiteName.rawValue)
+        if let userDefaultUsersData = defaults?.object(forKey: Constants.usersKey.rawValue) as? [String: Data] {
+            for (key, value) in userDefaultUsersData {
+                let user = decodeUser(data: value)
+                users[key] = user
+            }
+        }
+        return users
+    }
+    
+    private func saveUsers(users: [String: User]) {
+        var usersData = [String:Data]()
+        for (key, value) in users {
+            let data = encodeUser(userCodable: value)
+            usersData[key] = data
+        }
+        if let defaults = UserDefaults.init(suiteName: Constants.suiteName.rawValue) {
+            defaults.set(usersData, forKey: Constants.usersKey.rawValue)
+        }
     }
     
     private func encodeUser(userCodable: User) -> Data? {

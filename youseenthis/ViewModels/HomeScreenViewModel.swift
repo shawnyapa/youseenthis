@@ -9,9 +9,9 @@ import Foundation
 
 class HomeScreenViewModel: ObservableObject {
     
-    var modelService: (UserService & ItemService)
+    var modelService: (LogInService & UserService & ItemService)
     
-    init(modelService: (UserService & ItemService) = ServiceFactory.makeServices()) {
+    init(modelService: (LogInService & UserService & ItemService) = ServiceFactory.makeServices()) {
         self.modelService = modelService
     }
     
@@ -20,8 +20,9 @@ class HomeScreenViewModel: ObservableObject {
     }
     
     func createViewUserViewModel() -> ViewUserViewModel {
-        let user = modelService.getUser() ?? User.newBlankUser()
-        return ViewUserViewModel(user: user)
+        let user = modelService.loggedInUser() ?? User.newBlankUser()
+        let loggedInUser = modelService.loggedInUser()
+        return ViewUserViewModel(user: user, loggedInUser: loggedInUser)
     }
     
     func createFollowingListViewModel() -> FollowingListViewModel {

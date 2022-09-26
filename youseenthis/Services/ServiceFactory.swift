@@ -7,10 +7,16 @@
 
 import Foundation
 
-// TODO: UserService should be changed to an array, with a primaryUser marker
+protocol LogInService {
+    func logUserIn(username: String)
+    func loggedInUser() -> User?
+    func logoutUser()
+}
 protocol UserService {
     func saveUser(user: User)
-    func getUser() -> User?
+    func getUser(for username: String) -> User?
+    func returnAllUsers() -> [User]
+    func returnAllUser(with userNames: [String]) -> [User]
 }
 
 protocol ItemService {
@@ -30,7 +36,7 @@ protocol FollowService {
 }
 
 class ServiceFactory {
-    static func makeServices() -> (UserService & ItemService) {
+    static func makeServices() -> (LogInService & UserService & ItemService) {
         StorageManager.shared
     }
 }
