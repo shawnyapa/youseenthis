@@ -30,18 +30,10 @@ struct ImportUtility {
     }
     
     static func addUserDataToPeople(userData: UserData) {
-        var peopleDictionary = StorageManager.shared.allPeopleDictionary()
-        peopleDictionary.updateValue(userData, forKey: userData.user.id)
-        StorageManager.shared.savePeople(peopleDictionary: peopleDictionary)
+        // TODO: Implement with FollowService
     }
     
     static func removeUserDataFromPeople(with userId: String) {
-        var peopleDictionary = StorageManager.shared.allPeopleDictionary()
-        peopleDictionary.removeValue(forKey: userId)
-        StorageManager.shared.savePeople(peopleDictionary: peopleDictionary)
-    }
-    
-    static func peopleArray(from peopleDictionary:[String: UserData]) -> [UserData] {
-        return peopleDictionary.map { $0.value }
+        // TODO: Implement with FollowService
     }
 }

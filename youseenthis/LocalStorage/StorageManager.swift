@@ -7,7 +7,7 @@
 
 import Foundation
 
-class StorageManager: LogInService, UserService, ItemService {
+class StorageManager: LogInService, UserService, ItemService, FollowService {
     static let shared = StorageManager()
     
     enum Constants:String {
@@ -15,7 +15,7 @@ class StorageManager: LogInService, UserService, ItemService {
         case itemsKey = "itemskey"
         case loggedInKey = "loggedinkey"
         case usersKey = "userskey"
-        case peopleKey = "peopleKey"
+        case followsKey = "followsKey"
     }
     
     private init() {}
@@ -44,7 +44,7 @@ class StorageManager: LogInService, UserService, ItemService {
     
     /// UserService Implementation
     func saveUser(user: User) {
-        var usersDictionary = allUsers()
+        var usersDictionary = allUsersDictionary()
         usersDictionary.updateValue(user, forKey: user.id)
         saveUsers(users: usersDictionary)
     }
@@ -58,14 +58,14 @@ class StorageManager: LogInService, UserService, ItemService {
     }
     
     func returnAllUsers() -> [User] {
-        allUsers().map { $0.value }
+        allUsersDictionary().map { $0.value }
     }
     
     func returnAllUser(with userNames: [String]) -> [User] {
         returnAllUsers().filter { userNames.contains( $0.username) }
     }
     
-    private func allUsers() -> [String:User] {
+    private func allUsersDictionary() -> [String:User] {
         var users = [String:User]()
         let defaults = UserDefaults.init(suiteName: Constants.suiteName.rawValue)
         if let userDefaultUsersData = defaults?.object(forKey: Constants.usersKey.rawValue) as? [String: Data] {
@@ -114,31 +114,35 @@ class StorageManager: LogInService, UserService, ItemService {
 
     /// ItemsService Implementation
     func saveItem(item: Item) {
-        var itemsDictionary = allItems()
+        var itemsDictionary = allItemsDictionary()
         itemsDictionary.updateValue(item, forKey: item.id)
         saveItems(items: itemsDictionary)
     }
+    
     func returnAllItems() -> [Item] {
-        let allItems = allItems()
+        let allItems = allItemsDictionary()
         return allItems.map { $0.value }
     }
+    
     func findItemById(itemId: String) -> Item? {
-        let itemsDictionary = allItems()
+        let itemsDictionary = allItemsDictionary()
         guard let item = itemsDictionary[itemId] else {
             return nil
         }
         return item
     }
+    
     func removeItemById(itemId: String) {
-        var itemsDictionary = allItems()
+        var itemsDictionary = allItemsDictionary()
         itemsDictionary.removeValue(forKey: itemId)
         saveItems(items: itemsDictionary)
     }
+    
     func findItemsForUser(userId: String) -> [Item] {
         returnAllItems().filter { $0.owner == userId}
     }
     
-    private func allItems() -> [String:Item] {
+    private func allItemsDictionary() -> [String:Item] {
         var items = [String:Item]()
         let defaults = UserDefaults.init(suiteName: Constants.suiteName.rawValue)
         if let userDefaultItemsData = defaults?.object(forKey: Constants.itemsKey.rawValue) as? [String: Data] {
@@ -167,7 +171,7 @@ class StorageManager: LogInService, UserService, ItemService {
     }
     
     private func updateAllItemsWithOwner(owner: String) {
-        var items = returnAllItems()
+        let items = returnAllItems()
         var itemsDictionary = [String: Item]()
         for var item in items {
             item.owner = owner
@@ -201,40 +205,90 @@ class StorageManager: LogInService, UserService, ItemService {
         }
     }
     
-    // TODO: Implement FollowService & Deprecate People functions
-//    func requestToFollow(primaryUserId: String, followUserId: String)
-//    func removeRequestToFollow(primaryUserId: String, followUserId: String)
-//    func respondToFollowRequest(primaryUserId: String, followUserId: String, approve: Bool)
-//    func returnAllFollowRequests(for primaryUserId: String) -> [Follow]
-//    func returnAllFollowAppovals(for primaryUserId: String) -> [Follow]
+    /// FollowService Implementation
+    func requestToFollow(primaryUserId: String, followUserId: String) {
+        let follow = Follow(id: UUID().uuidString, primaryUsername: primaryUserId, followUsername: followUserId, isApproved: false)
+        saveFollow(follow: follow)
+    }
     
-    func allPeopleDictionary() -> [String: UserData] {
-        var peopleDictionary = [String:UserData]()
+    func respondToFollowRequest(followId: String, approve: Bool) {
+        if approve == false {
+            removeFollowById(followId: followId)
+        } else if approve == true, var follow = findFollowById(followId: followId) {
+            follow.isApproved = true
+            saveFollow(follow: follow)
+        }
+    }
+    
+    func removeRequestToFollow(followId: String) {
+        removeFollowById(followId: followId)
+    }
+    
+    func returnAllFollowRequests(for primaryUserId: String) -> [Follow] {
+        let allFollows = returnAllFollows()
+        let allFollowRequests = allFollows.filter { $0.primaryUsername == primaryUserId && $0.isApproved == false }
+        
+        return allFollowRequests
+    }
+    
+    func returnAllFollowAppovals(for primaryUserId: String) -> [Follow] {
+        let allFollows = returnAllFollows()
+        let allFollowApprovals = allFollows.filter { $0.primaryUsername == primaryUserId && $0.isApproved == true }
+        
+        return allFollowApprovals
+    }
+    
+    private func saveFollow(follow: Follow) {
+        var followsDictionary = allFollowsDictionary()
+        followsDictionary.updateValue(follow, forKey: follow.id)
+        saveFollows(follows: followsDictionary)
+    }
+    
+    private func findFollowById(followId: String) -> Follow? {
+        let followsDictionary = allFollowsDictionary()
+        guard let follow = followsDictionary[followId] else {
+            return nil
+        }
+        return follow
+    }
+    
+    private func removeFollowById(followId: String) {
+        var followsDictionary = allFollowsDictionary()
+        followsDictionary.removeValue(forKey: followId)
+        saveFollows(follows: followsDictionary)
+    }
+    
+    private func returnAllFollows() -> [Follow] {
+        allFollowsDictionary().map { $0.value }
+    }
+    
+    private func allFollowsDictionary() -> [String:Follow] {
+        var follows = [String:Follow]()
         let defaults = UserDefaults.init(suiteName: Constants.suiteName.rawValue)
-        if let userDefaultPeopleData = defaults?.object(forKey: Constants.peopleKey.rawValue) as? [String: Data] {
-            for (key, value) in userDefaultPeopleData {
-                let userData = decodeUserData(data: value)
-                peopleDictionary[key] = userData
+        if let userDefaultFollowsData = defaults?.object(forKey: Constants.followsKey.rawValue) as? [String: Data] {
+            for (key, value) in userDefaultFollowsData {
+                let follow = decodeFollow(data: value)
+                follows[key] = follow
             }
         }
-        return peopleDictionary
+        return follows
     }
-    
-    func savePeople(peopleDictionary: [String: UserData]) {
-        var peopleData = [String:Data]()
-        for (key, value) in peopleDictionary {
-            let data = encodeUserData(userData: value)
-            peopleData[key] = data
+
+    private func saveFollows(follows: [String: Follow]) {
+        var followsData = [String:Data]()
+        for (key, value) in follows {
+            let data = encodeFollow(followCodable: value)
+            followsData[key] = data
         }
         if let defaults = UserDefaults.init(suiteName: Constants.suiteName.rawValue) {
-            defaults.set(peopleData, forKey: Constants.peopleKey.rawValue)
+            defaults.set(followsData, forKey: Constants.followsKey.rawValue)
         }
     }
-        
-    func encodeUserData(userData: UserData) -> Data? {
+    
+    private func encodeFollow(followCodable: Follow) -> Data? {
         let archiver = NSKeyedArchiver(requiringSecureCoding: false)
         do {
-            try archiver.encodeEncodable(userData, forKey: NSKeyedArchiveRootObjectKey)
+            try archiver.encodeEncodable(followCodable, forKey: NSKeyedArchiveRootObjectKey)
         }
         catch {
             fatalError(error.localizedDescription)
@@ -243,16 +297,15 @@ class StorageManager: LogInService, UserService, ItemService {
         return archiver.encodedData
     }
     
-    func decodeUserData(data: Data) -> UserData? {
+    private func decodeFollow(data: Data) -> Follow? {
         do {
             let unarchiver = try NSKeyedUnarchiver(forReadingFrom: data)
-            let userData = unarchiver.decodeDecodable(UserData.self, forKey:NSKeyedArchiveRootObjectKey)
+            let follow = unarchiver.decodeDecodable(Follow.self, forKey:NSKeyedArchiveRootObjectKey)
             unarchiver.finishDecoding()
-            return userData
+            return follow
         } catch  {
-            print("DecodeUserData Failed")
+            print("DecodeFollow Failed")
             return nil
         }
     }
-    
 }

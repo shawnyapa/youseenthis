@@ -29,8 +29,8 @@ protocol ItemService {
 
 protocol FollowService {
     func requestToFollow(primaryUserId: String, followUserId: String)
-    func removeRequestToFollow(primaryUserId: String, followUserId: String)
-    func respondToFollowRequest(primaryUserId: String, followUserId: String, approve: Bool)
+    func respondToFollowRequest(followId: String, approve: Bool)
+    func removeRequestToFollow(followId: String)
     func returnAllFollowRequests(for primaryUserId: String) -> [Follow]
     func returnAllFollowAppovals(for primaryUserId: String) -> [Follow]
 }
