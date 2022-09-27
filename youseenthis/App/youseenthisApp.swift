@@ -77,6 +77,7 @@ struct youseenthisApp: App {
  Remove Confirm Button from Edit, Save on Back
  
  Refactor with UserService and ItemService Protocol (Done)
+ Refactor UserService & Add LogInService (Done)
  Add Follow Model & FollowService (WIP)
  Refactor Import/Export Utility
 

@@ -53,6 +53,7 @@ struct CreateItemView: View {
 
 struct CreateItemView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateItemView(showCreateItem: .constant(true), createItemVM: CreateItemViewModel(item: Item.defaultValue()))
+        let exampleUser = User.sampleValue()
+        CreateItemView(showCreateItem: .constant(true), createItemVM: CreateItemViewModel(item: Item.defaultValue(), loggedInUser: exampleUser))
     }
 }

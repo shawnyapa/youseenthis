@@ -38,7 +38,7 @@ class ListItemsViewModel: ObservableObject {
     }
     
     func refreshItems() {
-        items = modelService.returnAllItems()
+        items = modelService.findItemsForUser(userId: viewedUser.username)
     }
     
     func onUpdateItems(subject: PassthroughSubject<Void, Never>) {

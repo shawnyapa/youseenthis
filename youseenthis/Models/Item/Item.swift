@@ -9,8 +9,8 @@ import Foundation
 import SwiftUI
 
 struct Item: Identifiable, Hashable, Codable {
-    // TODO: Add var owner: String
     var id: String
+    var owner: String?
     var title: String
     var itemType: ItemType
     var itemStatus: ItemStatus

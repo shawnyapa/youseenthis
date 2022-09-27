@@ -25,6 +25,8 @@ class StorageManager: LogInService, UserService, ItemService {
         if let defaults = UserDefaults.init(suiteName: Constants.suiteName.rawValue) {
             defaults.set(username, forKey: Constants.loggedInKey.rawValue)
         }
+        /// // TODO: Remove Temporary for ItemOwner Refactor
+        //  updateAllItemsWithOwner(owner: username)
     }
     func loggedInUser() -> User? {
         var user: User?
@@ -133,8 +135,7 @@ class StorageManager: LogInService, UserService, ItemService {
         saveItems(items: itemsDictionary)
     }
     func findItemsForUser(userId: String) -> [Item] {
-        // TODO: Implement
-        return [Item]()
+        returnAllItems().filter { $0.owner == userId}
     }
     
     private func allItems() -> [String:Item] {
@@ -163,6 +164,16 @@ class StorageManager: LogInService, UserService, ItemService {
     private func deleteAllItems() {
         let defaults = UserDefaults.init(suiteName: Constants.suiteName.rawValue)
         defaults?.removeObject(forKey: Constants.itemsKey.rawValue)        
+    }
+    
+    private func updateAllItemsWithOwner(owner: String) {
+        var items = returnAllItems()
+        var itemsDictionary = [String: Item]()
+        for var item in items {
+            item.owner = owner
+            itemsDictionary.updateValue(item, forKey: item.id)
+        }
+        saveItems(items: itemsDictionary)
     }
     
 
