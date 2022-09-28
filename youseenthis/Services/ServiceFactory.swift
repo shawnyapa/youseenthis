@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LogInService {
-    func logUserIn(username: String)
+    func logUserIn(username: String) -> Bool
     func loggedInUser() -> User?
     func logoutUser()
 }
@@ -31,8 +31,8 @@ protocol FollowService {
     func requestToFollow(primaryUserId: String, followUserId: String)
     func respondToFollowRequest(followId: String, approve: Bool)
     func removeRequestToFollow(followId: String)
-    func returnAllFollowRequests(for primaryUserId: String) -> [Follow]
-    func returnAllFollowAppovals(for primaryUserId: String) -> [Follow]
+    func returnAllFollowRequests(for followUserId: String) -> [Follow]
+    func returnAllFollows(for primaryUserId: String) -> [Follow]
 }
 
 class ServiceFactory {

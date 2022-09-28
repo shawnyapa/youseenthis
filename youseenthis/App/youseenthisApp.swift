@@ -20,7 +20,7 @@ struct youseenthisApp: App {
             if labTestingUI {
                 LabTestingUI()
             } else {
-                HomeScreenView(homeScreenVM: HomeScreenViewModel())
+                RootView(rootVM: RootViewModel())
                     .onOpenURL { url in
                         if let message = ImportUtility.importUserData(from: url) {
                             importUserMessage = message
@@ -78,6 +78,7 @@ struct youseenthisApp: App {
  
  Refactor with UserService and ItemService Protocol (Done)
  Refactor UserService & Add LogInService (Done)
+ Add RootView with Login/Logout State
  Add Follow Model & FollowService (WIP)
  Refactor Import/Export Utility
 

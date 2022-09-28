@@ -30,7 +30,7 @@ struct FollowingListView: View {
 
 struct FollowingListView_Previews: PreviewProvider {
     static var previews: some View {
-        let followingListVM = FollowingListViewModel(following: ExampleData.createExampleUsersForFollowing())
+        let followingListVM = FollowingListViewModel(following: ExampleData.createExampleUsersForLists())
         FollowingListView(followingListVM: followingListVM)
     }
 }

@@ -10,6 +10,7 @@
 		6103F0F528BD66A50057A9AD /* EditUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6103F0F428BD66A50057A9AD /* EditUserView.swift */; };
 		6103F0F728BD8B8A0057A9AD /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6103F0F628BD8B8A0057A9AD /* TagsView.swift */; };
 		6103F10028BE8EB20057A9AD /* TagsEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6103F0FF28BE8EB20057A9AD /* TagsEditor.swift */; };
+		610AD65628E49FC500089526 /* ListUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610AD65528E49FC500089526 /* ListUsersView.swift */; };
 		6116433E28DE5D7000311F5F /* ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6116433D28DE5D7000311F5F /* ServiceFactory.swift */; };
 		612277BE28A86BB200015452 /* FollowingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612277BD28A86BB200015452 /* FollowingListView.swift */; };
 		6131700B27D420BA00834C08 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6131700A27D420BA00834C08 /* UserData.swift */; };
@@ -46,6 +47,10 @@
 		61843E7F28BFF2E900C71B5A /* String+Cleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61843E7E28BFF2E900C71B5A /* String+Cleaner.swift */; };
 		61843E8128C01B0C00C71B5A /* ItemTagsField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61843E8028C01B0C00C71B5A /* ItemTagsField.swift */; };
 		61843E8528C0279C00C71B5A /* FilterAndSortSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61843E8428C0279C00C71B5A /* FilterAndSortSheet.swift */; };
+		618FCAF528E4BB4500EED333 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618FCAF428E4BB4500EED333 /* LoginView.swift */; };
+		618FCAF928E4BC3500EED333 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618FCAF828E4BC3500EED333 /* LoginViewModel.swift */; };
+		618FCAFB28E4D33B00EED333 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618FCAFA28E4D33B00EED333 /* RootView.swift */; };
+		618FCAFD28E4D35B00EED333 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618FCAFC28E4D35B00EED333 /* RootViewModel.swift */; };
 		6190595528D529C300E14F9B /* ItemRatingImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6190595428D529C300E14F9B /* ItemRatingImage.swift */; };
 		6199F69B28D7DC6D00C663D7 /* CreateItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6199F69A28D7DC6D00C663D7 /* CreateItemViewModel.swift */; };
 		6199F69D28D7DC9200C663D7 /* EditItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6199F69C28D7DC9200C663D7 /* EditItemViewModel.swift */; };
@@ -57,6 +62,10 @@
 		619B98A328B9A39C00D8BBC1 /* ItemTypeField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619B98A228B9A39C00D8BBC1 /* ItemTypeField.swift */; };
 		619B98A528B9A45100D8BBC1 /* ItemTitleField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619B98A428B9A45100D8BBC1 /* ItemTitleField.swift */; };
 		619B98A728B9A6C600D8BBC1 /* UserAboutMeField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619B98A628B9A6C600D8BBC1 /* UserAboutMeField.swift */; };
+		619CA38D28E39F6400B19AF0 /* CreateUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619CA38C28E39F6400B19AF0 /* CreateUserView.swift */; };
+		619CA38F28E3A01900B19AF0 /* CreateUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619CA38E28E3A01900B19AF0 /* CreateUserViewModel.swift */; };
+		619CA39128E3A22C00B19AF0 /* FollowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619CA39028E3A22C00B19AF0 /* FollowView.swift */; };
+		619CA39328E3A24F00B19AF0 /* FollowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619CA39228E3A24F00B19AF0 /* FollowViewModel.swift */; };
 		619D3ACB28A9945700F46946 /* EmptyItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619D3ACA28A9945700F46946 /* EmptyItemList.swift */; };
 		619D3ACD28A9951600F46946 /* EmptyPeopleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619D3ACC28A9951600F46946 /* EmptyPeopleList.swift */; };
 		61A30FB927DE860300155417 /* ItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A30FB827DE860300155417 /* ItemType.swift */; };
@@ -87,6 +96,7 @@
 		6103F0F428BD66A50057A9AD /* EditUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserView.swift; sourceTree = "<group>"; };
 		6103F0F628BD8B8A0057A9AD /* TagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsView.swift; sourceTree = "<group>"; };
 		6103F0FF28BE8EB20057A9AD /* TagsEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsEditor.swift; sourceTree = "<group>"; };
+		610AD65528E49FC500089526 /* ListUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUsersView.swift; sourceTree = "<group>"; };
 		6116433D28DE5D7000311F5F /* ServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceFactory.swift; sourceTree = "<group>"; };
 		612277BD28A86BB200015452 /* FollowingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingListView.swift; sourceTree = "<group>"; };
 		6131700A27D420BA00834C08 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
@@ -123,6 +133,10 @@
 		61843E7E28BFF2E900C71B5A /* String+Cleaner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Cleaner.swift"; sourceTree = "<group>"; };
 		61843E8028C01B0C00C71B5A /* ItemTagsField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTagsField.swift; sourceTree = "<group>"; };
 		61843E8428C0279C00C71B5A /* FilterAndSortSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterAndSortSheet.swift; sourceTree = "<group>"; };
+		618FCAF428E4BB4500EED333 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		618FCAF828E4BC3500EED333 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		618FCAFA28E4D33B00EED333 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		618FCAFC28E4D35B00EED333 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		6190595428D529C300E14F9B /* ItemRatingImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRatingImage.swift; sourceTree = "<group>"; };
 		6199F69A28D7DC6D00C663D7 /* CreateItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateItemViewModel.swift; sourceTree = "<group>"; };
 		6199F69C28D7DC9200C663D7 /* EditItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemViewModel.swift; sourceTree = "<group>"; };
@@ -134,6 +148,10 @@
 		619B98A228B9A39C00D8BBC1 /* ItemTypeField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTypeField.swift; sourceTree = "<group>"; };
 		619B98A428B9A45100D8BBC1 /* ItemTitleField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTitleField.swift; sourceTree = "<group>"; };
 		619B98A628B9A6C600D8BBC1 /* UserAboutMeField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAboutMeField.swift; sourceTree = "<group>"; };
+		619CA38C28E39F6400B19AF0 /* CreateUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserView.swift; sourceTree = "<group>"; };
+		619CA38E28E3A01900B19AF0 /* CreateUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewModel.swift; sourceTree = "<group>"; };
+		619CA39028E3A22C00B19AF0 /* FollowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowView.swift; sourceTree = "<group>"; };
+		619CA39228E3A24F00B19AF0 /* FollowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowViewModel.swift; sourceTree = "<group>"; };
 		619D3ACA28A9945700F46946 /* EmptyItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyItemList.swift; sourceTree = "<group>"; };
 		619D3ACC28A9951600F46946 /* EmptyPeopleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyPeopleList.swift; sourceTree = "<group>"; };
 		61A30FB827DE860300155417 /* ItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemType.swift; sourceTree = "<group>"; };
@@ -184,6 +202,7 @@
 		612277B628A86B2B00015452 /* FollowingViews */ = {
 			isa = PBXGroup;
 			children = (
+				619CA39028E3A22C00B19AF0 /* FollowView.swift */,
 				612277BD28A86BB200015452 /* FollowingListView.swift */,
 				617AE75D28DBD6F20051498A /* AddFollowView.swift */,
 			);
@@ -266,6 +285,8 @@
 		614A8E1027E412D300D634CA /* UserViews */ = {
 			isa = PBXGroup;
 			children = (
+				610AD65528E49FC500089526 /* ListUsersView.swift */,
+				619CA38C28E39F6400B19AF0 /* CreateUserView.swift */,
 				6103F0F428BD66A50057A9AD /* EditUserView.swift */,
 				6148AAEC281E2C99008A3E2F /* ViewUserView.swift */,
 				619B98A628B9A6C600D8BBC1 /* UserAboutMeField.swift */,
@@ -330,10 +351,12 @@
 		6157282D27CC9BF600F0F206 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				618FCAFC28E4D35B00EED333 /* RootViewModel.swift */,
 				61AA630128D935E8007A053A /* HomeScreenViewModel.swift */,
 				617AE75628DB82D20051498A /* ItemViewModels */,
 				617AE75728DB83F70051498A /* UserViewModels */,
 				617AE75C28DBD66E0051498A /* FollowingViewModels */,
+				618FCAF728E4BC0A00EED333 /* LoginViewModels */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -360,6 +383,7 @@
 		617AE75728DB83F70051498A /* UserViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				619CA38E28E3A01900B19AF0 /* CreateUserViewModel.swift */,
 				617AE75A28DB84340051498A /* EditUserViewModel.swift */,
 				617AE75828DB84200051498A /* ViewUserViewModel.swift */,
 			);
@@ -370,8 +394,25 @@
 			isa = PBXGroup;
 			children = (
 				6181C2EE28DCC2DD00FDDA66 /* FollowingListViewModel.swift */,
+				619CA39228E3A24F00B19AF0 /* FollowViewModel.swift */,
 			);
 			path = FollowingViewModels;
+			sourceTree = "<group>";
+		};
+		618FCAF628E4BB5300EED333 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				618FCAF428E4BB4500EED333 /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		618FCAF728E4BC0A00EED333 /* LoginViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				618FCAF828E4BC3500EED333 /* LoginViewModel.swift */,
+			);
+			path = LoginViewModels;
 			sourceTree = "<group>";
 		};
 		619B989F28B9A0FD00D8BBC1 /* ItemComponents */ = {
@@ -412,11 +453,13 @@
 		61CF977A27C4490F008E179A /* SwiftUIViews */ = {
 			isa = PBXGroup;
 			children = (
+				618FCAFA28E4D33B00EED333 /* RootView.swift */,
 				61CF978227C44A3A008E179A /* HomeScreenView.swift */,
 				614A8E1127E412E100D634CA /* ItemViews */,
 				614A8E1227E412EB00D634CA /* FilterSortViews */,
 				614A8E1027E412D300D634CA /* UserViews */,
 				612277B628A86B2B00015452 /* FollowingViews */,
+				618FCAF628E4BB5300EED333 /* Login */,
 				617AC7282815D0260055858E /* LabTesting */,
 				614A8E1327E4131500D634CA /* Components */,
 			);
@@ -554,9 +597,12 @@
 				619B989E28B99F0300D8BBC1 /* ItemRatingField.swift in Sources */,
 				61EB806228B702110068B7DE /* ItemRating.swift in Sources */,
 				6131700D27D5740B00834C08 /* ItemTypeImage.swift in Sources */,
+				618FCAF928E4BC3500EED333 /* LoginViewModel.swift in Sources */,
+				618FCAF528E4BB4500EED333 /* LoginView.swift in Sources */,
 				619B98A328B9A39C00D8BBC1 /* ItemTypeField.swift in Sources */,
 				6116433E28DE5D7000311F5F /* ServiceFactory.swift in Sources */,
 				61CF978127C449C8008E179A /* NetworkManager.swift in Sources */,
+				618FCAFB28E4D33B00EED333 /* RootView.swift in Sources */,
 				61843E7D28BFE50000C71B5A /* TagsSelector.swift in Sources */,
 				6131700B27D420BA00834C08 /* UserData.swift in Sources */,
 				617AE75E28DBD6F20051498A /* AddFollowView.swift in Sources */,
@@ -567,17 +613,21 @@
 				614A8E0F27E4104000D634CA /* FilterItemTypeImage.swift in Sources */,
 				6153633B27E6A0270012B136 /* FilterItemStatusImage.swift in Sources */,
 				616EFAFF28A7087D007CA794 /* ExportUtility.swift in Sources */,
+				619CA39128E3A22C00B19AF0 /* FollowView.swift in Sources */,
 				61843E8128C01B0C00C71B5A /* ItemTagsField.swift in Sources */,
 				619B98A728B9A6C600D8BBC1 /* UserAboutMeField.swift in Sources */,
 				6199F69D28D7DC9200C663D7 /* EditItemViewModel.swift in Sources */,
 				61B7700328289C3700AF4EAF /* EmailExporter.swift in Sources */,
 				61F9E07F27DD5FD40058D70A /* ItemTypePicker.swift in Sources */,
+				618FCAFD28E4D35B00EED333 /* RootViewModel.swift in Sources */,
 				616EFAFB28A70796007CA794 /* LogUtility.swift in Sources */,
 				614A8E1527E4137900D634CA /* FilterItemTypePicker.swift in Sources */,
 				61C3FF7D28B8253500EBB318 /* ItemSortTypePicker.swift in Sources */,
 				61C3FF7A28B8207800EBB318 /* ItemSortType.swift in Sources */,
+				610AD65628E49FC500089526 /* ListUsersView.swift in Sources */,
 				614833FE27C3491500076898 /* Item.swift in Sources */,
 				61843E8528C0279C00C71B5A /* FilterAndSortSheet.swift in Sources */,
+				619CA38F28E3A01900B19AF0 /* CreateUserViewModel.swift in Sources */,
 				619D3ACB28A9945700F46946 /* EmptyItemList.swift in Sources */,
 				6153633D27E6A1880012B136 /* FilterItemStatusPicker.swift in Sources */,
 				61F9E08127DD5FEE0058D70A /* ItemStatusPicker.swift in Sources */,
@@ -597,6 +647,7 @@
 				619D3ACD28A9951600F46946 /* EmptyPeopleList.swift in Sources */,
 				61CF977E27C449A6008E179A /* StorageManager.swift in Sources */,
 				61AA630028D8EA78007A053A /* CreateItemView.swift in Sources */,
+				619CA39328E3A24F00B19AF0 /* FollowViewModel.swift in Sources */,
 				6153633927E69AA80012B136 /* FilterItemStatus.swift in Sources */,
 				614DC22128B442E100B995CE /* LabTesting.swift in Sources */,
 				6103F0F528BD66A50057A9AD /* EditUserView.swift in Sources */,
@@ -607,6 +658,7 @@
 				6103F0F728BD8B8A0057A9AD /* TagsView.swift in Sources */,
 				619B989C28B9916000D8BBC1 /* ItemNotesField.swift in Sources */,
 				6148340427C3594A00076898 /* ItemRow.swift in Sources */,
+				619CA38D28E39F6400B19AF0 /* CreateUserView.swift in Sources */,
 				6103F10028BE8EB20057A9AD /* TagsEditor.swift in Sources */,
 				61CF977927C41F32008E179A /* ViewItemView.swift in Sources */,
 				61EB806428B704000068B7DE /* ItemRatingPicker.swift in Sources */,

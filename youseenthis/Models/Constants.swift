@@ -95,6 +95,7 @@ struct ViewStrings {
     static let searchTags = "Search Tags"
     static let cancel = "Cancel"
     static let add = "Add"
+    static let create = "Create"
     static let edit = "Edit"
     static let update = "Update"
     static let delete = "Delete"

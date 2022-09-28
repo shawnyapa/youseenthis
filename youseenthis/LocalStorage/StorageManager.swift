@@ -21,9 +21,12 @@ class StorageManager: LogInService, UserService, ItemService, FollowService {
     private init() {}
     
     /// LogInService Implementation
-    func logUserIn(username: String) {
-        if let defaults = UserDefaults.init(suiteName: Constants.suiteName.rawValue) {
+    func logUserIn(username: String) -> Bool {
+        if let defaults = UserDefaults.init(suiteName: Constants.suiteName.rawValue), let _ =  getUser(for: username)  {
             defaults.set(username, forKey: Constants.loggedInKey.rawValue)
+            return true
+        } else {
+            return false
         }
         /// // TODO: Remove Temporary for ItemOwner Refactor
         //  updateAllItemsWithOwner(owner: username)
@@ -139,7 +142,7 @@ class StorageManager: LogInService, UserService, ItemService, FollowService {
     }
     
     func findItemsForUser(userId: String) -> [Item] {
-        returnAllItems().filter { $0.owner == userId}
+        returnAllItems().filter { $0.owner?.lowercased() == userId.lowercased()}
     }
     
     private func allItemsDictionary() -> [String:Item] {
@@ -224,16 +227,16 @@ class StorageManager: LogInService, UserService, ItemService, FollowService {
         removeFollowById(followId: followId)
     }
     
-    func returnAllFollowRequests(for primaryUserId: String) -> [Follow] {
+    func returnAllFollowRequests(for followUserId: String) -> [Follow] {
         let allFollows = returnAllFollows()
-        let allFollowRequests = allFollows.filter { $0.primaryUsername == primaryUserId && $0.isApproved == false }
+        let allFollowRequests = allFollows.filter { $0.followUsername == followUserId }
         
         return allFollowRequests
     }
     
-    func returnAllFollowAppovals(for primaryUserId: String) -> [Follow] {
+    func returnAllFollows(for primaryUserId: String) -> [Follow] {
         let allFollows = returnAllFollows()
-        let allFollowApprovals = allFollows.filter { $0.primaryUsername == primaryUserId && $0.isApproved == true }
+        let allFollowApprovals = allFollows.filter { $0.primaryUsername == primaryUserId }
         
         return allFollowApprovals
     }

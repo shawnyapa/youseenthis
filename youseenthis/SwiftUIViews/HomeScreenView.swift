@@ -36,6 +36,7 @@ struct HomeScreenView: View {
 
 struct HomeScreenView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeScreenView(homeScreenVM: HomeScreenViewModel())
+        let user = ExampleData.createExampleUser()
+        HomeScreenView(homeScreenVM: HomeScreenViewModel(loggedInUser: user))
     }
 }

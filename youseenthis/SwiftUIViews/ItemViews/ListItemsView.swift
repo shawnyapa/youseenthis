@@ -107,6 +107,7 @@ struct ListItemsView: View {
 
 struct ListItemsView_Previews: PreviewProvider {
     static var previews: some View {
-        ListItemsView(listItemsVM: ListItemsViewModel())
+        let user = ExampleData.createExampleUser()
+        ListItemsView(listItemsVM: ListItemsViewModel(loggedInUser: user))
     }
 }

@@ -53,7 +53,7 @@ struct ExampleData {
         return user
     }
     
-    static func createExampleUsersForFollowing() -> [User] {
+    static func createExampleUsersForLists() -> [User] {
 
         let user1 = User(id: UUID().uuidString, username: "baxter_rundog", firstName: "Baxter", lastName: "RunDog", email: "baxter@email.com", phoneNumber: "", aboutMe: "")
         let user2 = User(id: UUID().uuidString, username: "testuser_2", firstName: "Test", lastName: "User2", email: "testuser_2@email.com", phoneNumber: "", aboutMe: "")

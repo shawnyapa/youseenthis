@@ -6,28 +6,41 @@
 //
 
 import Foundation
+import Combine
 
 class HomeScreenViewModel: ObservableObject {
     
     var modelService: (LogInService & UserService & ItemService)
+    var loggedInUser: User
+    var loggedOutUserSubject = PassthroughSubject<Void, Never>()
+    var cancellables = Set<AnyCancellable>()
     
-    init(modelService: (LogInService & UserService & ItemService) = ServiceFactory.makeServices()) {
+    init(modelService: (LogInService & UserService & ItemService) = ServiceFactory.makeServices(), loggedInUser: User) {
         self.modelService = modelService
+        self.loggedInUser = loggedInUser
     }
     
     func createListItemsViewModel() -> ListItemsViewModel {
-        ListItemsViewModel(modelService: modelService)
+        ListItemsViewModel(modelService: modelService, loggedInUser: loggedInUser)
     }
     
     func createViewUserViewModel() -> ViewUserViewModel {
-        let user = modelService.loggedInUser() ?? User.newBlankUser()
-        let loggedInUser = modelService.loggedInUser()
-        return ViewUserViewModel(user: user, loggedInUser: loggedInUser)
+        let viewUserVM = ViewUserViewModel(user: loggedInUser, loggedInUser: loggedInUser)
+        updateLoggedOutUser(subject: viewUserVM.loggedOutUserSubject)
+        
+        return viewUserVM
     }
     
     func createFollowingListViewModel() -> FollowingListViewModel {
         // TODO: use FollowService
-        let users = ExampleData.createExampleUsersForFollowing()
+        let users = ExampleData.createExampleUsersForLists()
         return FollowingListViewModel(following: users)
+    }
+    
+    func updateLoggedOutUser(subject: PassthroughSubject<Void, Never>) {
+        subject.sink { () in
+            self.loggedOutUserSubject.send()
+        }
+        .store(in: &cancellables)
     }
 }

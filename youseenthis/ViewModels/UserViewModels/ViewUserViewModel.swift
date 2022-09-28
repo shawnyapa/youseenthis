@@ -13,18 +13,19 @@ class ViewUserViewModel: ObservableObject {
     var modelService: (LogInService & UserService)
     @Published var user: User
     @Published var loggedInUser: User?
+    var loggedOutUserSubject =  PassthroughSubject<Void, Never>()
     var cancellables = Set<AnyCancellable>()
-    var logInButtonString: String {
+    var logoutButtonString: String {
         if user.username.isEmpty {
             return "Unavailable"
-        } else if loggedInUser == nil {
-            return "Log In"
         } else {
             return "Log Out"
         }
     }
     
-    init(user: User, modelService: (LogInService & UserService) = ServiceFactory.makeServices(), loggedInUser: User?) {
+    init(user: User,
+         modelService: (LogInService & UserService) = ServiceFactory.makeServices(),
+         loggedInUser: User?) {
         self.user = user
         self.modelService = modelService
         if let loggedInUser = loggedInUser {
@@ -38,16 +39,10 @@ class ViewUserViewModel: ObservableObject {
         loggedInUser
     }
     
-    func loginButtonPressed() {
-        if modelService.loggedInUser() == nil {
-            if !user.username.isEmpty {
-                modelService.logUserIn(username: user.username)
-                self.loggedInUser = modelService.loggedInUser()
-            }
-        } else {
-            modelService.logoutUser()
-            self.loggedInUser = nil
-        }
+    func logoutButtonPressed() {
+        modelService.logoutUser()
+        self.loggedInUser = nil
+        loggedOutUserSubject.send()
     }
     
     func createEditUserViewModel() -> EditUserViewModel {

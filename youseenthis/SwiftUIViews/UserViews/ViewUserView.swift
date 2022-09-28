@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ViewUserView: View {
     @State private var showEditUser: Bool = false
@@ -48,8 +49,8 @@ struct ViewUserView: View {
                 Divider()
                 HStack {
                     Spacer()
-                    Button(viewUserVM.logInButtonString) {
-                        viewUserVM.loginButtonPressed()
+                    Button(viewUserVM.logoutButtonString) {
+                        viewUserVM.logoutButtonPressed()
                     }
                     Spacer()
                 }
