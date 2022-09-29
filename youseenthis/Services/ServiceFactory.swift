@@ -17,6 +17,7 @@ protocol UserService {
     func getUser(for username: String) -> User?
     func returnAllUsers() -> [User]
     func returnAllUser(with userNames: [String]) -> [User]
+    func removeUserById(username: String)
 }
 
 protocol ItemService {
@@ -36,7 +37,7 @@ protocol FollowService {
 }
 
 class ServiceFactory {
-    static func makeServices() -> (LogInService & UserService & ItemService) {
+    static func makeServices() -> (LogInService & UserService & ItemService & FollowService) {
         StorageManager.shared
     }
 }

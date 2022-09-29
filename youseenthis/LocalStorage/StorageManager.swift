@@ -68,6 +68,12 @@ class StorageManager: LogInService, UserService, ItemService, FollowService {
         returnAllUsers().filter { userNames.contains( $0.username) }
     }
     
+    func removeUserById(username: String) {
+        var usersDictionary = allUsersDictionary()
+        usersDictionary.removeValue(forKey: username)
+        saveUsers(users: usersDictionary)
+    }
+    
     private func allUsersDictionary() -> [String:User] {
         var users = [String:User]()
         let defaults = UserDefaults.init(suiteName: Constants.suiteName.rawValue)

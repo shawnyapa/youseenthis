@@ -24,16 +24,33 @@ struct ImportUtility {
         }
         let username = userData.user.username
         let message = "Adding \(username) UserData to People"
-        ImportUtility.addUserDataToPeople(userData: userData)
+        ImportUtility.addUserDataToFollow(userData: userData)
         
         return message
     }
     
-    static func addUserDataToPeople(userData: UserData) {
-        // TODO: Implement with FollowService
+    static func addUserDataToFollow(userData: UserData) {
+        let modelService = ServiceFactory.makeServices()
+        guard let loggedInUser = modelService.loggedInUser() else {
+            return
+        }
+        let followUser = userData.user
+        let followItems = userData.items
+        modelService.saveUser(user: followUser)
+        for item in followItems {
+            modelService.saveItem(item: item)
+        }
+        modelService.requestToFollow(primaryUserId: loggedInUser.username, followUserId: followUser.username)
+        modelService.respondToFollowRequest(followId: followUser.username, approve: true)
     }
     
-    static func removeUserDataFromPeople(with userId: String) {
-        // TODO: Implement with FollowService
+    static func removeUserDataFromFollow(with userId: String) {
+        let modelService = ServiceFactory.makeServices()
+        modelService.removeUserById(username: userId)
+        let items = modelService.findItemsForUser(userId: userId)
+        for item in items {
+            modelService.removeItemById(itemId: item.id)
+        }
+        modelService.removeRequestToFollow(followId: userId)
     }
 }
