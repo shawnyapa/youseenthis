@@ -21,7 +21,7 @@ class HomeScreenViewModel: ObservableObject {
     }
     
     func createListItemsViewModel() -> ListItemsViewModel {
-        ListItemsViewModel(modelService: modelService, loggedInUser: loggedInUser)
+        ListItemsViewModel(modelService: modelService, loggedInUser: loggedInUser, viewedUser: loggedInUser)
     }
     
     func createViewUserViewModel() -> ViewUserViewModel {
@@ -32,9 +32,7 @@ class HomeScreenViewModel: ObservableObject {
     }
     
     func createFollowViewModel() -> FollowViewModel {
-        // TODO: use FollowService
-        let users = ExampleData.createExampleUsersForLists()
-        let followViewModel = FollowViewModel(modelService: modelService, loggedInuser: loggedInUser, followers: users, following: users)
+        let followViewModel = FollowViewModel(modelService: modelService, loggedInuser: loggedInUser)
         return followViewModel
     }
     

@@ -9,16 +9,26 @@ import SwiftUI
 
 struct FollowingListView: View {
 
-    var following: [User]
+    @ObservedObject var followingListVM: FollowingListViewModel
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
-                if following.count == 0 {
+                if followingListVM.following.count == 0 {
                     EmptyPeopleList()
                 } else {
-                    ForEach(following) { user in
-                        Text(user.firstName + " " + user.lastName)
+                    ForEach(followingListVM.following) { follow in
+                        HStack {
+                            if follow.isApproved, let listItemsVM = followingListVM.createListItemsViewModel(for: follow.followUsername) {
+                                NavigationLink(follow.followUsername) {
+                                    ListItemsView(listItemsVM: listItemsVM)
+                                }
+                            } else {
+                                Text(follow.followUsername)
+                                Spacer()
+                                Text(ViewStrings.approvalPending)
+                            }
+                        }
                     }
                 }
             }
@@ -30,7 +40,9 @@ struct FollowingListView: View {
 
 struct FollowingListView_Previews: PreviewProvider {
     static var previews: some View {
-        let following = ExampleData.createExampleUsersForLists()
-        FollowingListView(following: following)
+        let mockServices = MockManager.shared
+        let loggedInUser = ExampleData.createExampleUser()
+        let followingListVM = FollowingListViewModel(modelService: mockServices, loggedInuser: loggedInUser)
+        FollowingListView(followingListVM: followingListVM)
     }
 }

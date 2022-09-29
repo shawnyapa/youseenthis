@@ -11,17 +11,18 @@ class FollowViewModel: ObservableObject {
     
     var modelService: (LogInService & UserService & FollowService)
     var loggedInUser: User
-    @Published var followers: [User]
-    @Published var following: [User]
     
     init(modelService: (LogInService & UserService & FollowService) = ServiceFactory.makeServices(),
-         loggedInuser: User,
-         followers: [User],
-         following: [User]) {
+         loggedInuser: User) {
         self.modelService = modelService
         self.loggedInUser = loggedInuser
-        self.followers = followers
-        self.following = following
     }
     
+    func createFollowerListViewModel() -> FollowerListViewModel {
+        FollowerListViewModel(loggedInuser: loggedInUser)
+    }
+    
+    func createFollowingListViewModel() -> FollowingListViewModel {
+        FollowingListViewModel(loggedInuser: loggedInUser)
+    }
 }

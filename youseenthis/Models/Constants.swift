@@ -102,6 +102,7 @@ struct ViewStrings {
     static let following = "Following"
     static let followers = "Followers"
     static let done = "Done"
+    static let approvalPending = "Approval Pending"
 }
 
 struct SystemColors {

@@ -25,10 +25,11 @@ class ListItemsViewModel: ObservableObject {
     }
     
     init(modelService: (LogInService & UserService & ItemService) = ServiceFactory.makeServices(),
-         loggedInUser: User) {
+         loggedInUser: User,
+         viewedUser: User) {
         self.modelService = modelService
         self.loggedInUser = loggedInUser
-        self.viewedUser = loggedInUser
+        self.viewedUser = viewedUser
         refreshItems()
     }
     

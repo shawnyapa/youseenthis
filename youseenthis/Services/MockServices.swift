@@ -21,7 +21,7 @@ class MockManager: LogInService, UserService, ItemService, FollowService {
     /// MockUserService
     func saveUser(user: User) {}
     func getUser(for username: String) -> User? { ExampleData.createExampleUser() }
-    func returnAllUsers() -> [User] { [User]() }
+    func returnAllUsers() -> [User] { ExampleData.createExampleUsersForLists() }
     func returnAllUser(with userNames: [String]) -> [User] { [User]() }
     func removeUserById(username: String) {}
 
@@ -30,13 +30,13 @@ class MockManager: LogInService, UserService, ItemService, FollowService {
     func returnAllItems() -> [Item] { [Item]() }
     func findItemById(itemId: String) -> Item? { ExampleData.createItem() }
     func removeItemById(itemId: String) {}
-    func findItemsForUser(userId: String) -> [Item] { [Item]() }
+    func findItemsForUser(userId: String) -> [Item] { ExampleData.createItems() }
 
     /// Mock FollowService
     func requestToFollow(primaryUserId: String, followUserId: String) {}
     func respondToFollowRequest(followId: String, approve: Bool) {}
     func removeRequestToFollow(followId: String) {}
-    func returnAllFollowRequests(for followUserId: String) -> [Follow] { [Follow]() }
-    func returnAllFollows(for primaryUserId: String) -> [Follow] { [Follow]() }
+    func returnAllFollowRequests(for followUserId: String) -> [Follow] { ExampleData.createFollowsForLists() }
+    func returnAllFollows(for primaryUserId: String) -> [Follow] { ExampleData.createFollowsForLists() }
     
 }

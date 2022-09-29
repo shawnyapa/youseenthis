@@ -66,10 +66,21 @@ struct ExampleData {
         
         return [Item]()
     }
-
-    static func createEmptyPeople() -> [UserData] {
+    
+    static func createFollowsForLists() -> [Follow] {
+        let users = ExampleData.createExampleUsersForLists()
+        let follow1 = Follow(id: UUID().uuidString, primaryUsername: users[0].username, followUsername: users[1].username, isApproved: true)
+        let follow2 = Follow(id: UUID().uuidString, primaryUsername: users[1].username, followUsername: users[0].username, isApproved: true)
+        let follow3 = Follow(id: UUID().uuidString, primaryUsername: users[1].username, followUsername: users[2].username, isApproved: false)
+        let follow4 = Follow(id: UUID().uuidString, primaryUsername: users[2].username, followUsername: users[1].username, isApproved: false)
+        let follows = [follow1, follow2, follow3, follow4]
         
-        return [UserData]()
+        return follows
+    }
+
+    static func createEmptyFollow() -> [Follow] {
+        
+        return [Follow]()
     }
     
     static func createRandomTags() -> [String] {

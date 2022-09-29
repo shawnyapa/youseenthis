@@ -9,16 +9,35 @@ import SwiftUI
 
 struct FollowerListView: View {
     
-    var follower: [User]
+    @ObservedObject var followerListVM: FollowerListViewModel
     
     var body: some View {
         NavigationView {
             List {
-                if follower.count == 0 {
+                if followerListVM.followers.count == 0 {
                     EmptyPeopleList()
                 } else {
-                    ForEach(follower) { user in
-                        Text(user.firstName + " " + user.lastName)
+                    ForEach(followerListVM.followers) { follow in
+                        HStack {
+                            Text(follow.primaryUsername)
+                            Spacer()
+                            /// Buttons
+                            if follow.isApproved {
+                                Button("Revoke", role: .destructive) {
+                                    followerListVM.revokeButtonPressed(followId: follow.id)
+                                }
+                                .buttonStyle(BorderedButtonStyle())
+                            } else {
+                                Button("Approve") {
+                                    followerListVM.approveButtonPressed(followId: follow.id)
+                                }
+                                .buttonStyle(BorderedButtonStyle())
+                                Button("Deny", role: .destructive) {
+                                    followerListVM.denyButtonPressed(followId: follow.id)
+                                }
+                                .buttonStyle(BorderedButtonStyle())
+                            }
+                        }
                     }
                 }
             }
@@ -30,7 +49,9 @@ struct FollowerListView: View {
 
 struct FollowerListView_Previews: PreviewProvider {
     static var previews: some View {
-        let follower = ExampleData.createExampleUsersForLists()
-        FollowerListView(follower: follower)
+        let mockServices = MockManager.shared
+        let loggedInUser = ExampleData.createExampleUser()
+        let followerListVM = FollowerListViewModel(modelService: mockServices, loggedInuser: loggedInUser)
+        FollowerListView(followerListVM: followerListVM)
     }
 }

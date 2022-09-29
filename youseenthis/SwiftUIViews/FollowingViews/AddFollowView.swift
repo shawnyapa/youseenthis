@@ -10,6 +10,8 @@ import SwiftUI
 struct AddFollowView: View {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        // TODO: Implement with UserList and FollowRequest Button
+        // Mark Users that are already requested
     }
 }
 

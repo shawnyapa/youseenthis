@@ -11,18 +11,20 @@ struct FollowView: View {
     @ObservedObject var followVM: FollowViewModel
     var body: some View {
         VStack {
-            FollowingListView(following: followVM.following)
-            FollowerListView(follower: followVM.followers)
+            FollowerListView(followerListVM: followVM.createFollowerListViewModel())
+            FollowingListView(followingListVM: followVM.createFollowingListViewModel())
             Spacer()
         }
+        
+        // TODO: Add Z-Layer Overlay Button to Show AddFollowView
     }
 }
 
 struct FollowView_Previews: PreviewProvider {
     static var previews: some View {
+        let mockServices = MockManager.shared
         let loggedInUser = ExampleData.createExampleUser()
-        let users = ExampleData.createExampleUsersForLists()
-        let followVM = FollowViewModel(loggedInuser: loggedInUser, followers: users, following: users)
+        let followVM = FollowViewModel(modelService: mockServices, loggedInuser: loggedInUser)
         FollowView(followVM: followVM)
     }
 }
