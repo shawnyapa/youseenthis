@@ -25,7 +25,7 @@ class HomeScreenViewModel: ObservableObject {
     }
     
     func createViewUserViewModel() -> ViewUserViewModel {
-        let viewUserVM = ViewUserViewModel(user: loggedInUser, loggedInUser: loggedInUser)
+        let viewUserVM = ViewUserViewModel(modelService: modelService, loggedInUser: loggedInUser)
         updateLoggedOutUser(subject: viewUserVM.loggedOutUserSubject)
         
         return viewUserVM

@@ -17,7 +17,7 @@ struct ViewUserView: View {
                 HStack {
                     Text("\(ViewStrings.username):")
                         .font(.headline)
-                    Text(viewUserVM.user.username)
+                    Text(viewUserVM.loggedInUser.username)
                         .font(.body)
                     Spacer()
                 }
@@ -25,7 +25,7 @@ struct ViewUserView: View {
                 HStack {
                     Text("\(ViewStrings.firstName):")
                         .font(.headline)
-                    Text(viewUserVM.user.firstName)
+                    Text(viewUserVM.loggedInUser.firstName)
                         .font(.body)
                     Spacer()
                 }
@@ -33,7 +33,7 @@ struct ViewUserView: View {
                 HStack {
                     Text("\(ViewStrings.lastName):")
                         .font(.headline)
-                    Text(viewUserVM.user.lastName)
+                    Text(viewUserVM.loggedInUser.lastName)
                         .font(.body)
                     Spacer()
                 }
@@ -41,11 +41,11 @@ struct ViewUserView: View {
                 HStack {
                     Text("\(ViewStrings.email):")
                         .font(.headline)
-                    Text(viewUserVM.user.email)
+                    Text(viewUserVM.loggedInUser.email)
                         .font(.body)
                     Spacer()
                 }
-                UserAboutMeField(aboutMe: viewUserVM.user.aboutMe)
+                UserAboutMeField(aboutMe: viewUserVM.loggedInUser.aboutMe)
                 Divider()
                 HStack {
                     Spacer()
@@ -76,7 +76,7 @@ struct ViewUserView: View {
 struct ViewUserView_Previews: PreviewProvider {
     static var previews: some View {
         let exampleUser = ExampleData.createExampleUser()
-        let viewUserVM = ViewUserViewModel(user: exampleUser, loggedInUser: exampleUser)
+        let viewUserVM = ViewUserViewModel(loggedInUser: exampleUser)
         ViewUserView(viewUserVM: viewUserVM)
     }
 }
