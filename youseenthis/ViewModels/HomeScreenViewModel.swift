@@ -31,10 +31,11 @@ class HomeScreenViewModel: ObservableObject {
         return viewUserVM
     }
     
-    func createFollowingListViewModel() -> FollowingListViewModel {
+    func createFollowViewModel() -> FollowViewModel {
         // TODO: use FollowService
         let users = ExampleData.createExampleUsersForLists()
-        return FollowingListViewModel(following: users)
+        let followViewModel = FollowViewModel(loggedInuser: loggedInUser, followers: users, following: users)
+        return followViewModel
     }
     
     func updateLoggedOutUser(subject: PassthroughSubject<Void, Never>) {

@@ -8,13 +8,21 @@
 import SwiftUI
 
 struct FollowView: View {
+    @ObservedObject var followVM: FollowViewModel
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            FollowingListView(following: followVM.following)
+            FollowerListView(follower: followVM.followers)
+            Spacer()
+        }
     }
 }
 
 struct FollowView_Previews: PreviewProvider {
     static var previews: some View {
-        FollowView()
+        let loggedInUser = ExampleData.createExampleUser()
+        let users = ExampleData.createExampleUsersForLists()
+        let followVM = FollowViewModel(loggedInuser: loggedInUser, followers: users, following: users)
+        FollowView(followVM: followVM)
     }
 }

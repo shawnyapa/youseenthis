@@ -100,6 +100,7 @@ struct ViewStrings {
     static let update = "Update"
     static let delete = "Delete"
     static let following = "Following"
+    static let followers = "Followers"
     static let done = "Done"
 }
 

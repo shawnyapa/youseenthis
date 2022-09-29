@@ -18,7 +18,7 @@ struct HomeScreenView: View {
                     Image(systemName: SystemImage.list.rawValue)
                 }
                 .tag(1)
-            FollowingListView(followingListVM: homeScreenVM.createFollowingListViewModel())
+            FollowView(followVM: homeScreenVM.createFollowViewModel())
                 .tabItem {
                     Text(ViewStrings.following)
                     Image(systemName: SystemImage.people.rawValue)
