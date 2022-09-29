@@ -50,7 +50,8 @@ struct EditUserView: View {
 struct EditUserView_Previews: PreviewProvider {
     static var previews: some View {
         let user = User.sampleValue()
-        let editUserVM = EditUserViewModel(user: user)
+        let mockServices = MockManager.shared
+        let editUserVM = EditUserViewModel(userService: mockServices, user: user)
         EditUserView(showEditUser: .constant(true), editUserVM: editUserVM)
     }
 }

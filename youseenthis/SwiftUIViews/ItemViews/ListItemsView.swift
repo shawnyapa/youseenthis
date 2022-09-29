@@ -18,7 +18,7 @@ struct ListItemsView: View {
     @State private var existingTags: [String] = [String]()
 
     var listTitle: String {
-        if listItemsVM.showingPrimaryUserItems {
+        if listItemsVM.showingLoggedInUserItems {
             return "\(ViewStrings.my) \(filterItemType.headerStringValue())"
         } else {
             return "\(listItemsVM.viewedUser.firstName)'s \(filterItemType.headerStringValue())"

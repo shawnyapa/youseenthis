@@ -76,7 +76,8 @@ struct ViewUserView: View {
 struct ViewUserView_Previews: PreviewProvider {
     static var previews: some View {
         let exampleUser = ExampleData.createExampleUser()
-        let viewUserVM = ViewUserViewModel(loggedInUser: exampleUser)
+        let mockModelService = MockManager.shared
+        let viewUserVM = ViewUserViewModel(modelService: mockModelService, loggedInUser: exampleUser)
         ViewUserView(viewUserVM: viewUserVM)
     }
 }

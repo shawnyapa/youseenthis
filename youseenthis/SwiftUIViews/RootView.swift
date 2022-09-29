@@ -21,6 +21,7 @@ struct RootView: View {
 struct RootView_Previews: PreviewProvider {
     static var previews: some View {
         let loggedInUser = ExampleData.createExampleUser()
-        RootView(rootVM: RootViewModel(loggedInUser: loggedInUser))
+        let mockServices = MockManager.shared
+        RootView(rootVM: RootViewModel(loginService: mockServices, loggedInUser: loggedInUser))
     }
 }

@@ -11,12 +11,12 @@ import Combine
 class CreateUserViewModel: ObservableObject {
     
     var userService: UserService
-    let updateUsersSubject = PassthroughSubject<Void, Never>()
     @Published var user: User
+    let updateUsersSubject = PassthroughSubject<Void, Never>()
     
-    init(user: User, userService: UserService = ServiceFactory.makeServices()) {
-        self.user = user
+    init (userService: UserService = ServiceFactory.makeServices(), user: User) {
         self.userService = userService
+        self.user = user
     }
     
     func savePrimaryUser() {

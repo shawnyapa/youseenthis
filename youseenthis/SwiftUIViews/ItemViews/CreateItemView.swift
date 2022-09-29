@@ -54,6 +54,10 @@ struct CreateItemView: View {
 struct CreateItemView_Previews: PreviewProvider {
     static var previews: some View {
         let exampleUser = User.sampleValue()
-        CreateItemView(showCreateItem: .constant(true), createItemVM: CreateItemViewModel(item: Item.defaultValue(), loggedInUser: exampleUser))
+        let mockServices = MockManager.shared
+        let createItemVM = CreateItemViewModel(modelService: mockServices,
+                                               item: Item.defaultValue(),
+                                               loggedInUser: exampleUser)
+        CreateItemView(showCreateItem: .constant(true), createItemVM: createItemVM)
     }
 }

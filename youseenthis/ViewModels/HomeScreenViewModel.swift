@@ -10,12 +10,12 @@ import Combine
 
 class HomeScreenViewModel: ObservableObject {
     
-    var modelService: (LogInService & UserService & ItemService)
+    var modelService: (LogInService & UserService & ItemService & FollowService)
     var loggedInUser: User
     var loggedOutUserSubject = PassthroughSubject<Void, Never>()
     var cancellables = Set<AnyCancellable>()
     
-    init(modelService: (LogInService & UserService & ItemService) = ServiceFactory.makeServices(), loggedInUser: User) {
+    init(modelService: (LogInService & UserService & ItemService & FollowService) = ServiceFactory.makeServices(), loggedInUser: User) {
         self.modelService = modelService
         self.loggedInUser = loggedInUser
     }
@@ -34,7 +34,7 @@ class HomeScreenViewModel: ObservableObject {
     func createFollowViewModel() -> FollowViewModel {
         // TODO: use FollowService
         let users = ExampleData.createExampleUsersForLists()
-        let followViewModel = FollowViewModel(loggedInuser: loggedInUser, followers: users, following: users)
+        let followViewModel = FollowViewModel(modelService: modelService, loggedInuser: loggedInUser, followers: users, following: users)
         return followViewModel
     }
     

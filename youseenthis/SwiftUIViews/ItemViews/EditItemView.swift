@@ -54,6 +54,7 @@ struct EditItemView: View {
 struct EditItemView_Previews: PreviewProvider {
     static var previews: some View {
         let item = Item.defaultValue()
-        EditItemView(editItemVM: EditItemViewModel(item: item))
+        let mockItemService = MockManager.shared
+        EditItemView(editItemVM: EditItemViewModel(itemService: mockItemService, item: item))
     }
 }

@@ -38,8 +38,9 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
+        let mockServices = MockManager.shared
         let users = ExampleData.createExampleUsersForLists()
-        let loginVM = LoginViewModel(users: users)
+        let loginVM = LoginViewModel(modelService: mockServices, users: users)
         LoginView(loginVM: loginVM)
     }
 }

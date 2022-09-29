@@ -12,23 +12,22 @@ class ListItemsViewModel: ObservableObject {
     
     var modelService: (LogInService & UserService & ItemService)
     var loggedInUser: User
-    @Published var primaryUser: User
     @Published var viewedUser: User
     @Published var items: [Item] = [Item]()
     var cancellables = Set<AnyCancellable>()
     
     var canEdit: Bool {
-        primaryUser.id == viewedUser.id
+        loggedInUser.id == viewedUser.id
     }
     
-    var showingPrimaryUserItems: Bool {
-        primaryUser.id == viewedUser.id
+    var showingLoggedInUserItems: Bool {
+        loggedInUser.id == viewedUser.id
     }
     
-    init(modelService: (LogInService & UserService & ItemService) = ServiceFactory.makeServices(), loggedInUser: User) {
+    init(modelService: (LogInService & UserService & ItemService) = ServiceFactory.makeServices(),
+         loggedInUser: User) {
         self.modelService = modelService
         self.loggedInUser = loggedInUser
-        self.primaryUser = loggedInUser
         self.viewedUser = loggedInUser
         refreshItems()
     }
@@ -50,7 +49,7 @@ class ListItemsViewModel: ObservableObject {
     }
     
     func createItemViewModel() -> CreateItemViewModel {
-        let createVM = CreateItemViewModel(item: Item.defaultValue())
+        let createVM = CreateItemViewModel(item: Item.defaultValue(), loggedInUser: loggedInUser)
         onUpdateItems(subject: createVM.updateItemsSubject)
         return createVM
     }
