@@ -37,6 +37,7 @@
 		616EFAFB28A70796007CA794 /* LogUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616EFAFA28A70796007CA794 /* LogUtility.swift */; };
 		616EFAFD28A7086E007CA794 /* ImportUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616EFAFC28A7086E007CA794 /* ImportUtility.swift */; };
 		616EFAFF28A7087D007CA794 /* ExportUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616EFAFE28A7087D007CA794 /* ExportUtility.swift */; };
+		6174DCB528E669AD0068F06A /* AddFollowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6174DCB428E669AD0068F06A /* AddFollowViewModel.swift */; };
 		617AC7252814C64C0055858E /* OverlaySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617AC7242814C64C0055858E /* OverlaySheet.swift */; };
 		617AC7272815D0080055858E /* LabTestingUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617AC7262815D0080055858E /* LabTestingUI.swift */; };
 		617AE75928DB84200051498A /* ViewUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617AE75828DB84200051498A /* ViewUserViewModel.swift */; };
@@ -126,6 +127,7 @@
 		616EFAFA28A70796007CA794 /* LogUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogUtility.swift; sourceTree = "<group>"; };
 		616EFAFC28A7086E007CA794 /* ImportUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportUtility.swift; sourceTree = "<group>"; };
 		616EFAFE28A7087D007CA794 /* ExportUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportUtility.swift; sourceTree = "<group>"; };
+		6174DCB428E669AD0068F06A /* AddFollowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFollowViewModel.swift; sourceTree = "<group>"; };
 		617AC7242814C64C0055858E /* OverlaySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlaySheet.swift; sourceTree = "<group>"; };
 		617AC7262815D0080055858E /* LabTestingUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabTestingUI.swift; sourceTree = "<group>"; };
 		617AE75828DB84200051498A /* ViewUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUserViewModel.swift; sourceTree = "<group>"; };
@@ -404,6 +406,7 @@
 				619CA39228E3A24F00B19AF0 /* FollowViewModel.swift */,
 				61F5D7FF28E64B29007A8C3C /* FollowerListViewModel.swift */,
 				61F5D80128E64B3A007A8C3C /* FollowingListViewModel.swift */,
+				6174DCB428E669AD0068F06A /* AddFollowViewModel.swift */,
 			);
 			path = FollowingViewModels;
 			sourceTree = "<group>";
@@ -641,6 +644,7 @@
 				619D3ACB28A9945700F46946 /* EmptyItemList.swift in Sources */,
 				6153633D27E6A1880012B136 /* FilterItemStatusPicker.swift in Sources */,
 				61F9E08127DD5FEE0058D70A /* ItemStatusPicker.swift in Sources */,
+				6174DCB528E669AD0068F06A /* AddFollowViewModel.swift in Sources */,
 				617AE75928DB84200051498A /* ViewUserViewModel.swift in Sources */,
 				6199F6A128D7DD5C00C663D7 /* ListItemsViewModel.swift in Sources */,
 				61E9783427D416300014398D /* AppDelegate.swift in Sources */,

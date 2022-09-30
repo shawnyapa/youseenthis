@@ -103,6 +103,11 @@ struct ViewStrings {
     static let followers = "Followers"
     static let done = "Done"
     static let approvalPending = "Approval Pending"
+    static let revoke = "Revoke"
+    static let approve = "Approve"
+    static let deny = "Deny"
+    static let followUser = "Follow a User"
+    static let follow = "Follow"
 }
 
 struct SystemColors {

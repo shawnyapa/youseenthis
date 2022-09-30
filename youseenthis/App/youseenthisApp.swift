@@ -79,8 +79,8 @@ struct youseenthisApp: App {
  Refactor with UserService and ItemService Protocol (Done)
  Refactor UserService & Add LogInService (Done)
  Add RootView with Login/Logout State
- Add Follow Model & FollowService (WIP)
- Refactor Import/Export Utility
+ Add Follow Model & FollowService (Done)
+ Refactor Import/Export Utility (Done)
 
  Update to Purple Logo
  Update missing Logo Asset Sizes

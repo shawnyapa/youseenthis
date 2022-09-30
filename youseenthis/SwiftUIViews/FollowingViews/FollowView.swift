@@ -8,15 +8,42 @@
 import SwiftUI
 
 struct FollowView: View {
+    @State private var showAddFollowView: Bool = false
     @ObservedObject var followVM: FollowViewModel
     var body: some View {
-        VStack {
-            FollowerListView(followerListVM: followVM.createFollowerListViewModel())
-            FollowingListView(followingListVM: followVM.createFollowingListViewModel())
-            Spacer()
+        ZStack {
+            VStack {
+                FollowerListView(followerListVM: followVM.createFollowerListViewModel())
+                FollowingListView(followingListVM: followVM.createFollowingListViewModel())
+                Spacer()
+            }
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    
+                    Button(action: {
+                        showAddFollowView.toggle()
+                    }, label: {
+                        Text("+")
+                            .font(.system(.largeTitle))
+                            .frame(width: 67, height: 60)
+                            .foregroundColor(Color.white)
+                            .padding(.bottom, 7)
+                    })
+                    .background(Color.purple)
+                    .cornerRadius(38.5)
+                    .padding()
+                    .shadow(color: Color.black.opacity(0.3),
+                            radius: 3,
+                            x: 3,
+                            y: 3)
+                }
+            }
         }
-        
-        // TODO: Add Z-Layer Overlay Button to Show AddFollowView
+        .sheet(isPresented: $showAddFollowView) {
+            AddFollowView(showAddFollowView: $showAddFollowView, addFollowVM: followVM.createAddFollowViewModel())
+        }
     }
 }
 

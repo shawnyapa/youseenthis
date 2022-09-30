@@ -23,16 +23,16 @@ struct FollowerListView: View {
                             Spacer()
                             /// Buttons
                             if follow.isApproved {
-                                Button("Revoke", role: .destructive) {
+                                Button(ViewStrings.revoke, role: .destructive) {
                                     followerListVM.revokeButtonPressed(followId: follow.id)
                                 }
                                 .buttonStyle(BorderedButtonStyle())
                             } else {
-                                Button("Approve") {
+                                Button(ViewStrings.approve) {
                                     followerListVM.approveButtonPressed(followId: follow.id)
                                 }
                                 .buttonStyle(BorderedButtonStyle())
-                                Button("Deny", role: .destructive) {
+                                Button(ViewStrings.deny, role: .destructive) {
                                     followerListVM.denyButtonPressed(followId: follow.id)
                                 }
                                 .buttonStyle(BorderedButtonStyle())
