@@ -12,16 +12,65 @@ struct FollowView: View {
     @ObservedObject var followVM: FollowViewModel
     var body: some View {
         ZStack {
-            VStack {
-                FollowerListView(followerListVM: followVM.createFollowerListViewModel())
-                FollowingListView(followingListVM: followVM.createFollowingListViewModel())
-                Spacer()
+            NavigationStack {
+                List {
+                    Section(ViewStrings.followers) {
+                        if followVM.followers.count == 0 {
+                            EmptyPeopleList()
+                        } else {
+                            ForEach(followVM.followers) { follow in
+                                HStack {
+                                    Text(follow.primaryUsername)
+                                    Spacer()
+                                    /// Buttons
+                                    if follow.isApproved {
+                                        Button(ViewStrings.revoke, role: .destructive) {
+                                            followVM.revokeButtonPressed(followId: follow.id)
+                                        }
+                                        .buttonStyle(BorderedButtonStyle())
+                                    } else {
+                                        Button(ViewStrings.approve) {
+                                            followVM.approveButtonPressed(followId: follow.id)
+                                        }
+                                        .buttonStyle(BorderedButtonStyle())
+                                        Button(ViewStrings.deny, role: .destructive) {
+                                            followVM.denyButtonPressed(followId: follow.id)
+                                        }
+                                        .buttonStyle(BorderedButtonStyle())
+                                    }
+                                }
+                            }
+                        }
+                        
+                    }
+                    Section(ViewStrings.following) {
+                        if followVM.following.count == 0 {
+                            EmptyPeopleList()
+                        } else {
+                            ForEach(followVM.following) { follow in
+                                HStack {
+                                    if follow.isApproved, let listItemsVM = followVM.createListItemsViewModel(for: follow.followUsername) {
+                                        NavigationLink(follow.followUsername) {
+                                            ListItemsView(listItemsVM: listItemsVM)
+                                        }
+                                    } else {
+                                        Text(follow.followUsername)
+                                        Spacer()
+                                        Text(ViewStrings.approvalPending)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .listStyle(.plain)
+                .navigationTitle(ViewStrings.follow)
             }
             VStack {
                 Spacer()
                 HStack {
                     Spacer()
-                    
+
                     Button(action: {
                         showAddFollowView.toggle()
                     }, label: {

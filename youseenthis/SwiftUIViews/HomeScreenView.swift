@@ -20,7 +20,7 @@ struct HomeScreenView: View {
                 .tag(1)
             FollowView(followVM: homeScreenVM.createFollowViewModel())
                 .tabItem {
-                    Text(ViewStrings.following)
+                    Text(ViewStrings.follow)
                     Image(systemName: SystemImage.people.rawValue)
                 }
                 .tag(2)
