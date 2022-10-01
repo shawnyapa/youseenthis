@@ -11,8 +11,8 @@ struct FollowView: View {
     @State private var showAddFollowView: Bool = false
     @ObservedObject var followVM: FollowViewModel
     var body: some View {
-        ZStack {
-            NavigationStack {
+        NavigationStack {
+            ZStack {
                 List {
                     Section(ViewStrings.followers) {
                         if followVM.followers.count == 0 {
@@ -52,6 +52,7 @@ struct FollowView: View {
                                     if follow.isApproved, let listItemsVM = followVM.createListItemsViewModel(for: follow.followUsername) {
                                         NavigationLink(follow.followUsername) {
                                             ListItemsView(listItemsVM: listItemsVM)
+                                                .toolbar(.hidden, for: .tabBar)
                                         }
                                     } else {
                                         Text(follow.followUsername)
@@ -64,29 +65,33 @@ struct FollowView: View {
                     }
                 }
                 .listStyle(.plain)
-                .navigationTitle(ViewStrings.follow)
-            }
-            VStack {
-                Spacer()
-                HStack {
+                .navigationTitle(Text(ViewStrings.follow))
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbarColorScheme(.dark, for: .navigationBar)
+                .toolbarBackground(SystemColors.dankyAccentColor, for: .navigationBar)
+                .toolbarBackground(.visible, for: .navigationBar)
+                VStack {
                     Spacer()
-
-                    Button(action: {
-                        showAddFollowView.toggle()
-                    }, label: {
-                        Text("+")
-                            .font(.system(.largeTitle))
-                            .frame(width: 67, height: 60)
-                            .foregroundColor(Color.white)
-                            .padding(.bottom, 7)
-                    })
-                    .background(Color.purple)
-                    .cornerRadius(38.5)
-                    .padding()
-                    .shadow(color: Color.black.opacity(0.3),
-                            radius: 3,
-                            x: 3,
-                            y: 3)
+                    HStack {
+                        Spacer()
+                        
+                        Button(action: {
+                            showAddFollowView.toggle()
+                        }, label: {
+                            Text("+")
+                                .font(.system(.largeTitle))
+                                .frame(width: 67, height: 60)
+                                .foregroundColor(Color.white)
+                                .padding(.bottom, 7)
+                        })
+                        .background(SystemColors.dankyAccentColor)
+                        .cornerRadius(38.5)
+                        .padding()
+                        .shadow(color: Color.black.opacity(0.3),
+                                radius: 3,
+                                x: 3,
+                                y: 3)
+                    }
                 }
             }
         }

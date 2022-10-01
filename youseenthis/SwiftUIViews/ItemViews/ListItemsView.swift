@@ -28,7 +28,7 @@ struct ListItemsView: View {
         listItemsVM.massagedItems(itemSortType: itemSortType, filterItemType: filterItemType, filterItemStatus: filterItemStatus, selectedTags: selectedTags)
     }
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Group() {
                 ZStack {
                     if massagedItems.count == 0 {
@@ -38,8 +38,18 @@ struct ListItemsView: View {
                             NavigationLink {
                                 if listItemsVM.canEdit {
                                     EditItemView(editItemVM: listItemsVM.editItemViewModel(item: item))
+                                        .navigationTitle(ViewStrings.edit)
+                                        .navigationBarTitleDisplayMode(.inline)
+                                        .toolbarColorScheme(.dark, for: .navigationBar)
+                                        .toolbarBackground(SystemColors.dankyAccentColor, for: .navigationBar)
+                                        .toolbarBackground(.visible, for: .navigationBar)
                                 } else {
                                     ViewItemView(item: item)
+                                        .navigationTitle(ViewStrings.details)
+                                        .navigationBarTitleDisplayMode(.inline)
+                                        .toolbarColorScheme(.dark, for: .navigationBar)
+                                        .toolbarBackground(SystemColors.dankyAccentColor, for: .navigationBar)
+                                        .toolbarBackground(.visible, for: .navigationBar)
                                 }
                                 
                             } label: {
@@ -62,7 +72,7 @@ struct ListItemsView: View {
                                         .foregroundColor(Color.white)
                                         .padding(.bottom, 7)
                                 })
-                                .background(Color.purple)
+                                .background(SystemColors.dankyAccentColor)
                                 .cornerRadius(38.5)
                                 .padding()
                                 .shadow(color: Color.black.opacity(0.3),
@@ -83,7 +93,10 @@ struct ListItemsView: View {
                 CreateItemView(showCreateItem: $showCreateItem, createItemVM: listItemsVM.createItemViewModel())
             }
             .navigationTitle(listTitle)
-            .toolbarBackground(Color.purple, for: .navigationBar)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarColorScheme(.dark, for: .navigationBar)
+            .toolbarBackground(SystemColors.dankyAccentColor, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: {
@@ -95,8 +108,10 @@ struct ListItemsView: View {
                     }, label: {
                         if filterItemType == .noFilter && filterItemStatus == .noFilter && selectedTags.count == 0 {
                             Image(systemName: SystemImage.filter_off.rawValue)
+                                .foregroundColor(Color.white)
                         } else {
                             Image(systemName: SystemImage.filter_on.rawValue)
+                                .foregroundColor(Color.white)
                         }
                     })
                 }

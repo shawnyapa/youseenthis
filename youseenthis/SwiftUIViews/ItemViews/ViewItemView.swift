@@ -21,7 +21,6 @@ struct ViewItemView: View {
             Spacer()
         }
         .padding(.all)
-        .navigationTitle(item.title)
     }
 }
 

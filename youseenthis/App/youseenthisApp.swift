@@ -78,9 +78,16 @@ struct youseenthisApp: App {
  
  Refactor with UserService and ItemService Protocol (Done)
  Refactor UserService & Add LogInService (Done)
- Add RootView with Login/Logout State
+ Add RootView with Login/Logout State (Done)
  Add Follow Model & FollowService (Done)
  Refactor Import/Export Utility (Done)
+ Fix viewedUser ListItemsView UX (Done)
+    - Merge Top Toolbar items (Done)
+    - Hide Bottom Tabbar (Done)
+    - Remove "+" Button (Done)
+ UX Rework for Navigation Styles and Colors
+    - main Screens (Done)
+    - Modals (WIP)
 
  Update to Purple Logo
  Update missing Logo Asset Sizes

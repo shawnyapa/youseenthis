@@ -12,7 +12,7 @@ struct ViewUserView: View {
     @State private var showEditUser: Bool = false
     @ObservedObject var viewUserVM : ViewUserViewModel
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(alignment: .leading) {
                 HStack {
                     Text("\(ViewStrings.username):")
@@ -57,6 +57,10 @@ struct ViewUserView: View {
             }
             .padding()
             .navigationTitle(ViewStrings.userProfile)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarColorScheme(.dark, for: .navigationBar)
+            .toolbarBackground(SystemColors.dankyAccentColor, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: {

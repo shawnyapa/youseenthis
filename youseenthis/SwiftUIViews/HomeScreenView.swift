@@ -31,6 +31,7 @@ struct HomeScreenView: View {
                 }
                 .tag(3)
         }
+        .accentColor(SystemColors.dankyAccentColor)
     }
 }
 

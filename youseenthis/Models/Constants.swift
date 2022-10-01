@@ -98,6 +98,7 @@ struct ViewStrings {
     static let create = "Create"
     static let edit = "Edit"
     static let update = "Update"
+    static let details = "Details"
     static let delete = "Delete"
     static let following = "Following"
     static let followers = "Followers"
@@ -113,4 +114,5 @@ struct ViewStrings {
 struct SystemColors {
     static let activeTagFill = Color(UIColor.systemCyan)
     static let deactiveTagFill = Color(UIColor.systemGray)
+    static let dankyAccentColor = Color.purple
 }
