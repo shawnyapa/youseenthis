@@ -74,7 +74,6 @@ struct youseenthisApp: App {
  Fix ViewModels (Done)
  Refactor with Forms (Done)
  Separate View/Edit (Done)
- Remove Confirm Button from Edit, Save on Back
  
  Refactor with UserService and ItemService Protocol (Done)
  Refactor UserService & Add LogInService (Done)
@@ -87,7 +86,8 @@ struct youseenthisApp: App {
     - Remove "+" Button (Done)
  UX Rework for Navigation Styles and Colors
     - main Screens (Done)
-    - Modals (WIP)
+    - Modals (Done)
+ EditItem - form.OnChange -> Hide Back, Highlight Update Button
 
  Update to Purple Logo
  Update missing Logo Asset Sizes

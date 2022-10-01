@@ -11,20 +11,7 @@ struct EditUserView: View {
     @Binding var showEditUser: Bool
     @ObservedObject var editUserVM: EditUserViewModel
     var body: some View {
-        VStack {
-            HStack {
-                Button(ViewStrings.cancel) {
-                    showEditUser.toggle()
-                }
-                .buttonStyle(BorderlessButtonStyle())
-                Spacer()
-                Button(ViewStrings.update) {
-                    editUserVM.savePrimaryUser()
-                    showEditUser.toggle()
-                }
-                .buttonStyle(BorderlessButtonStyle())
-            }
-            .padding()
+        NavigationStack {
             Form {
                 Section(header: Text(ViewStrings.username)) {
                     TextField("\(ViewStrings.username)", text:$editUserVM.user.username)
@@ -41,6 +28,28 @@ struct EditUserView: View {
                 Section(header: Text(ViewStrings.aboutMe)) {
                     TextEditor(text: $editUserVM.user.aboutMe)
                         .frame(height: 150, alignment: .top)
+                }
+            }
+            .navigationTitle(ViewStrings.editProfile)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarColorScheme(.dark, for: .navigationBar)
+            .toolbarBackground(SystemColors.dankyAccentColor, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Button(action: {
+                        editUserVM.savePrimaryUser()
+                        showEditUser.toggle()
+                    }, label: {
+                        Text(ViewStrings.update)
+                    })
+                }
+                ToolbarItem(placement: .cancellationAction) {
+                    Button(action: {
+                        showEditUser.toggle()
+                    }, label: {
+                        Text(ViewStrings.cancel)
+                    })
                 }
             }
         }

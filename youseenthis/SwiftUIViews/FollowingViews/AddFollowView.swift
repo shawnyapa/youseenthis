@@ -11,13 +11,7 @@ struct AddFollowView: View {
     @Binding var showAddFollowView: Bool
     @ObservedObject var addFollowVM: AddFollowViewModel
     var body: some View {
-        VStack {
-            HStack {
-                Text(ViewStrings.followUser)
-                    .font(.largeTitle)
-                Spacer()
-            }
-            .padding()
+        NavigationStack {
             List {
                 if addFollowVM.users.count == 0 {
                     EmptyItemList()
@@ -36,6 +30,20 @@ struct AddFollowView: View {
                 }
             }
             .listStyle(.plain)
+            .navigationTitle(ViewStrings.followUser)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarColorScheme(.dark, for: .navigationBar)
+            .toolbarBackground(SystemColors.dankyAccentColor, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Button(action: {
+                        showAddFollowView.toggle()
+                    }, label: {
+                        Text(ViewStrings.done)
+                    })
+                }
+            }
         }
     }
 }

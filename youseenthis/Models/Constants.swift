@@ -96,7 +96,9 @@ struct ViewStrings {
     static let cancel = "Cancel"
     static let add = "Add"
     static let create = "Create"
+    static let createNew = "Create New"
     static let edit = "Edit"
+    static let editProfile = "Edit Profile"
     static let update = "Update"
     static let details = "Details"
     static let delete = "Delete"
@@ -107,7 +109,7 @@ struct ViewStrings {
     static let revoke = "Revoke"
     static let approve = "Approve"
     static let deny = "Deny"
-    static let followUser = "Follow a User"
+    static let followUser = "Follow Someone"
     static let follow = "Follow"
 }
 

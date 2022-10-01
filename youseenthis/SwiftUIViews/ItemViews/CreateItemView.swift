@@ -13,20 +13,7 @@ struct CreateItemView: View {
     @ObservedObject var createItemVM: CreateItemViewModel
     
     var body: some View {
-        VStack {
-            HStack {
-                Button(ViewStrings.cancel) {
-                    showCreateItem.toggle()
-                }
-                .buttonStyle(BorderlessButtonStyle())
-                Spacer()
-                Button(ViewStrings.add) {
-                    createItemVM.addItem()
-                    showCreateItem.toggle()
-                }
-                .buttonStyle(BorderlessButtonStyle())
-            }
-            .padding()
+        NavigationStack {
             Form {
 
                 Section(header: Text(ViewStrings.title)) {
@@ -45,6 +32,28 @@ struct CreateItemView: View {
                 Section(header: Text(ViewStrings.notes)) {
                     TextEditor(text: $createItemVM.item.notes)
                         .frame(height: 150, alignment: .top)
+                }
+            }
+            .navigationTitle(ViewStrings.createNew)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarColorScheme(.dark, for: .navigationBar)
+            .toolbarBackground(SystemColors.dankyAccentColor, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Button(action: {
+                            createItemVM.addItem()
+                            showCreateItem.toggle()
+                    }, label: {
+                        Text(ViewStrings.add)
+                    })
+                }
+                ToolbarItem(placement: .cancellationAction) {
+                    Button(action: {
+                            showCreateItem.toggle()
+                    }, label: {
+                        Text(ViewStrings.cancel)
+                    })
                 }
             }
         }

@@ -28,8 +28,6 @@ class StorageManager: LogInService, UserService, ItemService, FollowService {
         } else {
             return false
         }
-        /// // TODO: Remove Temporary for ItemOwner Refactor
-        //  updateAllItemsWithOwner(owner: username)
     }
     func loggedInUser() -> User? {
         var user: User?
@@ -179,6 +177,7 @@ class StorageManager: LogInService, UserService, ItemService, FollowService {
         defaults?.removeObject(forKey: Constants.itemsKey.rawValue)        
     }
     
+    /// Temporary function for owner Item Model updates
     private func updateAllItemsWithOwner(owner: String) {
         let items = returnAllItems()
         var itemsDictionary = [String: Item]()
