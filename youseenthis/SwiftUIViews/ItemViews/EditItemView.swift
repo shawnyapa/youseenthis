@@ -21,7 +21,7 @@ struct EditItemView: View {
             Section(header: Text(ViewStrings.status)) {
                 ItemStatusPicker(itemStatus: $editItemVM.item.itemStatus)
             }
-            Section(header: Text(ViewStrings.type)) {
+            Section(header: Text(ViewStrings.rating)) {
                 ItemRatingPicker(itemRating: $editItemVM.item.rating)
             }
             TagsEditor(tags: $editItemVM.item.tags)
@@ -31,22 +31,39 @@ struct EditItemView: View {
             }
             HStack {
                 Spacer()
-                Button(ViewStrings.delete) {
+                Button(ViewStrings.delete, role: .destructive) {
                     editItemVM.removeItem()
                     dismiss()
                 }
                 Spacer()
             }
         }
+        .navigationBarBackButtonHidden(editItemVM.isUpdating ? true:false)
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
-                Button(action: {
-                    editItemVM.editItem()
-                    dismiss()
-                }, label: {
-                    Text(ViewStrings.update)
-                })
+                if editItemVM.isUpdating {
+                    Button(action: {
+                        editItemVM.editItem()
+                        dismiss()
+                    }, label: {
+                        Text(ViewStrings.update)
+                            .foregroundColor(SystemColors.dankyAccentColor)
+                    })
+                    .buttonStyle(.borderedProminent)
+                } else {
+                    Button(action: {
+                        editItemVM.editItem()
+                        dismiss()
+                    }, label: {
+                        Text(ViewStrings.update)
+                            .foregroundColor(Color.white)
+                    })
+                    .buttonStyle(.automatic)
+                }
             }
+        }
+        .onChange(of: editItemVM.item) { newValue in
+            editItemVM.onChangeOfForm()
         }
     }
 }

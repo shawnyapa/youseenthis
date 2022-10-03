@@ -43,6 +43,7 @@ struct ListItemsView: View {
                                         .toolbarColorScheme(.dark, for: .navigationBar)
                                         .toolbarBackground(SystemColors.dankyAccentColor, for: .navigationBar)
                                         .toolbarBackground(.visible, for: .navigationBar)
+                                        .toolbar(.hidden, for: .tabBar)
                                 } else {
                                     ViewItemView(item: item)
                                         .navigationTitle(ViewStrings.details)

@@ -114,7 +114,7 @@ struct ViewStrings {
 }
 
 struct SystemColors {
-    static let activeTagFill = Color(UIColor.systemCyan)
+    static let activeTagFill = Color.purple
     static let deactiveTagFill = Color(UIColor.systemGray)
     static let dankyAccentColor = Color.purple
 }

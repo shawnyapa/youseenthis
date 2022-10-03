@@ -25,7 +25,7 @@ struct CreateItemView: View {
                 Section(header: Text(ViewStrings.status)) {
                     ItemStatusPicker(itemStatus: $createItemVM.item.itemStatus)
                 }
-                Section(header: Text(ViewStrings.type)) {
+                Section(header: Text(ViewStrings.rating)) {
                     ItemRatingPicker(itemRating: $createItemVM.item.rating)
                 }
                 TagsEditor(tags: $createItemVM.item.tags)
@@ -34,6 +34,7 @@ struct CreateItemView: View {
                         .frame(height: 150, alignment: .top)
                 }
             }
+            .formStyle(.grouped)
             .navigationTitle(ViewStrings.createNew)
             .navigationBarTitleDisplayMode(.inline)
             .toolbarColorScheme(.dark, for: .navigationBar)
