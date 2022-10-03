@@ -49,7 +49,7 @@ struct TagsEditor: View {
                         }
                         .background(RoundedRectangle(cornerRadius: 15)
                             .foregroundColor(SystemColors.activeTagFill))
-                        .buttonStyle(.automatic)
+                        .buttonStyle(.borderless)
                     }
                 }
             }
@@ -59,14 +59,17 @@ struct TagsEditor: View {
     func addNewTag(newTag: Binding<String>) {
         let cleanedTag = newTag.wrappedValue.removeSpecialCharactersAndBlankSpaces()
         if !cleanedTag.isEmpty, !tags.contains(cleanedTag) {
-            tags.append(newTag.wrappedValue)
+            DispatchQueue.main.async {
+                tags.append(cleanedTag)
+            }
         }
         newTag.wrappedValue = ""
     }
     
     func deleteTag(tag: String) {
-        print(tag)
-        tags = tags.filter { $0 != tag }
+        DispatchQueue.main.async {
+            tags = tags.filter { $0 != tag }
+        }
     }
 }
 
