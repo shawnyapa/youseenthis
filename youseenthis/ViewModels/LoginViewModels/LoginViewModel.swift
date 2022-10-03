@@ -27,7 +27,10 @@ class LoginViewModel: ObservableObject {
     }
     
     func refreshUsers() {
-        self.users = modelService.returnAllUsers()
+        let users = modelService.returnAllUsers()
+        DispatchQueue.main.async {
+            self.users = users
+        }
     }
     
     func createUserViewModel() -> CreateUserViewModel {
@@ -48,7 +51,9 @@ class LoginViewModel: ObservableObject {
         if modelService.loggedInUser() == nil {
             if !username.isEmpty {
                 if modelService.logUserIn(username: username), let loggedInUser = modelService.loggedInUser() {
-                    self.loggedInUser = loggedInUser
+                    DispatchQueue.main.async {
+                        self.loggedInUser = loggedInUser
+                    }
                     loggedInUserPassthrough.send(loggedInUser)
                 }
             }

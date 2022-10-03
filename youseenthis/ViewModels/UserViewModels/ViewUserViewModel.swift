@@ -47,7 +47,9 @@ class ViewUserViewModel: ObservableObject {
     func onUpdateUser(subject: PassthroughSubject<String, Never>) {
         subject.sink { username in
             if let user = self.modelService.getUser(for: username){
-                self.loggedInUser = user
+                DispatchQueue.main.async {
+                    self.loggedInUser = user
+                }
             }
         }
         .store(in: &cancellables)

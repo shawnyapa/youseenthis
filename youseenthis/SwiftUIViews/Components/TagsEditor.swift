@@ -17,19 +17,27 @@ struct TagsEditor: View {
                 if newTag.isEmpty {
                     Button(action: {
                         // Do Nothing
-                    }, label: { Text("+")
-                        Image(systemName: SystemImage.tag.rawValue)
+                    }, label: {
+                        HStack {
+                            Text("+")
+                            Image(systemName: SystemImage.tag.rawValue)
+                        }
+                    .padding(6)
                     })
                     .foregroundColor(SystemColors.dankyAccentColor)
                     .buttonStyle(.automatic)
                 } else {
                     Button(action: {
                         addNewTag(newTag: $newTag)
-                    }, label: { Text("+")
-                        Image(systemName: SystemImage.tag.rawValue)
+                    }, label: {
+                        HStack {
+                            Text("+")
+                            Image(systemName: SystemImage.tag.rawValue)
+                        }
+                        .padding(6)
                     })
                     .foregroundColor(Color.white)
-                    .buttonStyle(.borderedProminent)
+                    .background(RoundedRectangle(cornerRadius: 6).foregroundColor(SystemColors.activeTagFill))
                 }
                 TextField(ViewStrings.newTag, text: $newTag)
                     .background(.background)

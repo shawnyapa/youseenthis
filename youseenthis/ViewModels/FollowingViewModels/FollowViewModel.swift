@@ -24,8 +24,12 @@ class FollowViewModel: ObservableObject {
     }
     
     func refreshFollows() {
-        self.followers = getFollowers()
-        self.following = getFollowing()
+        let followers = getFollowers()
+        let following = getFollowing()
+        DispatchQueue.main.async {
+            self.followers = followers
+            self.following = following
+        }
     }
     
     /// FollowerList Functions

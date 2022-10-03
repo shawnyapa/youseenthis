@@ -31,7 +31,9 @@ class RootViewModel: ObservableObject {
     
     func updateLoggedOutUser(subject: PassthroughSubject<Void, Never>) {
         subject.sink { () in
-            self.loggedInUser = nil
+            DispatchQueue.main.async {
+                self.loggedInUser = nil
+            }
         }
         .store(in: &cancellables)
     }
@@ -45,7 +47,9 @@ class RootViewModel: ObservableObject {
     
     func updateLoggedInUser(subject: PassthroughSubject<User, Never>) {
         subject.sink { user in
-            self.loggedInUser = user
+            DispatchQueue.main.async {
+                self.loggedInUser = user
+            }
         }
         .store(in: &cancellables)
     }

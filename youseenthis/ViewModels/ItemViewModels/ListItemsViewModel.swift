@@ -34,12 +34,17 @@ class ListItemsViewModel: ObservableObject {
     }
     
     func showUser(viewedUser:User) {
-        self.viewedUser = viewedUser
+        DispatchQueue.main.async {
+            self.viewedUser = viewedUser
+        }
         refreshItems()
     }
     
     func refreshItems() {
-        items = modelService.findItemsForUser(userId: viewedUser.username)
+        let items = modelService.findItemsForUser(userId: viewedUser.username)
+        DispatchQueue.main.async {
+            self.items = items
+        }
     }
     
     func onUpdateItems(subject: PassthroughSubject<Void, Never>) {
