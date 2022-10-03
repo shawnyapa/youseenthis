@@ -84,11 +84,13 @@ struct youseenthisApp: App {
     - Merge Top Toolbar items (Done)
     - Hide Bottom Tabbar (Done)
     - Remove "+" Button (Done)
- UX Rework for Navigation Styles and Colors
+ UX Rework for Navigation Styles and Colors (Done)
     - main Screens (Done)
     - Modals (Done)
- EditItem - form.OnChange -> Hide Back, Highlight Update Button
-
+ EditItem - form.OnChange (Done)
+    - Hide Back (Done)
+    - Highlight Update Button (Done)
+ 
  Update to Purple Logo
  Update missing Logo Asset Sizes
  Setup LocalizedStrings and Files

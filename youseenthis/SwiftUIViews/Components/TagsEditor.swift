@@ -14,11 +14,23 @@ struct TagsEditor: View {
     var body: some View {
         VStack {
             HStack {
-                Button(action: {
-                    addNewTag(newTag: $newTag)
-                }, label: { Text("+")
-                            Image(systemName: SystemImage.tag.rawValue)
-                })
+                if newTag.isEmpty {
+                    Button(action: {
+                        // Do Nothing
+                    }, label: { Text("+")
+                        Image(systemName: SystemImage.tag.rawValue)
+                    })
+                    .foregroundColor(SystemColors.dankyAccentColor)
+                    .buttonStyle(.automatic)
+                } else {
+                    Button(action: {
+                        addNewTag(newTag: $newTag)
+                    }, label: { Text("+")
+                        Image(systemName: SystemImage.tag.rawValue)
+                    })
+                    .foregroundColor(Color.white)
+                    .buttonStyle(.borderedProminent)
+                }
                 TextField(ViewStrings.newTag, text: $newTag)
                     .background(.background)
                     .padding()
@@ -37,6 +49,7 @@ struct TagsEditor: View {
                         }
                         .background(RoundedRectangle(cornerRadius: 15)
                             .foregroundColor(SystemColors.activeTagFill))
+                        .buttonStyle(.automatic)
                     }
                 }
             }
