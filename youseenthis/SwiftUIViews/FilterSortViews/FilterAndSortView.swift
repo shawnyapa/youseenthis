@@ -9,7 +9,7 @@ import SwiftUI
 
 // TODO: Refactor with ViewModel
 
-struct FilterAndSortSheet: View {
+struct FilterAndSortView: View {
     @Binding var showFilterSheet: Bool
     @Binding var itemSortType: ItemSortType
     @Binding var filterItemType: FilterItemType
@@ -96,9 +96,9 @@ struct FilterAndSortSheet: View {
     }
 }
 
-struct FilterAndSortSheet_Previews: PreviewProvider {
+struct FilterAndSortView_Previews: PreviewProvider {
     static var previews: some View {
         let items = ExampleData.createItems()
-        FilterAndSortSheet(showFilterSheet: .constant(true), itemSortType: .constant(.titleAscending), filterItemType: .constant(.movie), filterItemStatus: .constant(.willWatch), selectedTags: .constant([String]()), items: .constant(items), existingTags: .constant([String]()))
+        FilterAndSortView(showFilterSheet: .constant(true), itemSortType: .constant(.titleAscending), filterItemType: .constant(.movie), filterItemStatus: .constant(.willWatch), selectedTags: .constant([String]()), items: .constant(items), existingTags: .constant([String]()))
     }
 }

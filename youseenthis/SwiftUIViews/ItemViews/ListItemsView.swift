@@ -88,7 +88,7 @@ struct ListItemsView: View {
                 }
             }
             .sheet(isPresented: $showFilterSheet) {
-                FilterAndSortSheet(showFilterSheet: $showFilterSheet, itemSortType: $itemSortType, filterItemType: $filterItemType, filterItemStatus: $filterItemStatus, selectedTags: $selectedTags, items: $listItemsVM.items, existingTags: $existingTags)
+                FilterAndSortView(showFilterSheet: $showFilterSheet, itemSortType: $itemSortType, filterItemType: $filterItemType, filterItemStatus: $filterItemStatus, selectedTags: $selectedTags, items: $listItemsVM.items, existingTags: $existingTags)
                     .presentationDetents([.fraction(0.75)])
             }
             .sheet(isPresented: $showCreateItem) {
