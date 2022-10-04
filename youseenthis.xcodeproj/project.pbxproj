@@ -37,7 +37,6 @@
 		616EFAFD28A7086E007CA794 /* ImportUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616EFAFC28A7086E007CA794 /* ImportUtility.swift */; };
 		616EFAFF28A7087D007CA794 /* ExportUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616EFAFE28A7087D007CA794 /* ExportUtility.swift */; };
 		6174DCB528E669AD0068F06A /* AddFollowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6174DCB428E669AD0068F06A /* AddFollowViewModel.swift */; };
-		617AC7252814C64C0055858E /* OverlaySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617AC7242814C64C0055858E /* OverlaySheet.swift */; };
 		617AC7272815D0080055858E /* LabTestingUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617AC7262815D0080055858E /* LabTestingUI.swift */; };
 		617AE75928DB84200051498A /* ViewUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617AE75828DB84200051498A /* ViewUserViewModel.swift */; };
 		617AE75B28DB84340051498A /* EditUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617AE75A28DB84340051498A /* EditUserViewModel.swift */; };
@@ -123,7 +122,6 @@
 		616EFAFC28A7086E007CA794 /* ImportUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportUtility.swift; sourceTree = "<group>"; };
 		616EFAFE28A7087D007CA794 /* ExportUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportUtility.swift; sourceTree = "<group>"; };
 		6174DCB428E669AD0068F06A /* AddFollowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFollowViewModel.swift; sourceTree = "<group>"; };
-		617AC7242814C64C0055858E /* OverlaySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlaySheet.swift; sourceTree = "<group>"; };
 		617AC7262815D0080055858E /* LabTestingUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabTestingUI.swift; sourceTree = "<group>"; };
 		617AE75828DB84200051498A /* ViewUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUserViewModel.swift; sourceTree = "<group>"; };
 		617AE75A28DB84340051498A /* EditUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserViewModel.swift; sourceTree = "<group>"; };
@@ -323,7 +321,6 @@
 		614A8E1327E4131500D634CA /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				617AC7242814C64C0055858E /* OverlaySheet.swift */,
 				6103F0F628BD8B8A0057A9AD /* TagsView.swift */,
 				6103F0FF28BE8EB20057A9AD /* TagsEditor.swift */,
 				61843E7C28BFE50000C71B5A /* TagsSelector.swift */,
@@ -668,7 +665,6 @@
 				61F9E07B27DD39F10058D70A /* Constants.swift in Sources */,
 				61ADCDC228B5B4B800849320 /* ShareSheet.swift in Sources */,
 				61F9DCDD28DA6B7C00DDEECC /* EditItemView.swift in Sources */,
-				617AC7252814C64C0055858E /* OverlaySheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

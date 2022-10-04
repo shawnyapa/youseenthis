@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ListItemsView: View {
     @ObservedObject var listItemsVM: ListItemsViewModel
+    @State private var showFilterSheet: Bool = false
     @State private var showCreateItem: Bool = false
-    @State private var filterSheetMode: SheetMode = .none
     @State private var itemSortType: ItemSortType = .titleAscending
     @State private var filterItemType: FilterItemType = .noFilter
     @State private var filterItemStatus: FilterItemStatus = .noFilter
@@ -85,10 +85,11 @@ struct ListItemsView: View {
                             }
                         }
                     }
-                    OverlaySheet(sheetMode: $filterSheetMode) {
-                        FilterAndSortSheet(filterSheetMode: $filterSheetMode, itemSortType: $itemSortType, filterItemType: $filterItemType, filterItemStatus: $filterItemStatus, selectedTags: $selectedTags, items: $listItemsVM.items, existingTags: $existingTags)
-                    }
                 }
+            }
+            .sheet(isPresented: $showFilterSheet) {
+                FilterAndSortSheet(showFilterSheet: $showFilterSheet, itemSortType: $itemSortType, filterItemType: $filterItemType, filterItemStatus: $filterItemStatus, selectedTags: $selectedTags, items: $listItemsVM.items, existingTags: $existingTags)
+                    .presentationDetents([.fraction(0.75)])
             }
             .sheet(isPresented: $showCreateItem) {
                 CreateItemView(showCreateItem: $showCreateItem, createItemVM: listItemsVM.createItemViewModel())
@@ -101,11 +102,7 @@ struct ListItemsView: View {
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: {
-                        if filterSheetMode == .none {
-                            filterSheetMode = .onequarter
-                        } else {
-                            filterSheetMode = .none
-                        }
+                        showFilterSheet.toggle()
                     }, label: {
                         if filterItemType == .noFilter && filterItemStatus == .noFilter && selectedTags.count == 0 {
                             Image(systemName: SystemImage.filter_off.rawValue)
