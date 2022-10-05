@@ -14,14 +14,32 @@ class ListItemsViewModel: ObservableObject {
     var loggedInUser: User
     @Published var viewedUser: User
     @Published var items: [Item] = [Item]()
+    @Published var filteredAndSortedItems: [Item] = [Item]()
+    var filterAndSortSettings = FilterAndSortSettings()
+    var filterAndSortViewModel = FilterAndSortViewModel()
     var cancellables = Set<AnyCancellable>()
     
     var canEdit: Bool {
         loggedInUser.id == viewedUser.id
     }
+
+    var listTitle: String {
+        let filterItemType = filterAndSortViewModel.filterAndSortSettings.filterItemType
+        if loggedInUser.id == viewedUser.id {
+            return "\(ViewStrings.my) \(filterItemType.headerStringValue())"
+        } else {
+            return "\(viewedUser.firstName)'s \(filterItemType.headerStringValue())"
+        }
+    }
     
-    var showingLoggedInUserItems: Bool {
-        loggedInUser.id == viewedUser.id
+    var isFilterActive: Bool {
+        if filterAndSortSettings.filterItemType == .noFilter,
+            filterAndSortSettings.filterItemStatus == .noFilter,
+            filterAndSortSettings.selectedTags.count == 0 {
+            return false
+        } else {
+            return true
+        }
     }
     
     init(modelService: (LogInService & UserService & ItemService) = ServiceFactory.makeServices(),
@@ -30,6 +48,7 @@ class ListItemsViewModel: ObservableObject {
         self.modelService = modelService
         self.loggedInUser = loggedInUser
         self.viewedUser = viewedUser
+        self.filterAndSortViewModel = createFilterAndSortViewModel()
         refreshItems()
     }
     
@@ -44,7 +63,19 @@ class ListItemsViewModel: ObservableObject {
         let items = modelService.findItemsForUser(userId: viewedUser.username)
         DispatchQueue.main.async {
             self.items = items
+            self.filterAndSortViewModel.updateSelectableTags(with: items)
+            self.filteredAndSortedItems = self.filterAndSortItems(filterAndSortSettings: self.filterAndSortSettings)
         }
+    }
+    
+    func onUpdateFilterSettings(subject: PassthroughSubject<FilterAndSortSettings, Never>) {
+        subject.sink { filterSettings in
+            DispatchQueue.main.async {
+                self.filterAndSortSettings = filterSettings
+                self.filteredAndSortedItems = self.filterAndSortItems(filterAndSortSettings: filterSettings)
+            }
+        }
+        .store(in: &cancellables)
     }
     
     func onUpdateItems(subject: PassthroughSubject<Void, Never>) {
@@ -60,19 +91,24 @@ class ListItemsViewModel: ObservableObject {
         return createVM
     }
     
-    func editItemViewModel(item: Item) -> EditItemViewModel {
+    func createEditItemViewModel(item: Item) -> EditItemViewModel {
         let editVM = EditItemViewModel(item: item)
         onUpdateItems(subject: editVM.updateItemsSubject)
         return editVM
     }
     
-    func massagedItems(itemSortType: ItemSortType,
-                       filterItemType: FilterItemType,
-                       filterItemStatus: FilterItemStatus,
-                       selectedTags: [String]) -> [Item] {
-        let sortedItems = ItemArraySortAndFilter.sortedItems(items: items, sortType: itemSortType)
-        let filteredItems = ItemArraySortAndFilter.filteredItems(items: sortedItems, itemType: filterItemType.itemTypeForFilterItemType(), itemStatus: filterItemStatus.itemStatusForFilterItemStatus())
-        let matchedTaggedItems = ItemArraySortAndFilter.matchedTaggedItems(items: filteredItems, selectedTags: selectedTags)
+    func createFilterAndSortViewModel() -> FilterAndSortViewModel {
+        let filterAndSortVM = FilterAndSortViewModel()
+        onUpdateFilterSettings(subject: filterAndSortVM.filterSettingsSubject)
+        return filterAndSortVM
+    }
+    
+    func filterAndSortItems(filterAndSortSettings: FilterAndSortSettings) -> [Item] {
+        let sortedItems = ItemArraySortAndFilter.sortedItems(items: items, sortType: filterAndSortSettings.itemSortType)
+        let filteredItems = ItemArraySortAndFilter.filteredItems(items: sortedItems,
+                                                                 itemType: filterAndSortSettings.filterItemType.itemTypeForFilterItemType(),
+                                                                 itemStatus: filterAndSortSettings.filterItemStatus.itemStatusForFilterItemStatus())
+        let matchedTaggedItems = ItemArraySortAndFilter.matchedTaggedItems(items: filteredItems, selectedTags: filterAndSortSettings.selectedTags)
         
         return matchedTaggedItems
     }

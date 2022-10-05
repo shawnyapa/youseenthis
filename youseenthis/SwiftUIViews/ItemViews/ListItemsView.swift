@@ -11,33 +11,18 @@ struct ListItemsView: View {
     @ObservedObject var listItemsVM: ListItemsViewModel
     @State private var showFilterSheet: Bool = false
     @State private var showCreateItem: Bool = false
-    @State private var itemSortType: ItemSortType = .titleAscending
-    @State private var filterItemType: FilterItemType = .noFilter
-    @State private var filterItemStatus: FilterItemStatus = .noFilter
-    @State private var selectedTags: [String] = [String]()
-    @State private var existingTags: [String] = [String]()
-
-    var listTitle: String {
-        if listItemsVM.showingLoggedInUserItems {
-            return "\(ViewStrings.my) \(filterItemType.headerStringValue())"
-        } else {
-            return "\(listItemsVM.viewedUser.firstName)'s \(filterItemType.headerStringValue())"
-        }
-    }
-    var massagedItems: [Item] {
-        listItemsVM.massagedItems(itemSortType: itemSortType, filterItemType: filterItemType, filterItemStatus: filterItemStatus, selectedTags: selectedTags)
-    }
+        
     var body: some View {
         NavigationStack {
             Group() {
                 ZStack {
-                    if massagedItems.count == 0 {
+                    if listItemsVM.filteredAndSortedItems.count == 0 {
                         EmptyItemList()
                     } else {
-                        List(massagedItems) { item in
+                        List(listItemsVM.filteredAndSortedItems) { item in
                             NavigationLink {
                                 if listItemsVM.canEdit {
-                                    EditItemView(editItemVM: listItemsVM.editItemViewModel(item: item))
+                                    EditItemView(editItemVM: listItemsVM.createEditItemViewModel(item: item))
                                         .navigationTitle(ViewStrings.edit)
                                         .navigationBarTitleDisplayMode(.inline)
                                         .toolbarColorScheme(.dark, for: .navigationBar)
@@ -88,13 +73,14 @@ struct ListItemsView: View {
                 }
             }
             .sheet(isPresented: $showFilterSheet) {
-                FilterAndSortView(showFilterSheet: $showFilterSheet, itemSortType: $itemSortType, filterItemType: $filterItemType, filterItemStatus: $filterItemStatus, selectedTags: $selectedTags, items: $listItemsVM.items, existingTags: $existingTags)
+                FilterAndSortView(showFilterSheet: $showFilterSheet,
+                                  filterAndSortVM: listItemsVM.filterAndSortViewModel)
                     .presentationDetents([.fraction(0.75)])
             }
             .sheet(isPresented: $showCreateItem) {
                 CreateItemView(showCreateItem: $showCreateItem, createItemVM: listItemsVM.createItemViewModel())
             }
-            .navigationTitle(listTitle)
+            .navigationTitle(listItemsVM.listTitle)
             .navigationBarTitleDisplayMode(.inline)
             .toolbarColorScheme(.dark, for: .navigationBar)
             .toolbarBackground(SystemColors.dankyAccentColor, for: .navigationBar)
@@ -104,11 +90,11 @@ struct ListItemsView: View {
                     Button(action: {
                         showFilterSheet.toggle()
                     }, label: {
-                        if filterItemType == .noFilter && filterItemStatus == .noFilter && selectedTags.count == 0 {
-                            Image(systemName: SystemImage.filter_off.rawValue)
+                        if listItemsVM.isFilterActive {
+                            Image(systemName: SystemImage.filter_on.rawValue)
                                 .foregroundColor(Color.white)
                         } else {
-                            Image(systemName: SystemImage.filter_on.rawValue)
+                            Image(systemName: SystemImage.filter_off.rawValue)
                                 .foregroundColor(Color.white)
                         }
                     })

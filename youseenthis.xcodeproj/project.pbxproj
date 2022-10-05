@@ -80,6 +80,7 @@
 		61CF978127C449C8008E179A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF978027C449C8008E179A /* NetworkManager.swift */; };
 		61CF978327C44A3A008E179A /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF978227C44A3A008E179A /* HomeScreenView.swift */; };
 		61D7E42C28EC8FFA00270BDC /* FilterAndSortViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D7E42B28EC8FFA00270BDC /* FilterAndSortViewModel.swift */; };
+		61D7E42E28ECB16A00270BDC /* FilterAndSortSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D7E42D28ECB16A00270BDC /* FilterAndSortSettings.swift */; };
 		61DCA78628DFF48200AA7EA3 /* Follow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DCA78528DFF48200AA7EA3 /* Follow.swift */; };
 		61E9783427D416300014398D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E9783327D416300014398D /* AppDelegate.swift */; };
 		61EB806228B702110068B7DE /* ItemRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EB806128B702110068B7DE /* ItemRating.swift */; };
@@ -166,6 +167,7 @@
 		61CF978027C449C8008E179A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		61CF978227C44A3A008E179A /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
 		61D7E42B28EC8FFA00270BDC /* FilterAndSortViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterAndSortViewModel.swift; sourceTree = "<group>"; };
+		61D7E42D28ECB16A00270BDC /* FilterAndSortSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterAndSortSettings.swift; sourceTree = "<group>"; };
 		61DCA78528DFF48200AA7EA3 /* Follow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follow.swift; sourceTree = "<group>"; };
 		61E9783327D416300014398D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61EA3A8028B55B03003DAD3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 		614A8E0B27E40B6A00D634CA /* Filter */ = {
 			isa = PBXGroup;
 			children = (
+				61D7E42D28ECB16A00270BDC /* FilterAndSortSettings.swift */,
 				614A8E0C27E40BA600D634CA /* FilterItemType.swift */,
 				6153633827E69AA80012B136 /* FilterItemStatus.swift */,
 			);
@@ -662,6 +665,7 @@
 				61CF978327C44A3A008E179A /* HomeScreenView.swift in Sources */,
 				617AC7272815D0080055858E /* LabTestingUI.swift in Sources */,
 				6148340627C36A9500076898 /* ListItemsView.swift in Sources */,
+				61D7E42E28ECB16A00270BDC /* FilterAndSortSettings.swift in Sources */,
 				61FDDC0D28AC1C1800402906 /* Semver.swift in Sources */,
 				6103F0F728BD8B8A0057A9AD /* TagsView.swift in Sources */,
 				619B989C28B9916000D8BBC1 /* ItemNotesField.swift in Sources */,
