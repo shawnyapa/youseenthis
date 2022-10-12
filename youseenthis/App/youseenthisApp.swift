@@ -90,9 +90,14 @@ struct youseenthisApp: App {
  EditItem - form.OnChange (Done)
     - Hide Back (Done)
     - Highlight Update Button (Done)
- 
+ Refactor Login Screen UX with Danky Headers and Design (Done)
+ Add Copy Item to ItemDetail (Done)
+ Fix Danky Icon Purple Color
+ Fix Meh Icon, dark/light (not fill)
+ Add Danky Icon to Header left corner
  Update to Purple Logo
  Update missing Logo Asset Sizes
+ 
  Setup LocalizedStrings and Files
  Update Name to Danky
  Copy over to AppBundle Danky

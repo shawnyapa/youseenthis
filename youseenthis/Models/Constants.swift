@@ -36,6 +36,7 @@ enum SystemImage: String {
     case tag = "tag"
     case noTag = "tag.slash"
     case minus = "minus"
+    case duplicate = "plus.square.on.square"
 }
 
 struct ViewStrings {
@@ -112,6 +113,7 @@ struct ViewStrings {
     static let deny = "Deny"
     static let followUser = "Follow Someone"
     static let follow = "Follow"
+    static let duplicateItemAlert = " has been added to your list!"
 }
 
 struct SystemColors {

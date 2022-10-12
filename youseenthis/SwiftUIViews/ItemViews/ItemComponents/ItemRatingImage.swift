@@ -24,6 +24,6 @@ struct ItemRatingImage: View {
 
 struct ItemRatingImage_Previews: PreviewProvider {
     static var previews: some View {
-        ItemRatingImage(itemRating: .janky)
+        ItemRatingImage(itemRating: .meh)
     }
 }

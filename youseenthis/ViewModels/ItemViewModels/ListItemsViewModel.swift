@@ -68,6 +68,10 @@ class ListItemsViewModel: ObservableObject {
         }
     }
     
+    func onViewAppear() {
+        refreshItems()
+    }
+    
     func onUpdateFilterSettings(subject: PassthroughSubject<FilterAndSortSettings, Never>) {
         subject.sink { filterSettings in
             DispatchQueue.main.async {
@@ -85,7 +89,7 @@ class ListItemsViewModel: ObservableObject {
         .store(in: &cancellables)
     }
     
-    func createItemViewModel() -> CreateItemViewModel {
+    func createCreateItemViewModel() -> CreateItemViewModel {
         let createVM = CreateItemViewModel(item: Item.defaultValue(), loggedInUser: loggedInUser)
         onUpdateItems(subject: createVM.updateItemsSubject)
         return createVM
@@ -95,6 +99,11 @@ class ListItemsViewModel: ObservableObject {
         let editVM = EditItemViewModel(item: item)
         onUpdateItems(subject: editVM.updateItemsSubject)
         return editVM
+    }
+    
+    func createViewItemViewModel(item: Item) -> ViewItemViewModel {
+        let viewVM = ViewItemViewModel(item: item, loggedInUser: loggedInUser)
+        return viewVM
     }
     
     func createFilterAndSortViewModel() -> FilterAndSortViewModel {

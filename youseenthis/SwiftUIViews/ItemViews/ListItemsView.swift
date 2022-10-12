@@ -30,7 +30,7 @@ struct ListItemsView: View {
                                         .toolbarBackground(.visible, for: .navigationBar)
                                         .toolbar(.hidden, for: .tabBar)
                                 } else {
-                                    ViewItemView(item: item)
+                                    ViewItemView(viewItemVM: listItemsVM.createViewItemViewModel(item: item))
                                         .navigationTitle(ViewStrings.details)
                                         .navigationBarTitleDisplayMode(.inline)
                                         .toolbarColorScheme(.dark, for: .navigationBar)
@@ -72,13 +72,16 @@ struct ListItemsView: View {
                     }
                 }
             }
+            .onAppear() {
+                listItemsVM.onViewAppear()
+            }
             .sheet(isPresented: $showFilterSheet) {
                 FilterAndSortView(showFilterSheet: $showFilterSheet,
                                   filterAndSortVM: listItemsVM.filterAndSortViewModel)
                     .presentationDetents([.fraction(0.75)])
             }
             .sheet(isPresented: $showCreateItem) {
-                CreateItemView(showCreateItem: $showCreateItem, createItemVM: listItemsVM.createItemViewModel())
+                CreateItemView(showCreateItem: $showCreateItem, createItemVM: listItemsVM.createCreateItemViewModel())
             }
             .navigationTitle(listItemsVM.listTitle)
             .navigationBarTitleDisplayMode(.inline)
