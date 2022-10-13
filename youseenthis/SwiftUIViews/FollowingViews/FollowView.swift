@@ -70,6 +70,11 @@ struct FollowView: View {
                 .toolbarColorScheme(.dark, for: .navigationBar)
                 .toolbarBackground(SystemColors.dankyAccentColor, for: .navigationBar)
                 .toolbarBackground(.visible, for: .navigationBar)
+                .toolbar {
+                    ToolbarItem(placement: .navigation) {
+                            Image(ImageStrings.dankyNavIcon)
+                    }
+                }
                 VStack {
                     Spacer()
                     HStack {

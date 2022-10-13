@@ -102,6 +102,13 @@ struct ListItemsView: View {
                         }
                     })
                 }
+                ToolbarItem(placement: .navigation) {
+                    if listItemsVM.canEdit {
+                        Image(ImageStrings.dankyNavIcon)
+                    } else {
+                        EmptyView()
+                    }
+                }
             }
         }
     }

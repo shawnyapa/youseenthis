@@ -56,15 +56,15 @@ enum ItemRating: Int, Hashable, Codable, CaseIterable, Identifiable, Comparable 
         case .notRated:
             return nil
         case .janky:
-            return "Janky"
+            return ImageStrings.jankyRating
         case .suspect:
-            return "Suspect"
+            return ImageStrings.suspectRating
         case .meh:
-            return "Meh"
+            return ImageStrings.mehRating
         case .solid:
-            return "Solid"
+            return ImageStrings.solidRating
         case .danky:
-            return "Danky"
+            return ImageStrings.dankyRating
         }
     }
     

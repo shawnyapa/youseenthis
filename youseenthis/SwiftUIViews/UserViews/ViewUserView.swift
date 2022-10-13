@@ -69,6 +69,9 @@ struct ViewUserView: View {
                         Text(ViewStrings.edit)
                     })
                 }
+                ToolbarItem(placement: .navigation) {
+                        Image(ImageStrings.dankyNavIcon)
+                }
             }
             .sheet(isPresented: $showEditUser) {
                 EditUserView(showEditUser: $showEditUser, editUserVM: viewUserVM.createEditUserViewModel())

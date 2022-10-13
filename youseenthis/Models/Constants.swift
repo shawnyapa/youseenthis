@@ -39,6 +39,15 @@ enum SystemImage: String {
     case duplicate = "plus.square.on.square"
 }
 
+struct ImageStrings {
+    static let dankyRating = "Danky"
+    static let solidRating = "Solid"
+    static let mehRating = "Meh"
+    static let suspectRating = "Suspect"
+    static let jankyRating = "Janky"
+    static let dankyNavIcon = "DankyNavIcon"
+}
+
 struct ViewStrings {
     static let title = "Title"
     static let status = "Status"
@@ -120,4 +129,5 @@ struct SystemColors {
     static let activeTagFill = Color.purple
     static let deactiveTagFill = Color(UIColor.systemGray)
     static let dankyAccentColor = Color.purple
+    static let applePurple = Color(red: (148/255), green: (33/255), blue: (146/255))    /// Unused
 }

@@ -92,11 +92,11 @@ struct youseenthisApp: App {
     - Highlight Update Button (Done)
  Refactor Login Screen UX with Danky Headers and Design (Done)
  Add Copy Item to ItemDetail (Done)
- Fix Danky Icon Purple Color
- Fix Meh Icon, dark/light (not fill)
- Add Danky Icon to Header left corner
- Update to Purple Logo
- Update missing Logo Asset Sizes
+ Fix Meh Icon, dark/light (Done)
+ Update to Purple Logo (Done)
+ Update missing Logo Asset Sizes (Done)
+ Add Danky Icon to Header left corner (Done)
+ Update Danky Icon Purple Color (Done)
  
  Setup LocalizedStrings and Files
  Update Name to Danky
@@ -108,6 +108,6 @@ struct youseenthisApp: App {
  
  Distribution on TestFlight
  
- Add Search to Toolbar
+ Add Search to Filter
  
  */
