@@ -18,12 +18,12 @@ struct ItemRow: View {
                 .multilineTextAlignment(.leading)
             Spacer()
             Divider()
+            ItemStatusImage(itemStatus: item.itemStatus)
+                .frame(width: 20, height: nil, alignment: .center)
+            Divider()
             ItemRatingImage(itemRating: item.rating)
                 .frame(width: 20, height: nil, alignment: .center)
                 .padding(6)
-            Divider()
-            ItemStatusImage(itemStatus: item.itemStatus)
-                .frame(width: 20, height: nil, alignment: .center)
         }
     }
 }
